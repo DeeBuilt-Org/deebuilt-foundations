@@ -33,7 +33,7 @@ function Home() {
       {/* Hero */}
       <section className="mx-auto max-w-6xl px-5 pb-20 pt-16 md:px-10 md:pb-32 md:pt-28">
         <FadeUp>
-          <span className="eyebrow">DeeBuilt</span>
+          <span className="eyebrow">Systems · Automations · Web Design</span>
         </FadeUp>
         <FadeUp delay={80}>
           <h1 className="display-xl mt-6">
@@ -42,20 +42,25 @@ function Home() {
           </h1>
         </FadeUp>
         <FadeUp delay={160}>
-          <p className="lede mt-8 max-w-xl">
-            Systems, automations, and workflow design for businesses, small
-            teams, and solo founders.
+          <p className="lede mt-8 max-w-xl text-muted">
+            Systems, automations, and web design for businesses, small teams,
+            and solo founders.
           </p>
         </FadeUp>
         <FadeUp delay={240}>
-          <a
-            href={BOOKING_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="btn-primary mt-10"
-          >
-            Let's chat
-          </a>
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary"
+            >
+              Let's chat
+            </a>
+            <Link to="/portfolio" className="btn-secondary">
+              See the work
+            </Link>
+          </div>
         </FadeUp>
       </section>
 

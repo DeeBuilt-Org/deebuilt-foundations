@@ -1,5 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { FadeUp } from "@/components/FadeUp";
+
+/** Headshot lives in /public. */
+const PROFILE_PHOTO = "/Prof Headshot.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -23,6 +27,28 @@ export const Route = createFileRoute("/about")({
   component: About,
 });
 
+function ProfilePhoto() {
+  const [ok, setOk] = useState(true);
+  return (
+    <div className="relative aspect-[3/4] w-full overflow-hidden rounded-xl border border-hairline bg-surface">
+      {ok ? (
+        <img
+          src={PROFILE_PHOTO}
+          alt="Ruthnie Benoit"
+          onError={() => setOk(false)}
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <div className="flex h-full w-full items-center justify-center bg-accent-tint">
+          <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
+            Headshot
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function About() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-28">
@@ -33,10 +59,10 @@ function About() {
       <div className="mt-10 grid gap-12 md:mt-16 md:grid-cols-12 md:gap-16">
         <div className="md:col-span-5">
           <FadeUp>
-            <div className="aspect-[3/4] w-full bg-[#efeae1] border border-hairline" />
+            <ProfilePhoto />
             <p className="mt-5 font-serif text-2xl">Ruthnie (Dee) Benoit</p>
             <p className="mt-1 text-sm text-muted">
-              Operations, automations, and internal tools.
+              Systems, automations, and web design.
             </p>
           </FadeUp>
         </div>

@@ -5,7 +5,6 @@ const nav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/portfolio", label: "Portfolio" },
-  { to: "/contact", label: "Contact" },
 ] as const;
 
 export function SiteHeader() {
@@ -30,10 +29,17 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-hairline bg-background/85 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-hairline bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-10 md:py-5">
-        <Link to="/" className="font-serif text-xl tracking-tight md:text-2xl">
-          DeeBuilt
+        <Link to="/" className="group flex items-center gap-2.5">
+          <img
+            src="/DeeBuilt logo_A14 (1).png"
+            alt="DeeBuilt"
+            className="h-7 w-7 object-contain md:h-8 md:w-8"
+          />
+          <span className="font-serif text-xl tracking-tight md:text-2xl">
+            DeeBuilt
+          </span>
         </Link>
 
         <nav className="hidden gap-8 md:flex">

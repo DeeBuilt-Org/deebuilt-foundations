@@ -6,8 +6,11 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-tint: var(--accent-tint);
   --color-hairline: var(--hairline);
   --color-muted: var(--muted);
   --font-serif: var(--font-serif);
@@ -15,13 +18,17 @@
 }
 
 :root {
-  --background: #faf8f4;
-  --foreground: #1a1a1a;
-  --accent: #2e4057;
-  --hairline: #e8e4dd;
-  --muted: #6b6b6b;
+  /* Bright & airy — clean white, dusty rose accent, near-black ink (from logo) */
+  --background: #fdfcfb;
+  --surface: #f6f3f1;
+  --foreground: #191519;
+  --accent: #b9647a;        /* deep dusty rose — buttons, links */
+  --accent-soft: #d99aa9;   /* lighter rose — hovers, hairline accents */
+  --accent-tint: #f5e8ea;   /* faint rose wash — tile/section tints */
+  --hairline: #eae5e1;
+  --muted: #7a7470;
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
-  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -38,25 +45,34 @@
     font-family: var(--font-sans);
     font-weight: 400;
     line-height: 1.65;
-    font-feature-settings: "ss01", "kern";
+    font-feature-settings: "cv11", "ss01";
   }
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
     font-weight: 400;
     line-height: 1.05;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
   }
   ::selection {
-    background: var(--foreground);
-    color: var(--background);
+    background: var(--accent-tint);
+    color: var(--foreground);
   }
 }
 
 @utility eyebrow {
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+@utility eyebrow-muted {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -77,7 +93,7 @@
 
 @utility lede {
   font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--foreground);
 }
 
@@ -85,14 +101,19 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--foreground);
-  color: var(--background);
-  padding: 0.875rem 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.875rem 1.625rem;
   font-size: 0.9375rem;
   font-weight: 500;
-  border-radius: 2px;
-  transition: background 200ms ease, transform 200ms ease;
-  &:hover { background: var(--accent); }
+  border-radius: 999px;
+  transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 1px 2px rgba(25, 21, 25, 0.04);
+  &:hover {
+    background: #a5536a;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px -8px color-mix(in oklab, var(--accent) 55%, transparent);
+  }
 }
 
 @utility btn-secondary {
@@ -103,7 +124,7 @@
   padding: 0.5rem 0;
   font-size: 0.9375rem;
   font-weight: 500;
-  border-bottom: 1px solid var(--foreground);
+  border-bottom: 1px solid var(--hairline);
   transition: color 200ms ease, border-color 200ms ease;
   &:hover { color: var(--accent); border-color: var(--accent); }
 }
