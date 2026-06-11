@@ -1,13 +1,8 @@
-import opsette from "@/assets/project-opsette.jpg";
-import midterm from "@/assets/project-midterm.jpg";
-import ezii from "@/assets/project-ezii.jpg";
-import petkarma from "@/assets/project-petkarma.jpg";
-
 export type Project = {
   title: string;
   description: string;
   href: string;
-  image: string;
+  index: string;
 };
 
 export const projects: Project[] = [
@@ -16,28 +11,28 @@ export const projects: Project[] = [
     description:
       "An all-in-one workspace for managing clients, tasks, scheduling, and internal operations.",
     href: "https://opsette.io/",
-    image: opsette,
+    index: "01",
   },
   {
     title: "The Midterm Project",
     description:
       "A voter resource hub for finding elections, checking registration, and understanding the ballot.",
     href: "https://themidtermproject.org/",
-    image: midterm,
+    index: "02",
   },
   {
     title: "Ezii Quote Builder",
     description:
       "A quote builder for service businesses to create clients, define services, and generate clear estimates.",
     href: "https://www.ezii.io/home",
-    image: ezii,
+    index: "03",
   },
   {
     title: "Pet Karma",
     description:
       "Coordinate vacation pet care with friends through a simple scheduling app.",
     href: "https://petkarma.app/",
-    image: petkarma,
+    index: "04",
   },
 ];
 
