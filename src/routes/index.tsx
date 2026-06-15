@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeUp } from "@/components/FadeUp";
 import { ProjectCard } from "@/components/ProjectCard";
-import { BOOKING_URL, projects } from "@/content/projects";
+import { BOOKING_URL, DEMO_URL, SPEC_URL, projects } from "@/content/projects";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -60,6 +60,27 @@ function Home() {
             <Link to="/portfolio" className="btn-secondary">
               See the work
             </Link>
+          </div>
+        </FadeUp>
+        <FadeUp delay={320}>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+            <span className="eyebrow-muted">Explore</span>
+            <a
+              href={SPEC_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-accent transition-colors hover:text-foreground"
+            >
+              Specs ↗
+            </a>
+            <a
+              href={DEMO_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-accent transition-colors hover:text-foreground"
+            >
+              Demos ↗
+            </a>
           </div>
         </FadeUp>
       </section>

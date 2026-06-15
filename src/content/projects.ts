@@ -53,6 +53,8 @@ export const projects: Project[] = [
 
 export const BOOKING_URL =
   "https://opsette.io/booking/deebuilt/discovery-call";
+export const SPEC_URL = "https://spec.deebuilt.co/";
+export const DEMO_URL = "https://demo.deebuilt.co/";
 export const YOUTUBE_URL = "https://www.youtube.com/@DeeBuiltSystems";
 export const CONTACT_EMAIL = "hello@deebuilt.co";
 export const FORMSPREE_ENDPOINT = "https://formspree.io/f/PLACEHOLDER";
