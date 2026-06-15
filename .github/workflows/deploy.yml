@@ -21,11 +21,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
+          # node-version is the Node our BUILD runs on (kept at 20, works fine).
+          # The @v5 action bumps above pin actions to the Node 24 runtime that
+          # GitHub requires from June 2026 — a separate concern from this value.
           node-version: 20
           cache: npm
 
@@ -52,7 +55,7 @@ jobs:
           touch dist/client/.nojekyll
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           # TanStack Start emits the static site under dist/client (the
           # dist/server folder is the SSR bundle we don't deploy).
