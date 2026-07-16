@@ -1,7 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeUp } from "@/components/FadeUp";
-import { ProjectCard } from "@/components/ProjectCard";
-import { BOOKING_URL, DEMO_URL, SPEC_URL, projects } from "@/content/projects";
+import { ProjectRow } from "@/components/ProjectRow";
+import { ServiceList } from "@/components/ServiceList";
+import {
+  ASSESSMENT_URL,
+  BOOKING_URL,
+  DEMO_URL,
+  SPEC_URL,
+  projects,
+  services,
+} from "@/content/projects";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,7 +34,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const featured = projects.slice(0, 3);
+  const featured = projects.filter((p) => p.featured);
 
   return (
     <>
@@ -91,6 +99,7 @@ function Home() {
           <div className="md:col-span-4">
             <FadeUp>
               <span className="eyebrow">Approach</span>
+              <span className="accent-rule mt-4" />
             </FadeUp>
           </div>
           <div className="md:col-span-8">
@@ -113,25 +122,84 @@ function Home() {
         </div>
       </section>
 
+      {/* Operations assessment — lead magnet */}
+      <section className="border-t border-hairline bg-accent-tint">
+        <div className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-20">
+          <div className="grid gap-8 md:grid-cols-12 md:items-center md:gap-12">
+            <div className="md:col-span-8">
+              <FadeUp>
+                <span className="eyebrow">Free assessment</span>
+              </FadeUp>
+              <FadeUp delay={80}>
+                <p className="display-lg mt-5 max-w-2xl text-foreground">
+                  See how your operations stack up.
+                </p>
+              </FadeUp>
+              <FadeUp delay={160}>
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground md:text-lg">
+                  A quick run through the parts of a business that tend to slow
+                  down, from daily work to scheduling and payments. Ends with a
+                  score. Takes about two minutes.
+                </p>
+              </FadeUp>
+            </div>
+            <div className="md:col-span-4 md:flex md:justify-end">
+              <FadeUp delay={240}>
+                <a
+                  href={ASSESSMENT_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-primary"
+                >
+                  Start the assessment ↗
+                </a>
+              </FadeUp>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="border-t border-hairline">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
+          <FadeUp>
+            <span className="eyebrow">What I build</span>
+            <span className="accent-rule mt-4" />
+          </FadeUp>
+          <FadeUp delay={80}>
+            <p className="display-lg mt-6 max-w-2xl text-foreground">
+              More than a pretty screen.
+            </p>
+          </FadeUp>
+          <div className="mt-12 md:mt-16">
+            <ServiceList services={services} />
+          </div>
+        </div>
+      </section>
+
       {/* Selected work */}
       <section className="border-t border-hairline">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
           <FadeUp>
-            <div className="mb-12 flex items-end justify-between gap-4 md:mb-16">
-              <span className="eyebrow">Selected work</span>
+            <div className="mb-10 flex items-end justify-between gap-4 md:mb-14">
+              <div>
+                <span className="eyebrow">Selected work</span>
+                <span className="accent-rule mt-4" />
+              </div>
               <Link to="/portfolio" className="btn-secondary">
                 View all
               </Link>
             </div>
           </FadeUp>
 
-          <div className="grid gap-12 md:grid-cols-2 md:gap-x-10 md:gap-y-20">
-            <FadeUp className="md:col-span-2">
-              <ProjectCard project={featured[0]} wide />
-            </FadeUp>
-            {featured.slice(1).map((p, i) => (
-              <FadeUp key={p.title} delay={i * 80}>
-                <ProjectCard project={p} />
+          <div className="border-t border-hairline">
+            {featured.map((p, i) => (
+              <FadeUp
+                key={p.title}
+                delay={i * 60}
+                className="border-b border-hairline"
+              >
+                <ProjectRow project={p} />
               </FadeUp>
             ))}
           </div>
@@ -143,6 +211,7 @@ function Home() {
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-32">
           <FadeUp>
             <span className="eyebrow">Start with discovery</span>
+            <span className="accent-rule mt-4" />
           </FadeUp>
           <FadeUp delay={80}>
             <p className="display-lg mt-6 max-w-3xl">

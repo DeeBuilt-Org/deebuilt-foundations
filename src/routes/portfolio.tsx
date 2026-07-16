@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FadeUp } from "@/components/FadeUp";
-import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectRow } from "@/components/ProjectRow";
 import { projects } from "@/content/projects";
 
 export const Route = createFileRoute("/portfolio")({
@@ -10,7 +10,7 @@ export const Route = createFileRoute("/portfolio")({
       {
         name: "description",
         content:
-          "Selected work: Opsette, The Midterm Project, Ezii Quote Builder, Pet Karma.",
+          "Selected work: Opsette, Opsette Tools, The Midterm Project, G-Up, and more.",
       },
       { property: "og:title", content: "Portfolio — DeeBuilt" },
       {
@@ -29,6 +29,7 @@ function Portfolio() {
     <section className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-28">
       <FadeUp>
         <span className="eyebrow">Portfolio</span>
+        <span className="accent-rule mt-4" />
       </FadeUp>
       <FadeUp delay={80}>
         <h1 className="display-lg mt-6 max-w-3xl">Selected work.</h1>
@@ -40,10 +41,14 @@ function Portfolio() {
         </p>
       </FadeUp>
 
-      <div className="mt-16 grid gap-12 md:mt-20 md:grid-cols-2 md:gap-x-10 md:gap-y-20">
+      <div className="mt-16 border-t border-hairline md:mt-20">
         {projects.map((p, i) => (
-          <FadeUp key={p.title} delay={(i % 2) * 80}>
-            <ProjectCard project={p} />
+          <FadeUp
+            key={p.title}
+            delay={i * 60}
+            className="border-b border-hairline"
+          >
+            <ProjectRow project={p} />
           </FadeUp>
         ))}
       </div>

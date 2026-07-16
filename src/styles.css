@@ -9,6 +9,7 @@
   --color-surface: var(--surface);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
   --color-accent-tint: var(--accent-tint);
   --color-hairline: var(--hairline);
@@ -18,15 +19,17 @@
 }
 
 :root {
-  /* Bright & airy — clean white, dusty rose accent, near-black ink (from logo) */
-  --background: #fdfcfb;
-  --surface: #f6f3f1;
-  --foreground: #191519;
-  --accent: #b9647a;        /* deep dusty rose — buttons, links */
-  --accent-soft: #d99aa9;   /* lighter rose — hovers, hairline accents */
-  --accent-tint: #f5e8ea;   /* faint rose wash — tile/section tints */
-  --hairline: #eae5e1;
-  --muted: #7a7470;
+  /* Calm & considered — soft white page, slate CTA, cool neutral ink */
+  --background: #fafaf9;     /* page canvas */
+  --surface: #ffffff;        /* white cards */
+  --foreground: #18181a;     /* body ink */
+  --accent: #2f4858;         /* deep slate — buttons, links */
+  --accent-hover: #173c51;   /* slate 800 — button/link hover (darker) */
+  --accent-soft: #8dbfdf;    /* slate 300 — card hover borders, hairline accents */
+  --accent-tint: #dce5ea;    /* dusty-blue wash — tile/section tints */
+  --hairline: #e0dfdb;
+  --muted: #86858a;
+  --shadow-ink: 14, 18, 21;  /* neutral 900 (#0E1215) as R,G,B for cool shadows */
   --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
@@ -66,6 +69,15 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
+}
+
+/* Thin accent rule that sits under a section eyebrow/heading. */
+@utility accent-rule {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
 }
 
 @utility eyebrow-muted {
@@ -108,9 +120,9 @@
   font-weight: 500;
   border-radius: 999px;
   transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
-  box-shadow: 0 1px 2px rgba(25, 21, 25, 0.04);
+  box-shadow: 0 1px 2px rgba(var(--shadow-ink), 0.05);
   &:hover {
-    background: #a5536a;
+    background: var(--accent-hover);
     transform: translateY(-1px);
     box-shadow: 0 8px 24px -8px color-mix(in oklab, var(--accent) 55%, transparent);
   }

@@ -54,6 +54,7 @@ function About() {
     <section className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-28">
       <FadeUp>
         <span className="eyebrow">About</span>
+        <span className="accent-rule mt-4" />
       </FadeUp>
 
       <div className="mt-10 grid gap-12 md:mt-16 md:grid-cols-12 md:gap-16">
@@ -62,7 +63,7 @@ function About() {
             <ProfilePhoto />
             <p className="mt-5 font-serif text-2xl">Ruthnie (Dee) Benoit</p>
             <p className="mt-1 text-sm text-muted">
-              Systems, automations, and web design.
+              Back-end systems, integrations, and web.
             </p>
           </FadeUp>
         </div>
