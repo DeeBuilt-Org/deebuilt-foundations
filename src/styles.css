@@ -7,6 +7,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink-wash: var(--ink-wash);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
@@ -20,8 +22,10 @@
 
 :root {
   /* Calm & considered — soft white page, slate CTA, cool neutral ink */
-  --background: #fafaf9;     /* page canvas */
+  --background: #f4f4f1;     /* page canvas — warm paper, not white */
   --surface: #ffffff;        /* white cards */
+  --surface-raised: #fbfbf9; /* lighter band, alternates against background */
+  --ink-wash: #22303a;       /* deep slate band for full-bleed contrast */
   --foreground: #18181a;     /* body ink */
   --accent: #2f4858;         /* deep slate — buttons, links */
   --accent-hover: #173c51;   /* slate 800 — button/link hover (darker) */
@@ -69,15 +73,6 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
-}
-
-/* Thin accent rule that sits under a section eyebrow/heading. */
-@utility accent-rule {
-  display: block;
-  width: 2.5rem;
-  height: 2px;
-  border-radius: 999px;
-  background: var(--accent);
 }
 
 @utility eyebrow-muted {
@@ -128,6 +123,24 @@
   }
 }
 
+/* Primary button on a dark band: white pill, slate label. */
+@utility btn-invert {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff;
+  color: var(--accent);
+  padding: 0.875rem 1.625rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: background 200ms ease, transform 200ms ease;
+  &:hover {
+    background: var(--accent-tint);
+    transform: translateY(-1px);
+  }
+}
+
 @utility btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -139,6 +152,40 @@
   border-bottom: 1px solid var(--hairline);
   transition: color 200ms ease, border-color 200ms ease;
   &:hover { color: var(--accent); border-color: var(--accent); }
+}
+
+/* --- Flip card (services / "Which sounds familiar?") ---------------------
+   Two faces stacked in one box. The scene holds the perspective, the inner
+   element rotates, and each face hides its own backside so only one shows.
+   Height is set by the tallest face via a grid overlay, so both sides share
+   a box without a hardcoded pixel height. */
+@utility flip-scene {
+  perspective: 1400px;
+}
+
+@utility flip-inner {
+  display: grid;
+  transform-style: preserve-3d;
+  transition: transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  .flip-scene[data-flipped="true"] & {
+    transform: rotateY(180deg);
+  }
+}
+
+@utility flip-face {
+  grid-area: 1 / 1;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@utility flip-back {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner {
+    transition: none;
+  }
 }
 
 @utility fade-up {

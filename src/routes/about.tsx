@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { FadeUp } from "@/components/FadeUp";
+import { BOOKING_URL, positioning } from "@/content/projects";
 
 /** Headshot lives in /public. */
 const PROFILE_PHOTO = "/Prof Headshot.png";
@@ -12,13 +13,13 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Ruthnie (Dee) Benoit. Several years supporting startup operations and building systems that reduce manual work.",
+          "Ruthnie (Dee) Benoit, fractional operations strategist. Systems, integrations, and the handoffs between them.",
       },
       { property: "og:title", content: "About — DeeBuilt" },
       {
         property: "og:description",
         content:
-          "Ruthnie (Dee) Benoit. Operations, automations, and internal tools.",
+          "Ruthnie (Dee) Benoit, fractional operations strategist. Systems, integrations, and internal tools.",
       },
       { property: "og:url", content: "/about" },
     ],
@@ -52,19 +53,12 @@ function ProfilePhoto() {
 function About() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-28">
-      <FadeUp>
-        <span className="eyebrow">About</span>
-        <span className="accent-rule mt-4" />
-      </FadeUp>
-
-      <div className="mt-10 grid gap-12 md:mt-16 md:grid-cols-12 md:gap-16">
+      <div className="grid gap-12 md:grid-cols-12 md:gap-16">
         <div className="md:col-span-5">
           <FadeUp>
             <ProfilePhoto />
             <p className="mt-5 font-serif text-2xl">Ruthnie (Dee) Benoit</p>
-            <p className="mt-1 text-sm text-muted">
-              Back-end systems, integrations, and web.
-            </p>
+            <p className="mt-1 text-sm text-muted">{positioning.role}</p>
           </FadeUp>
         </div>
 
@@ -100,6 +94,17 @@ function About() {
               </p>
             </FadeUp>
           </div>
+
+          <FadeUp delay={360}>
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary mt-10"
+            >
+              Book a discovery call
+            </a>
+          </FadeUp>
         </div>
       </div>
     </section>

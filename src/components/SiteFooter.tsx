@@ -3,6 +3,7 @@ import {
   BOOKING_URL,
   CONTACT_FORM_URL,
   YOUTUBE_URL,
+  positioning,
 } from "@/content/projects";
 
 export function SiteFooter() {
@@ -21,7 +22,7 @@ export function SiteFooter() {
               <span className="font-serif text-xl">DeeBuilt</span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
-              Back-end systems and custom integrations.
+              {positioning.role}. {positioning.lede}
             </p>
           </div>
 

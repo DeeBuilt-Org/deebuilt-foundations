@@ -28,16 +28,12 @@ function Portfolio() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-28">
       <FadeUp>
-        <span className="eyebrow">Portfolio</span>
-        <span className="accent-rule mt-4" />
-      </FadeUp>
-      <FadeUp delay={80}>
-        <h1 className="display-lg mt-6 max-w-3xl">Selected work.</h1>
+        <h1 className="display-lg max-w-3xl">Things I&rsquo;ve built.</h1>
       </FadeUp>
       <FadeUp delay={160}>
         <p className="lede mt-6 max-w-xl text-muted">
-          A few projects spanning internal tools, client workspaces, and
-          consumer apps.
+          Internal tools, client workspaces, and a few consumer apps. Each one
+          is labeled with where it stands today, live or otherwise.
         </p>
       </FadeUp>
 

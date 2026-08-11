@@ -7,6 +7,12 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Pinned to match DEV_SERVERS.md (83xx = DeeBuilt org / personal site).
+  // Without this the Lovable preset falls back to 8080, which collides with
+  // whatever else is running.
+  vite: {
+    server: { port: 8300, strictPort: true },
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this

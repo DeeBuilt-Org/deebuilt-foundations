@@ -72,7 +72,7 @@ export function ProjectRow({ project }: { project: Project }) {
         href={project.href}
         target="_blank"
         rel="noreferrer"
-        className="group block transition-colors hover:bg-surface"
+        className="group block px-4 transition-all duration-300 hover:-translate-y-0.5 hover:bg-surface hover:shadow-[0_12px_32px_-16px_rgba(var(--shadow-ink),0.25)] md:px-6"
       >
         {inner}
       </a>

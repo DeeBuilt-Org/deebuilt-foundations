@@ -84,34 +84,81 @@ export const projects: Project[] = [
 
 export type Service = {
   index: string;
+  /** Service name. The verdict on the back of the card. */
   title: string;
+  /**
+   * What Ruthnie does about it. Every one of these starts with "I" and names
+   * an action — no end-state descriptions, and no naming specific tools a
+   * visitor may not use.
+   */
   description: string;
+  /**
+   * The symptom a visitor recognizes in their own business, in their words.
+   * This is the FRONT of the card and the only thing visible until they flip.
+   */
+  symptom: string;
 };
 
 /** What DeeBuilt is hired for, back-end first. Shown on the home page. */
 export const services: Service[] = [
   {
     index: "01",
-    title: "Back-end & systems",
+    symptom: "“Nobody can tell me where a project stands.”",
+    title: "Operations discovery",
     description:
-      "The database and internal tools a business runs on.",
+      "I follow each project end to end and map every place it stalls. You keep the map whether or not you hire me.",
   },
   {
     index: "02",
-    title: "Custom integrations & APIs",
-    description: "Connect separate tools so information moves on its own.",
+    symptom: "“We enter the same information in more than one place.”",
+    title: "Integrations & APIs",
+    description:
+      "I connect your systems so information entered once shows up everywhere it belongs.",
   },
   {
     index: "03",
-    title: "Automation setup",
-    description: "Automate manual steps that consume billable hours.",
+    symptom: "“The same manual steps come back every week.”",
+    title: "Automation",
+    description:
+      "I take the repeat steps off your team's plate and hand them to software.",
   },
   {
     index: "04",
-    title: "Websites & web apps",
-    description: "Custom front ends built on strategic systems.",
+    symptom: "“We pay for software that fits us badly.”",
+    title: "Internal tools & web",
+    description:
+      "I find software that fits, or build what's missing when nothing does.",
   },
 ];
+
+/**
+ * Positioning copy. Kept here so the words can change without touching layout.
+ *
+ * The niche is a STAGE of company, not an industry or an age. A 20-year-old
+ * business hits this too. The through-line is the SEAMS: the handoffs between
+ * tools, teams, and steps, where work stalls and gets retyped.
+ *
+ * Deliberately avoided: "growing companies" (excludes established ones),
+ * "patched together" / "mess" / "chaos" (nobody self-identifies as chaotic),
+ * and "actually" (empty intensifier).
+ *
+ * The hero headline is her NAME, plainly. Not a greeting and not a slogan —
+ * a single-practitioner site states who this is, and the role line carries
+ * the positioning.
+ */
+export const positioning = {
+  /** Sits above the headline. States the role, not a service list. */
+  role: "Fractional Operations Strategist",
+  headline: "Ruthnie Benoit",
+  /**
+   * "On call" carries the retainer/accessible idea without saying either.
+   * The second sentence is the temperament line: an invitation, not a pitch.
+   * It stays deliberately broad so it covers all four services rather than
+   * diagnosing one problem the way an integrations-specific line would.
+   */
+  lede:
+    "Operations and systems support, on call. Tell me what you're feeling and I'll tell you what you need.",
+} as const;
 
 export const BOOKING_URL =
   "https://opsette.io/booking/deebuilt/discovery-call";

@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeUp } from "@/components/FadeUp";
+import { Hero } from "@/components/Hero";
 import { ProjectRow } from "@/components/ProjectRow";
 import { ServiceList } from "@/components/ServiceList";
 import {
@@ -14,17 +15,20 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "DeeBuilt — Ruthnie Benoit" },
+      { title: "Ruthnie Benoit — Fractional Operations Strategist" },
       {
         name: "description",
         content:
-          "Independent operations practice. Systems, automations, and workflow design for businesses, small teams, and solo founders.",
+          "I design the seams in a business: the handoffs between your tools, your team, and the steps nobody wrote down. Then I wire them to run on their own.",
       },
-      { property: "og:title", content: "DeeBuilt — Ruthnie Benoit" },
+      {
+        property: "og:title",
+        content: "Ruthnie Benoit — Fractional Operations Strategist",
+      },
       {
         property: "og:description",
         content:
-          "Systems, automations, and workflow design for businesses, small teams, and solo founders.",
+          "The handoffs between your tools, your team, and the steps nobody wrote down.",
       },
       { property: "og:url", content: "/" },
     ],
@@ -38,137 +42,77 @@ function Home() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl px-5 pb-20 pt-16 md:px-10 md:pb-32 md:pt-28">
-        <FadeUp>
-          <span className="eyebrow">Systems · Automations · Web Design</span>
-        </FadeUp>
-        <FadeUp delay={80}>
-          <h1 className="display-xl mt-6">
-            Ruthnie<br />
-            Benoit.
-          </h1>
-        </FadeUp>
-        <FadeUp delay={160}>
-          <p className="lede mt-8 max-w-xl text-muted">
-            Systems, automations, and web design for businesses, small teams,
-            and solo founders.
-          </p>
-        </FadeUp>
-        <FadeUp delay={240}>
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary"
-            >
-              Let's chat
-            </a>
-            <Link to="/portfolio" className="btn-secondary">
-              See the work
-            </Link>
-          </div>
-        </FadeUp>
-        <FadeUp delay={320}>
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-            <span className="eyebrow-muted">Explore</span>
-            <a
-              href={SPEC_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium text-accent transition-colors hover:text-foreground"
-            >
-              Specs ↗
-            </a>
-            <a
-              href={DEMO_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium text-accent transition-colors hover:text-foreground"
-            >
-              Demos ↗
-            </a>
-          </div>
-        </FadeUp>
-      </section>
+      <Hero />
 
-      {/* Approach */}
-      <section className="border-t border-hairline">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-12 md:px-10 md:py-28">
-          <div className="md:col-span-4">
-            <FadeUp>
-              <span className="eyebrow">Approach</span>
-              <span className="accent-rule mt-4" />
-            </FadeUp>
-          </div>
-          <div className="md:col-span-8">
-            <FadeUp>
-              <p className="display-lg max-w-2xl text-foreground">
-                Operations look different for every business.
-              </p>
-            </FadeUp>
-            <FadeUp delay={100}>
-              <p className="mt-8 max-w-2xl text-base leading-relaxed text-foreground md:text-lg">
-                The work starts with discovery, a look at how work moves through
-                the business. From there comes a clear plan. That can mean
-                restructuring workflows, connecting existing apps, migrating
-                data into a better system, or building a custom internal tool.
-                The goal is operations that stay easy to manage and easy to
-                grow.
-              </p>
-            </FadeUp>
+      {/* Approach — runs as prose, no label above it. */}
+      <section>
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
+          <FadeUp>
+            <p className="display-lg max-w-3xl text-foreground">
+              Your software is probably fine. The gaps between it are the
+              problem.
+            </p>
+          </FadeUp>
+          <div className="mt-8 grid gap-8 md:grid-cols-12 md:gap-14">
+            <div className="md:col-span-7">
+              <FadeUp delay={100}>
+                <p className="text-base leading-relaxed text-foreground md:text-lg">
+                  Every engagement opens the same way. I follow one job from the
+                  first request to the final invoice and write down every place
+                  it stops moving. It usually stops in the same spots: waiting
+                  on an approval, or waiting on someone to retype what another
+                  system already knows.
+                </p>
+              </FadeUp>
+            </div>
+            <div className="md:col-span-5">
+              <FadeUp delay={180}>
+                <p className="text-base leading-relaxed text-muted md:text-lg">
+                  What follows depends on what I find. Fewer tools. A migration.
+                  A custom build when nothing off the shelf fits. Your team gets
+                  trained on all of it, so none of it depends on me.
+                </p>
+              </FadeUp>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Operations assessment — lead magnet */}
-      <section className="border-t border-hairline bg-accent-tint">
-        <div className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-20">
-          <div className="grid gap-8 md:grid-cols-12 md:items-center md:gap-12">
-            <div className="md:col-span-8">
-              <FadeUp>
-                <span className="eyebrow">Free assessment</span>
-              </FadeUp>
-              <FadeUp delay={80}>
-                <p className="display-lg mt-5 max-w-2xl text-foreground">
-                  See how your operations stack up.
-                </p>
-              </FadeUp>
-              <FadeUp delay={160}>
-                <p className="mt-5 max-w-xl text-base leading-relaxed text-foreground md:text-lg">
-                  A quick run through the parts of a business that tend to slow
-                  down, from daily work to scheduling and payments. Ends with a
-                  score. Takes about two minutes.
-                </p>
-              </FadeUp>
-            </div>
-            <div className="md:col-span-4 md:flex md:justify-end">
-              <FadeUp delay={240}>
-                <a
-                  href={ASSESSMENT_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-primary"
-                >
-                  Start the assessment ↗
-                </a>
-              </FadeUp>
-            </div>
-          </div>
+      {/* Operations assessment — centered CTA band. Deliberately the only
+          centered section on the page, so it reads as an interruption rather
+          than another content block. No body paragraph: headline, button,
+          one short reassurance under it. */}
+      <section className="border-y border-hairline bg-accent-tint">
+        <div className="mx-auto max-w-3xl px-5 py-20 text-center md:py-24">
+          <FadeUp>
+            <p className="display-lg text-foreground">
+              See how your operations stack up.
+            </p>
+          </FadeUp>
+          <FadeUp delay={120}>
+            <a
+              href={ASSESSMENT_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary mt-9"
+            >
+              Start the assessment ↗
+            </a>
+          </FadeUp>
+          <FadeUp delay={200}>
+            <p className="mt-5 text-sm text-muted">
+              About two minutes. You get your score before we ask for anything.
+            </p>
+          </FadeUp>
         </div>
       </section>
 
       {/* Services */}
-      <section className="border-t border-hairline">
+      <section className="border-t border-hairline bg-surface-raised">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
           <FadeUp>
-            <span className="eyebrow">What I build</span>
-            <span className="accent-rule mt-4" />
-          </FadeUp>
-          <FadeUp delay={80}>
-            <p className="display-lg mt-6 max-w-2xl text-foreground">
-              More than a pretty screen.
+            <p className="display-lg max-w-2xl text-foreground">
+              Which sounds familiar?
             </p>
           </FadeUp>
           <div className="mt-12 md:mt-16">
@@ -181,11 +125,10 @@ function Home() {
       <section className="border-t border-hairline">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
           <FadeUp>
-            <div className="mb-10 flex items-end justify-between gap-4 md:mb-14">
-              <div>
-                <span className="eyebrow">Selected work</span>
-                <span className="accent-rule mt-4" />
-              </div>
+            <div className="mb-10 flex flex-wrap items-end justify-between gap-4 md:mb-14">
+              <p className="display-lg max-w-xl text-foreground">
+                Things I&rsquo;ve built.
+              </p>
               <Link to="/portfolio" className="btn-secondary">
                 View all
               </Link>
@@ -206,29 +149,54 @@ function Home() {
         </div>
       </section>
 
-      {/* Closing CTA */}
-      <section className="border-t border-hairline">
+      {/* Closing CTA — dark band. Proof sits above the ask, backing it, and the
+          inverted color gives the page a hard stop instead of fading out. */}
+      <section className="bg-ink-wash text-white">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-32">
-          <FadeUp>
-            <span className="eyebrow">Start with discovery</span>
-            <span className="accent-rule mt-4" />
-          </FadeUp>
-          <FadeUp delay={80}>
-            <p className="display-lg mt-6 max-w-3xl">
-              A clear look at how work moves through your business, and a plan
-              for what comes next.
-            </p>
-          </FadeUp>
-          <FadeUp delay={160}>
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary mt-10"
-            >
-              Book a discovery call
-            </a>
-          </FadeUp>
+          <div>
+            <FadeUp>
+              <p className="display-lg max-w-3xl text-white">
+                Start with a look at how work moves through your business.
+              </p>
+            </FadeUp>
+            <FadeUp delay={100}>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
+                Thirty minutes, no pitch. You&rsquo;ll leave knowing where the
+                time is going even if we never work together.
+              </p>
+            </FadeUp>
+            <FadeUp delay={160}>
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-invert mt-10"
+              >
+                Book a discovery call
+              </a>
+            </FadeUp>
+            <FadeUp delay={240}>
+              <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/15 pt-6 text-sm">
+                <span className="text-white/60">More from DeeBuilt</span>
+                <a
+                  href={SPEC_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
+                >
+                  Specs ↗
+                </a>
+                <a
+                  href={DEMO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-medium text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
+                >
+                  Demos ↗
+                </a>
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
     </>

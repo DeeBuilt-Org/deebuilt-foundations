@@ -1,34 +1,132 @@
+import { useState } from "react";
 import { FadeUp } from "@/components/FadeUp";
-import type { Service } from "@/content/projects";
+import { ASSESSMENT_URL, type Service } from "@/content/projects";
 
 /**
- * Services rendered as a clean, numbered list. Each row uses the accent
- * index number as its one deliberate spot of color.
+ * One flip card: symptom on the front, service + solution on the back.
+ *
+ * Click to flip, not hover — hover has no touch equivalent, so a tap would
+ * fire it once and leave the card stuck. Rendered as a real <button> so it
+ * works from the keyboard, and the hidden face is aria-hidden so a screen
+ * reader doesn't announce both sides at once.
  */
-export function ServiceList({ services }: { services: Service[] }) {
+function ServiceCard({ service }: { service: Service }) {
+  const [flipped, setFlipped] = useState(false);
+
   return (
-    <div className="border-t border-hairline">
-      {services.map((service, i) => (
-        <FadeUp
-          key={service.title}
-          delay={i * 60}
-          className="border-b border-hairline"
+    <button
+      type="button"
+      onClick={() => setFlipped((v) => !v)}
+      aria-expanded={flipped}
+      aria-label={
+        flipped
+          ? `${service.title}. Show the symptom again.`
+          : `${service.symptom} See how I fix it.`
+      }
+      className="flip-scene group relative h-full w-full cursor-pointer bg-background text-left transition-[transform,box-shadow] duration-300 hover:z-10 hover:-translate-y-1 hover:shadow-[0_16px_36px_-18px_rgba(var(--shadow-ink),0.35)]"
+      data-flipped={flipped}
+    >
+      <div className="flip-inner h-full">
+        {/* Front — the symptom */}
+        <div
+          className="flip-face flex h-full flex-col justify-between p-7 transition-colors duration-300 group-hover:bg-surface md:p-9"
+          aria-hidden={flipped}
         >
-          <div className="grid gap-3 py-8 md:grid-cols-12 md:gap-8 md:py-10">
-            <div className="flex items-baseline gap-4 md:col-span-5">
-              <span className="font-serif text-sm font-medium tracking-[0.16em] text-accent">
-                {service.index}
-              </span>
-              <h3 className="font-serif text-2xl leading-tight md:text-[1.75rem]">
-                {service.title}
-              </h3>
-            </div>
-            <p className="max-w-xl text-base leading-relaxed text-muted md:col-span-7">
+          <p className="font-serif text-xl leading-snug text-foreground md:text-2xl">
+            {service.symptom}
+          </p>
+          {/* Circular flip affordance. Icon only — the arrow rotates on
+              hover so it reads as "this turns over" without a text label. */}
+          <span className="mt-8 inline-flex h-9 w-9 items-center justify-center rounded-full border border-accent/30 text-accent transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4 transition-transform duration-500 group-hover:rotate-180"
+              aria-hidden="true"
+            >
+              <path d="M21 12a9 9 0 0 1-9 9 9 9 0 0 1-7.5-4" />
+              <path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 7.5 4" />
+              <path d="M20 3v4.5H15.5" />
+              <path d="M4 21v-4.5H8.5" />
+            </svg>
+          </span>
+        </div>
+
+        {/* Back — the service and what she does */}
+        <div
+          className="flip-back flip-face flex h-full flex-col justify-between bg-accent-tint p-7 md:p-9"
+          aria-hidden={!flipped}
+        >
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
+              {service.title}
+            </span>
+            <p className="mt-4 text-base leading-relaxed text-foreground">
               {service.description}
             </p>
           </div>
-        </FadeUp>
-      ))}
+          <span className="mt-8 inline-flex h-9 w-9 items-center justify-center rounded-full border border-accent/30 text-accent transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="h-4 w-4 transition-transform duration-500 group-hover:-rotate-180"
+              aria-hidden="true"
+            >
+              <path d="M21 12a9 9 0 0 1-9 9 9 9 0 0 1-7.5-4" />
+              <path d="M3 12a9 9 0 0 1 9-9 9 9 0 0 1 7.5 4" />
+              <path d="M20 3v4.5H15.5" />
+              <path d="M4 21v-4.5H8.5" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </button>
+  );
+}
+
+/**
+ * Qualification grid, not a service list. A visitor scans four complaints,
+ * recognizes one, and flips it to find out what happens next.
+ *
+ * 2x2 so it reads as a set to compare rather than a list to read top to
+ * bottom. Deliberately four, not three.
+ */
+export function ServiceList({ services }: { services: Service[] }) {
+  return (
+    <div>
+      <div className="grid gap-px overflow-hidden rounded-sm border border-hairline bg-hairline sm:grid-cols-2">
+        {services.map((service, i) => (
+          <FadeUp
+            key={service.title}
+            delay={i * 70}
+            className="flex min-h-[16rem]"
+          >
+            <ServiceCard service={service} />
+          </FadeUp>
+        ))}
+      </div>
+
+      <FadeUp delay={300}>
+        <p className="mt-8 text-base text-muted">
+          More than one of these sound familiar?{" "}
+          <a
+            href={ASSESSMENT_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="font-medium text-accent underline underline-offset-4 transition-colors hover:text-foreground"
+          >
+            Score your operations in two minutes ↗
+          </a>
+        </p>
+      </FadeUp>
     </div>
   );
 }
