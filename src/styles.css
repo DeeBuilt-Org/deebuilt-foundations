@@ -205,3 +205,56 @@
     transition: none;
   }
 }
+
+/* Hero state cycle — Launch / Scale / Reorganize.
+   All three words stay visible; only the highlight travels. The dimmed words
+   sit at 38% so they read as present-but-secondary rather than disabled. */
+.state-cycle {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 7vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.5em;
+}
+
+.state-word {
+  position: relative;
+  color: rgba(255, 255, 255, 0.38);
+  transition: color 700ms ease;
+  /* Underline wipe sits under the word itself, not the trailing period. */
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.08em;
+    height: 2px;
+    width: calc(100% - 0.25em);
+    background: var(--accent-soft);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &.is-active {
+    color: #fff;
+  }
+  &.is-active::after {
+    transform: scaleX(1);
+  }
+}
+
+/* The period stays dim on the active word — the highlight is the word. */
+.state-dot {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .state-word {
+    color: #fff;
+    transition: none;
+  }
+  .state-word::after {
+    transition: none;
+  }
+}

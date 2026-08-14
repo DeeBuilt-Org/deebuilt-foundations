@@ -19,7 +19,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "I design the seams in a business: the handoffs between your tools, your team, and the steps nobody wrote down. Then I wire them to run on their own.",
+          "Fractional business consulting. Operations and systems design for businesses launching, scaling, or reorganizing.",
       },
       {
         property: "og:title",
@@ -27,8 +27,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:description",
-        content:
-          "The handoffs between your tools, your team, and the steps nobody wrote down.",
+        content: "Operations and systems design for businesses at any stage.",
       },
       { property: "og:url", content: "/" },
     ],
@@ -44,36 +43,43 @@ function Home() {
     <>
       <Hero />
 
-      {/* Approach — runs as prose, no label above it. */}
+      {/* The hook. One sentence, standing alone in white space — no paragraph
+          under it (removed 2026-08-14; it explained how an engagement opens,
+          which is about her at the moment a reader is still deciding whether
+          the site is about them). Extra vertical padding because the sentence
+          has to carry the section by itself. */}
       <section>
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
+        <div className="mx-auto max-w-6xl px-5 py-24 md:px-10 md:py-36">
           <FadeUp>
+            {/* Hers, moved here from the About page 2026-08-14. States a
+                principle instead of a service, which is why it earns the
+                standalone slot.
+
+                It is also grounded, though she arrived at it on her own:
+                outcomes come from the system (Deming), and improvement is
+                capped by the constraint, so effort spent anywhere but the
+                weakest process barely moves output (Goldratt's Theory of
+                Constraints).
+
+                Previously here: "If information only moves when you move it,
+                you need better integrations." Dropped 2026-08-14 — it's a
+                diagnosis she still likes, but it had no home that worked. She
+                has it saved elsewhere. Do not reinstate without her. */}
             <p className="display-lg max-w-3xl text-foreground">
-              Your software is probably fine. The gaps between it are the
-              problem.
+              Your business is capped by your weakest process.
             </p>
           </FadeUp>
-          <div className="mt-8 grid gap-8 md:grid-cols-12 md:gap-14">
-            <div className="md:col-span-7">
-              <FadeUp delay={100}>
-                <p className="text-base leading-relaxed text-foreground md:text-lg">
-                  Every engagement opens the same way. I follow one job from the
-                  first request to the final invoice and write down every place
-                  it stops moving. It usually stops in the same spots: waiting
-                  on an approval, or waiting on someone to retype what another
-                  system already knows.
-                </p>
-              </FadeUp>
-            </div>
-            <div className="md:col-span-5">
-              <FadeUp delay={180}>
-                <p className="text-base leading-relaxed text-muted md:text-lg">
-                  What follows depends on what I find. Fewer tools. A migration.
-                  A custom build when nothing off the shelf fits. Your team gets
-                  trained on all of it, so none of it depends on me.
-                </p>
-              </FadeUp>
-            </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="border-t border-hairline bg-surface-raised">
+        <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
+          <FadeUp>
+            <p className="display-lg max-w-2xl text-foreground">Which sounds familiar?</p>
+          </FadeUp>
+          <div className="mt-12 md:mt-16">
+            <ServiceList services={services} />
           </div>
         </div>
       </section>
@@ -81,22 +87,22 @@ function Home() {
       {/* Operations assessment — centered CTA band. Deliberately the only
           centered section on the page, so it reads as an interruption rather
           than another content block. No body paragraph: headline, button,
-          one short reassurance under it. */}
+          one short reassurance under it.
+
+          Sits BELOW the flip cards on purpose (moved 2026-08-14). The cards
+          are the qualifier — four symptoms in a customer's voice, with the
+          flip as a micro-commitment. The assessment is the heavier ask
+          (20+ statements, scored, ends in a capture), so it only makes sense
+          once someone has already recognized themselves in a card. Above the
+          cards it was asking for too much too early. */}
       <section className="border-y border-hairline bg-accent-tint">
         <div className="mx-auto max-w-3xl px-5 py-20 text-center md:py-24">
           <FadeUp>
-            <p className="display-lg text-foreground">
-              See how your operations stack up.
-            </p>
+            <p className="display-lg text-foreground">See how your operations stack up.</p>
           </FadeUp>
           <FadeUp delay={120}>
-            <a
-              href={ASSESSMENT_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary mt-9"
-            >
-              Start the assessment ↗
+            <a href={ASSESSMENT_URL} target="_blank" rel="noreferrer" className="btn-primary mt-9">
+              Take the full assessment ↗
             </a>
           </FadeUp>
           <FadeUp delay={200}>
@@ -107,28 +113,12 @@ function Home() {
         </div>
       </section>
 
-      {/* Services */}
-      <section className="border-t border-hairline bg-surface-raised">
-        <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
-          <FadeUp>
-            <p className="display-lg max-w-2xl text-foreground">
-              Which sounds familiar?
-            </p>
-          </FadeUp>
-          <div className="mt-12 md:mt-16">
-            <ServiceList services={services} />
-          </div>
-        </div>
-      </section>
-
       {/* Selected work */}
       <section className="border-t border-hairline">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
           <FadeUp>
             <div className="mb-10 flex flex-wrap items-end justify-between gap-4 md:mb-14">
-              <p className="display-lg max-w-xl text-foreground">
-                Things I&rsquo;ve built.
-              </p>
+              <p className="display-lg max-w-xl text-foreground">Selected work.</p>
               <Link to="/portfolio" className="btn-secondary">
                 View all
               </Link>
@@ -137,11 +127,7 @@ function Home() {
 
           <div className="border-t border-hairline">
             {featured.map((p, i) => (
-              <FadeUp
-                key={p.title}
-                delay={i * 60}
-                className="border-b border-hairline"
-              >
+              <FadeUp key={p.title} delay={i * 60} className="border-b border-hairline">
                 <ProjectRow project={p} />
               </FadeUp>
             ))}
@@ -161,17 +147,12 @@ function Home() {
             </FadeUp>
             <FadeUp delay={100}>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
-                Thirty minutes, no pitch. You&rsquo;ll leave knowing where the
-                time is going even if we never work together.
+                Thirty minutes, no pitch. You&rsquo;ll leave knowing where the time is going even if
+                we never work together.
               </p>
             </FadeUp>
             <FadeUp delay={160}>
-              <a
-                href={BOOKING_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-invert mt-10"
-              >
+              <a href={BOOKING_URL} target="_blank" rel="noreferrer" className="btn-invert mt-10">
                 Book a discovery call
               </a>
             </FadeUp>

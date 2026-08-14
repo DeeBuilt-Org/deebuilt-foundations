@@ -3,11 +3,7 @@
  * Demo = viewable front end, sign-up no longer active.
  * Personal project = learning/side work, honestly labeled.
  */
-export type ProjectStatus =
-  | "Live"
-  | "Live · redesign in progress"
-  | "Personal project"
-  | "Demo";
+export type ProjectStatus = "Live" | "Live · redesign in progress" | "Personal project" | "Demo";
 
 export type Project = {
   title: string;
@@ -35,8 +31,7 @@ export const projects: Project[] = [
   },
   {
     title: "Opsette Tools",
-    description:
-      "A suite of 20+ standalone tools that plug into the Opsette consulting platform.",
+    description: "A suite of 20+ standalone tools that plug into the Opsette consulting platform.",
     href: "https://tools.opsette.io/",
     index: "02",
     status: "Live",
@@ -73,8 +68,7 @@ export const projects: Project[] = [
   },
   {
     title: "Pet Karma",
-    description:
-      "A scheduling app for coordinating vacation pet care between friends.",
+    description: "A scheduling app for coordinating vacation pet care between friends.",
     href: "https://petkarma.app/",
     index: "06",
     status: "Demo",
@@ -95,6 +89,11 @@ export type Service = {
   /**
    * The symptom a visitor recognizes in their own business, in their words.
    * This is the FRONT of the card and the only thing visible until they flip.
+   *
+   * Phrase these as CONDITIONS, not confessions. "It's hard to keep track of
+   * project status" describes a system someone can hand over; "We lose track
+   * of project status" is an admission of failure, and a visitor who has to
+   * blame themselves to qualify will just decide the card isn't them.
    */
   symptom: string;
 };
@@ -103,7 +102,7 @@ export type Service = {
 export const services: Service[] = [
   {
     index: "01",
-    symptom: "“Nobody can tell me where a project stands.”",
+    symptom: "“It's hard to keep track of project status.”",
     title: "Operations discovery",
     description:
       "I follow each project end to end and map every place it stalls. You keep the map whether or not you hire me.",
@@ -117,17 +116,15 @@ export const services: Service[] = [
   },
   {
     index: "03",
-    symptom: "“The same manual steps come back every week.”",
+    symptom: "“The repeated manual steps are driving us crazy.”",
     title: "Automation",
-    description:
-      "I take the repeat steps off your team's plate and hand them to software.",
+    description: "I take the repeat steps off your team's plate and hand them to software.",
   },
   {
     index: "04",
-    symptom: "“We pay for software that fits us badly.”",
+    symptom: "“We pay for software that isn't worth what it costs.”",
     title: "Internal tools & web",
-    description:
-      "I find software that fits, or build what's missing when nothing does.",
+    description: "I find software that fits, or build what's missing when nothing does.",
   },
 ];
 
@@ -135,33 +132,41 @@ export const services: Service[] = [
  * Positioning copy. Kept here so the words can change without touching layout.
  *
  * The niche is a STAGE of company, not an industry or an age. A 20-year-old
- * business hits this too. The through-line is the SEAMS: the handoffs between
- * tools, teams, and steps, where work stalls and gets retyped.
+ * business hits this too.
  *
  * Deliberately avoided: "growing companies" (excludes established ones),
  * "patched together" / "mess" / "chaos" (nobody self-identifies as chaotic),
  * and "actually" (empty intensifier).
  *
- * The hero headline is her NAME, plainly. Not a greeting and not a slogan —
- * a single-practitioner site states who this is, and the role line carries
- * the positioning.
+ * LAYOUT NOTE (2026-08-14): `headline` and `role` no longer lead the hero.
+ * Launch / Scale / Reorganize carries the positioning (see StateCycle), and
+ * the name + role now sit together on the portrait as a name plate. Both
+ * fields are still used — just not as the visual lead.
  */
 export const positioning = {
   /** Sits above the headline. States the role, not a service list. */
   role: "Fractional Operations Strategist",
   headline: "Ruthnie Benoit",
   /**
-   * "On call" carries the retainer/accessible idea without saying either.
-   * The second sentence is the temperament line: an invitation, not a pitch.
-   * It stays deliberately broad so it covers all four services rather than
-   * diagnosing one problem the way an integrations-specific line would.
+   * Hers, settled 2026-08-14.
+   *
+   * "Design" was her call and it's the word that makes "strategist" cohere —
+   * a strategist designs how a system should work. Rejected on the way here:
+   * "support" (what a helpdesk does), "leadership" (implies running someone
+   * else's team, which contradicts fractional), and "consulting" (a delivery
+   * model, not a skill).
+   *
+   * "At any stage" instead of naming the stages: Launch / Scale / Reorganize
+   * sit directly above this line and already do the audience work. Spelling
+   * them out again repeated "scale" on one screen.
+   *
+   * Availability (on call / ongoing / project-based) deliberately left out —
+   * it's an engagement detail and it belongs on the plans page.
    */
-  lede:
-    "Operations and systems support, on call. Tell me what you're feeling and I'll tell you what you need.",
+  lede: "Operations and systems design for businesses at any stage.",
 } as const;
 
-export const BOOKING_URL =
-  "https://opsette.io/booking/deebuilt/discovery-call";
+export const BOOKING_URL = "https://opsette.io/booking/deebuilt/discovery-call";
 export const SPEC_URL = "https://spec.deebuilt.co/";
 export const DEMO_URL = "https://demo.deebuilt.co/";
 export const YOUTUBE_URL = "https://www.youtube.com/@DeeBuiltSystems";

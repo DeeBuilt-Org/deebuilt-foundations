@@ -64,44 +64,71 @@ function About() {
 
         <div className="md:col-span-7">
           <FadeUp>
-            <h1 className="display-lg max-w-xl">
-              I help teams improve the way their work flows.
-            </h1>
+            {/* Hers, 2026-08-14. Replaced "I help teams improve the way their
+                work flows," which fails the stance test — nobody claims the
+                opposite. This one can be disagreed with (plenty of people find
+                integrations tedious), and "honestly" is the front-loaded
+                softener that matches how she actually writes. */}
+            <h1 className="display-lg max-w-xl">Honestly, I love integrations.</h1>
           </FadeUp>
 
+          {/* WORKSHOP — being written line by line with Ruthnie, 2026-08-14.
+              The three paragraphs that were here (several years of experience /
+              the process starts with discovery / the goal is to make operations
+              easier) were removed: vague where a number belongs, a services
+              list rather than a bio, and negative parallelism.
+
+              Two comparisons in the opener are deliberate and NOT redundant.
+              The mathematician carries the PROCESS — building step by step
+              toward a solution. The carpet cleaning video carries the PAYOFF —
+              the moment it lands. Cutting either one halves the feeling. */}
           <div className="mt-8 space-y-6 text-base leading-relaxed text-foreground md:text-lg">
             <FadeUp delay={80}>
               <p>
-                I have several years of experience supporting startup operations
-                and building systems that reduce manual work. The process starts
-                with discovery, which means looking at how work moves through
-                the business.
+                Integrations click for me the way solving an algorithmic problem clicks for a
+                mathematician, or the way an oddly satisfying carpet cleaning video clicks for
+                everyone else. I love the way they work when they work.
               </p>
             </FadeUp>
+            {/* Hers, dictated. The paragraph used to close with "I'll help you
+                not only launch it, but scale and reorganize..." — cut
+                2026-08-14. It implied a ranking between the three (they're
+                equal), and it restated Launch / Scale / Reorganize from the
+                home page hero. */}
             <FadeUp delay={160}>
               <p>
-                From there I put together a clear plan. That might include
-                restructuring existing workflows, connecting the apps a team
-                already uses, migrating data into a better system, or building a
-                custom internal tool when it makes sense.
+                I know firsthand that starting a business offers the pride and gratification of
+                being in control and having agency in the trajectory of your life. I value
+                entrepreneurship and want to bring that same care and attentiveness that you do to
+                your business.
               </p>
             </FadeUp>
+            {/* The five fields are a real inventory, not a rhetorical list —
+                leave all five. "Systems development" is deliberate and she
+                wants credit for it; do NOT shorten to "operations" and do NOT
+                write "DevOps," which means deployment pipelines and
+                infrastructure, not this.
+
+                The "across all industries / stack of small processes" claim
+                that used to close this paragraph moved to the home page hook
+                slot on 2026-08-14. */}
             <FadeUp delay={240}>
               <p>
-                The goal is to make current operations easier to manage and
-                easier to grow, not to add more software. Support and training
-                are included so transitions stay smooth.
+                As a self-proclaimed generalist, I&rsquo;ve worked across teaching, tech support,
+                sales, customer service, and in operations and systems development.
+              </p>
+            </FadeUp>
+            {/* Hers, verbatim. The one deliberately unserious line on the page. */}
+            <FadeUp delay={320}>
+              <p>
+                I have two tuxedo cats named Moonie and Vivi. I enjoy taking Pilates classes and
+                listening to audiobooks with post-apocalyptic themes.
               </p>
             </FadeUp>
           </div>
 
           <FadeUp delay={360}>
-            <a
-              href={BOOKING_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="btn-primary mt-10"
-            >
+            <a href={BOOKING_URL} target="_blank" rel="noreferrer" className="btn-primary mt-10">
               Book a discovery call
             </a>
           </FadeUp>
