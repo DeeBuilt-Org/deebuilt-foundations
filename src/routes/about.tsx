@@ -13,13 +13,13 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Ruthnie (Dee) Benoit, fractional operations strategist. Systems, integrations, and the handoffs between them.",
+          "Ruthnie (Dee) Benoit, operations, automation, and systems consultant. What I work on, and how I got here.",
       },
       { property: "og:title", content: "About — DeeBuilt" },
       {
         property: "og:description",
         content:
-          "Ruthnie (Dee) Benoit, fractional operations strategist. Systems, integrations, and internal tools.",
+          "Ruthnie (Dee) Benoit, operations, automation, and systems consultant. What I work on, and how I got here.",
       },
       { property: "og:url", content: "/about" },
     ],

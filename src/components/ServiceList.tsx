@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FadeUp } from "@/components/FadeUp";
-import { ASSESSMENT_URL, type Service } from "@/content/projects";
+import type { Service } from "@/content/projects";
 
 /**
  * One flip card: symptom on the front, service + solution on the back.
@@ -98,35 +98,25 @@ function ServiceCard({ service }: { service: Service }) {
  *
  * 2x2 so it reads as a set to compare rather than a list to read top to
  * bottom. Deliberately four, not three.
+ *
+ * No CTA under the grid. "More than one of these sound familiar? Score your
+ * operations in two minutes" was cut 2026-08-19 — it re-asked the section
+ * heading ("Which sounds familiar?") a few inches below it, and the centered
+ * assessment band directly after this makes the ask a third time. The band is
+ * the only centered section on the page so it can carry that on its own.
  */
 export function ServiceList({ services }: { services: Service[] }) {
   return (
-    <div>
-      <div className="grid gap-px overflow-hidden rounded-sm border border-hairline bg-hairline sm:grid-cols-2">
-        {services.map((service, i) => (
-          <FadeUp
-            key={service.title}
-            delay={i * 70}
-            className="flex min-h-[16rem]"
-          >
-            <ServiceCard service={service} />
-          </FadeUp>
-        ))}
-      </div>
-
-      <FadeUp delay={300}>
-        <p className="mt-8 text-base text-muted">
-          More than one of these sound familiar?{" "}
-          <a
-            href={ASSESSMENT_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="font-medium text-accent underline underline-offset-4 transition-colors hover:text-foreground"
-          >
-            Score your operations in two minutes ↗
-          </a>
-        </p>
-      </FadeUp>
+    <div className="grid gap-px overflow-hidden rounded-sm border border-hairline bg-hairline sm:grid-cols-2">
+      {services.map((service, i) => (
+        <FadeUp
+          key={service.title}
+          delay={i * 70}
+          className="flex min-h-[16rem]"
+        >
+          <ServiceCard service={service} />
+        </FadeUp>
+      ))}
     </div>
   );
 }

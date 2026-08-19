@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import {
   BOOKING_URL,
   CONTACT_FORM_URL,
+  LINKEDIN_URL,
   YOUTUBE_URL,
   positioning,
 } from "@/content/projects";
@@ -75,6 +76,18 @@ export function SiteFooter() {
                 className="text-muted transition-colors hover:text-accent"
               >
                 YouTube ↗
+              </a>
+              {/* Lowest-commitment path in this group: for the reader who
+                  wants to look her over before contacting her at all. Plain
+                  text, no mark — nothing else on the site uses brand icons
+                  (her call, 2026-08-19), so one here would be the odd one. */}
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-muted transition-colors hover:text-accent"
+              >
+                LinkedIn ↗
               </a>
             </div>
           </div>

@@ -1,6 +1,9 @@
 /**
  * Live = clickable and working (sign-up included).
- * Demo = viewable front end, sign-up no longer active.
+ * Demo = viewable front end, sign-up no longer active. No entry carries this
+ * today — Ezii Quote Builder and Pet Karma were pulled 2026-08-19 (her call:
+ * Ezii wasn't worth naming, and Pet Karma's front end shows early work). The
+ * status stays defined because either could come back.
  * Personal project = learning/side work, honestly labeled.
  */
 export type ProjectStatus = "Live" | "Live · redesign in progress" | "Personal project" | "Demo";
@@ -58,21 +61,13 @@ export const projects: Project[] = [
     stack: ["Astro", "SQL"],
   },
   {
-    title: "Ezii Quote Builder",
+    title: "Read Amour",
     description:
-      "A quote builder for service businesses to define services and generate estimates.",
-    href: "https://www.ezii.io/home",
+      "A poster maker for readers — search a book, drop its cover in, and save the image to post.",
+    href: "https://readamour.com/",
     index: "05",
-    status: "Demo",
-    stack: ["Next.js", "Supabase"],
-  },
-  {
-    title: "Pet Karma",
-    description: "A scheduling app for coordinating vacation pet care between friends.",
-    href: "https://petkarma.app/",
-    index: "06",
-    status: "Demo",
-    stack: ["Next.js", "Scheduling"],
+    status: "Personal project",
+    stack: ["Vite", "PWA"],
   },
 ];
 
@@ -144,8 +139,21 @@ export const services: Service[] = [
  * fields are still used — just not as the visual lead.
  */
 export const positioning = {
-  /** Sits above the headline. States the role, not a service list. */
-  role: "Fractional Operations Strategist",
+  /**
+   * Sits above the headline. States the role, not a service list.
+   *
+   * Changed 2026-08-19 from "Fractional Operations Strategist". Her call:
+   * "fractional" reads ahead of where she is, and the title didn't match her
+   * business card, which says "automation and systems consultant." This is the
+   * card, with "Operations" restored in front — it's the word buyers search,
+   * and it's the through-line of the rest of the site.
+   *
+   * NOTE: the lede comment below rejects "consulting" as "a delivery model,
+   * not a skill." That reasoning holds for the LEDE and does not apply here.
+   * A job title is supposed to name the delivery model alongside the skill,
+   * so "Consultant" is correct in this slot. Do not revert on that grounds.
+   */
+  role: "Operations, Automation, and Systems Consultant",
   headline: "Ruthnie Benoit",
   /**
    * Hers, settled 2026-08-14.
@@ -153,8 +161,8 @@ export const positioning = {
    * "Design" was her call and it's the word that makes "strategist" cohere —
    * a strategist designs how a system should work. Rejected on the way here:
    * "support" (what a helpdesk does), "leadership" (implies running someone
-   * else's team, which contradicts fractional), and "consulting" (a delivery
-   * model, not a skill).
+   * else's team), and "consulting" (a delivery model, not a skill — that
+   * reasoning is scoped to this lede, not to the role above).
    *
    * "At any stage" instead of naming the stages: Launch / Scale / Reorganize
    * sit directly above this line and already do the audience work. Spelling
@@ -168,8 +176,9 @@ export const positioning = {
 
 export const BOOKING_URL = "https://opsette.io/booking/deebuilt/discovery-call";
 export const SPEC_URL = "https://spec.deebuilt.co/";
-export const DEMO_URL = "https://demo.deebuilt.co/";
 export const YOUTUBE_URL = "https://www.youtube.com/@DeeBuiltSystems";
+export const LINKEDIN_URL =
+  "https://www.linkedin.com/in/ruthnie-benoit-7a567265/";
 
 /** Opsette-hosted forms. Scored lead-magnet quiz + generic contact capture. */
 export const ASSESSMENT_URL =

@@ -6,7 +6,6 @@ import { ServiceList } from "@/components/ServiceList";
 import {
   ASSESSMENT_URL,
   BOOKING_URL,
-  DEMO_URL,
   SPEC_URL,
   projects,
   services,
@@ -15,15 +14,15 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ruthnie Benoit — Fractional Operations Strategist" },
+      { title: "Ruthnie Benoit — Operations, Automation, and Systems Consultant" },
       {
         name: "description",
         content:
-          "Fractional business consulting. Operations and systems design for businesses launching, scaling, or reorganizing.",
+          "Operations and systems design for businesses launching, scaling, or reorganizing.",
       },
       {
         property: "og:title",
-        content: "Ruthnie Benoit — Fractional Operations Strategist",
+        content: "Ruthnie Benoit — Operations, Automation, and Systems Consultant",
       },
       {
         property: "og:description",
@@ -106,8 +105,12 @@ function Home() {
             </a>
           </FadeUp>
           <FadeUp delay={200}>
+            {/* Hers, 2026-08-19. Was "About two minutes. You get your score
+                before we ask for anything." — naming the ask is what made it
+                read as creepy: it plants the idea that something is coming.
+                The form handles the capture on its own. */}
             <p className="mt-5 text-sm text-muted">
-              About two minutes. You get your score before we ask for anything.
+              About two minutes to get your score.
             </p>
           </FadeUp>
         </div>
@@ -166,14 +169,6 @@ function Home() {
                   className="font-medium text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
                 >
                   Specs ↗
-                </a>
-                <a
-                  href={DEMO_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-medium text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
-                >
-                  Demos ↗
                 </a>
               </div>
             </FadeUp>

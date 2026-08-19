@@ -10,7 +10,7 @@ export const Route = createFileRoute("/portfolio")({
       {
         name: "description",
         content:
-          "Selected work: Opsette, Opsette Tools, The Midterm Project, G-Up, and more.",
+          "Apps and tools I've built: Opsette, Opsette Tools, The Midterm Project, G-Up, Read Amour, and more.",
       },
       { property: "og:title", content: "Portfolio — DeeBuilt" },
       {
@@ -30,14 +30,15 @@ function Portfolio() {
       <FadeUp>
         <h1 className="display-lg max-w-3xl">Things I&rsquo;ve built.</h1>
       </FadeUp>
-      <FadeUp delay={160}>
-        <p className="lede mt-6 max-w-xl text-muted">
-          Internal tools, client workspaces, and a few consumer apps. Each one
-          is labeled with where it stands today, live or otherwise.
-        </p>
-      </FadeUp>
 
-      <div className="mt-16 border-t border-hairline md:mt-20">
+      {/* Subheading removed 2026-08-19 (hers): "Internal tools, client
+          workspaces, and a few consumer apps. Each one is labeled with where
+          it stands today, live or otherwise." — "client workspaces" named
+          nothing on the list, "a few consumer apps" stopped being true once
+          Ezii and Pet Karma came off, and the status line explained a chip
+          that speaks for itself. The gap below tightened to match a heading
+          standing alone. */}
+      <div className="mt-10 border-t border-hairline md:mt-12">
         {projects.map((p, i) => (
           <FadeUp
             key={p.title}
