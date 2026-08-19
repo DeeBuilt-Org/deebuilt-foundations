@@ -63,7 +63,7 @@ export const projects: Project[] = [
   {
     title: "Read Amour",
     description:
-      "A poster maker for readers — search a book, drop its cover in, and save the image to post.",
+      "A mobile-first poster maker to share your reading journey online.",
     href: "https://readamour.com/",
     index: "05",
     status: "Personal project",
