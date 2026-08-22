@@ -1,12 +1,17 @@
 /**
  * Live = clickable and working (sign-up included).
  * Demo = viewable front end, sign-up no longer active. No entry carries this
- * today — Ezii Quote Builder and Pet Karma were pulled 2026-08-19 (her call:
- * Ezii wasn't worth naming, and Pet Karma's front end shows early work). The
- * status stays defined because either could come back.
- * Personal project = learning/side work, honestly labeled.
+ * today. Ezii Quote Builder and Pet Karma were both pulled 2026-08-19 (her
+ * call: Ezii wasn't worth naming, and Pet Karma's front end showed early
+ * work). Pet Karma came back 2026-08-22 as entry 06, redesigned, with sign-up
+ * open. Ezii stays off. The status stays defined because Ezii could return.
+ *
+ * "Personal project" was removed as a status 2026-08-22 (hers). It was on G-Up
+ * and Read Amour, and both are live: anyone can open them and use them. The
+ * label was splitting the list into real work and lesser work when the only
+ * fact a visitor needs is whether the link works.
  */
-export type ProjectStatus = "Live" | "Live · redesign in progress" | "Personal project" | "Demo";
+export type ProjectStatus = "Live" | "Live · redesign in progress" | "Demo";
 
 export type Project = {
   title: string;
@@ -17,7 +22,7 @@ export type Project = {
   stack: string[];
   /** Only set when the link survives a click. Archived projects omit it. */
   href?: string;
-  /** Surfaced in the home page "Selected work" strip. */
+  /** Surfaced in the home page "My apps" strip. */
   featured?: boolean;
 };
 
@@ -29,7 +34,7 @@ export const projects: Project[] = [
     href: "https://opsette.io/",
     index: "01",
     status: "Live · redesign in progress",
-    stack: ["Next.js", "Supabase"],
+    stack: ["Next.js", "SQL"],
     featured: true,
   },
   {
@@ -57,8 +62,8 @@ export const projects: Project[] = [
       "A coding guide with a live SQL playground for working through queries against real data.",
     href: "https://g-up-coding.vercel.app/anatomy",
     index: "04",
-    status: "Personal project",
-    stack: ["Astro", "SQL"],
+    status: "Live",
+    stack: ["Astro"],
   },
   {
     title: "Read Amour",
@@ -66,8 +71,28 @@ export const projects: Project[] = [
       "A mobile-first poster maker to share your reading journey online.",
     href: "https://readamour.com/",
     index: "05",
-    status: "Personal project",
+    status: "Live",
     stack: ["Vite", "PWA"],
+  },
+  {
+    /**
+     * Description is Ruthnie's, dictated 2026-08-22 and tightened by her the
+     * same day (the first version said "plan trips for when they're going to
+     * be out" and closed on "while they're out," which said it twice). Do not
+     * rewrite it into a pitch. The nouns are already real
+     * (trips, friend group, shifts, pets), which is what §1 of VOICE.md asks
+     * for, and every rewrite would be swapping her plain words for fancier
+     * ones (§3.5: reach for the more specific word, not the fancier one).
+     *
+     * Status is Live: petkarma.app was checked 2026-08-22 and sign-up is open.
+     */
+    title: "Pet Karma",
+    description:
+      "A pet care share app where users can plan their trips, and their friend group can take on shifts to care for their pets while they're out.",
+    href: "https://petkarma.app/",
+    index: "06",
+    status: "Live",
+    stack: ["Next.js", "SQL"],
   },
 ];
 

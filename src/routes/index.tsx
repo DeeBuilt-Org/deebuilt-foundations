@@ -116,12 +116,12 @@ function Home() {
         </div>
       </section>
 
-      {/* Selected work */}
+      {/* My apps */}
       <section className="border-t border-hairline">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-28">
           <FadeUp>
             <div className="mb-10 flex flex-wrap items-end justify-between gap-4 md:mb-14">
-              <p className="display-lg max-w-xl text-foreground">Selected work.</p>
+              <p className="display-lg max-w-xl text-foreground">My apps.</p>
               <Link to="/portfolio" className="btn-secondary">
                 View all
               </Link>

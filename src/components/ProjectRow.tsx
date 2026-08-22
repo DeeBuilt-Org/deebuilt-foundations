@@ -1,11 +1,14 @@
 import type { Project } from "@/content/projects";
 
 /**
- * Status chip. Live reads accent-forward (active, sign-up included). Demo and
- * personal-project read in a soft accent tint: viewable, secondary to Live.
+ * Status chip. Live reads accent-forward (active, sign-up included). Demo
+ * reads in a soft accent tint: viewable, secondary to Live.
+ *
+ * "Personal project" was a third case here until 2026-08-22, when the status
+ * itself was dropped (see projects.ts).
  */
 function StatusChip({ status }: { status: Project["status"] }) {
-  const secondary = status === "Demo" || status === "Personal project";
+  const secondary = status === "Demo";
   const tone = secondary
     ? "border-accent-soft bg-accent-tint text-accent"
     : "border-accent-soft text-accent";
