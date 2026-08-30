@@ -205,7 +205,32 @@ export const YOUTUBE_URL = "https://www.youtube.com/@DeeBuiltSystems";
 export const LINKEDIN_URL =
   "https://www.linkedin.com/in/ruthnie-benoit-7a567265/";
 
-/** Opsette-hosted forms. Scored lead-magnet quiz + generic contact capture. */
+/**
+ * Certification verification pages. Both are public and carry her name.
+ *
+ * HubSpot's is the URL from their own badge embed snippet. Airtable verifies
+ * through Skilljar, the platform running their academy, which is why the
+ * domain isn't airtable.com.
+ *
+ * Both certifications expire: Airtable 2026-09-26, HubSpot 2028-09-27. A
+ * lapsed certification on the site is worse than none, so both come off if
+ * they aren't renewed.
+ */
+export const HUBSPOT_CERT_URL =
+  "https://app-na2.hubspot.com/academy/achievements/v48n2h9z/en/1/ruthnie-benoit/hubspot-revenue-operations-certified";
+export const AIRTABLE_CERT_URL = "https://verify.skilljar.com/c/6r6mi3w523wn";
+
+/**
+ * Opsette-hosted forms. Scored lead-magnet quiz + generic contact capture.
+ *
+ * The ?s= parameter is Opsette's link source tracking, added 2026-08-30. It
+ * tags which link a submission came from, so it has to survive any edit here.
+ * Dropping it doesn't break the form, it just makes the submission land
+ * unattributed.
+ *
+ * Slugs are unchanged. business-systems-review is a DIFFERENT Opsette form
+ * and is not the one behind "Take the full assessment" on this site.
+ */
 export const ASSESSMENT_URL =
-  "https://opsette.io/f/deebuilt/see-how-your-operations-actually-stack-up";
-export const CONTACT_FORM_URL = "https://opsette.io/f/deebuilt/get-in-touch";
+  "https://opsette.io/f/deebuilt/see-how-your-operations-actually-stack-up?s=anOQuuXEW_tM";
+export const CONTACT_FORM_URL = "https://opsette.io/f/deebuilt/get-in-touch?s=G6MEhvk02qEo";

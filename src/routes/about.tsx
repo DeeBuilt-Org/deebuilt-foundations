@@ -1,7 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { FadeUp } from "@/components/FadeUp";
-import { BOOKING_URL, positioning } from "@/content/projects";
+import {
+  AIRTABLE_CERT_URL,
+  BOOKING_URL,
+  HUBSPOT_CERT_URL,
+  positioning,
+} from "@/content/projects";
 
 /** Headshot lives in /public. */
 const PROFILE_PHOTO = "/Prof Headshot.png";
@@ -131,6 +136,133 @@ function About() {
             <a href={BOOKING_URL} target="_blank" rel="noreferrer" className="btn-primary mt-10">
               Book a discovery call
             </a>
+          </FadeUp>
+
+          {/* CERTIFICATIONS — added 2026-08-28.
+              Deliberately NOT a logo wall. Vendor badges in a row are a
+              three-up grid by another name (banned, global VOICE.md §6).
+
+              Certifications and partner programs ONLY. A "Builds on" row
+              listing Monday, Airtable, Zapier, Supabase was cut on her read:
+              she didn't want the platform list here, and the label had no
+              subject in it, so it read as a caption written about her by
+              someone else.
+
+              Sits below the booking button on purpose. It qualifies her for a
+              reader already reaching for the CTA and shouldn't compete with it.
+
+              TWO TIERS, hers 2026-08-29. Badges on top under "Certified",
+              everything else as text under "Also certified".
+
+              Her reasoning, and it's positioning rather than layout: HubSpot
+              and Airtable are not equal signals. HubSpot reads as revenue
+              (their lead pipeline is what the name carries), Airtable reads
+              as where you keep your work. Promoting the one that signals
+              moneymaking is the point. A visitor who specifically wants
+              Airtable still finds it listed.
+
+              This also beats a single uniform row, which was the earlier
+              proposal: flattening every credential into the same shape hides
+              a real difference in how established the programs are. A vendor
+              who built a badge, a share flow, and a hosted credential page
+              invested in that certification being seen.
+
+              Scales without a redesign. New badges join the top, anything
+              without artwork drops into the list. Do NOT fabricate a badge
+              for a vendor that doesn't issue one (Airtable doesn't): a
+              home-made badge beside a real one looks home-made.
+
+              LABELS: "Specializations" over the badges, "Also certified"
+              under. "Certified / Also certified" was redundant, hers. The top
+              label has to mean highlighted, not certified, and specializing
+              in RevOps is a truer claim than merely having passed it.
+
+              The tier split is vendor-issued badge vs. a row we build. The
+              lower rows carry the issuer's logo at the left, which is the
+              same nominative fair use as the badge: she holds the credential
+              and the mark identifies who issued it. What stays banned is
+              INVENTING a badge for a vendor that never made one.
+
+              Airtable ACADEMY lockup, not the bare Airtable mark. It names
+              the actual issuer (their academy program, not the company),
+              which also keeps it from implying a partnership she doesn't
+              have, and it matches "HubSpot Academy" on the badge above.
+
+              The badge PNG is served from /public, NOT hotlinked from
+              HubSpot's S3 bucket the way their embed snippet does it. Their
+              markup points at
+              hubspot-credentials-na1.s3.amazonaws.com/prod/badges/user/...,
+              which is an external request on every page load and a broken
+              image the day they move the file.
+
+              Names are copied off the certificates themselves. Do not shorten
+              "HubSpot Revenue Operations Certified" to "RevOps": the full term
+              is what a buyer searches and what the credential says.
+
+              Both credentials link to their verification pages, target
+              _blank so the visitor keeps this tab. HubSpot's is the URL from
+              their own embed snippet; Airtable verifies through Skilljar,
+              who runs their academy.
+
+              EXPIRES. Airtable runs to 2028-09-26, HubSpot to 2028-09-27.
+              A lapsed certification on a site is worse than no certification,
+              so both come off if they aren't renewed by then.
+
+              PENDING:
+              • Monday.com — taking Champion Essentials now (the role she
+                plays on the current Upwork engagement). Monday charges for the
+                cert itself. Worth buying when she applies to their partner
+                program after the current engagement ships, not before: a cert
+                is a signal for strangers, and it does nothing for a client who
+                already hired her. Course ≠ certification, so nothing goes
+                here until she passes and says so. */}
+          <FadeUp delay={420}>
+            <div className="mt-14 border-t border-hairline pt-8">
+              <p className="eyebrow-muted">Specializations</p>
+              <div className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-6">
+                <a
+                  href={HUBSPOT_CERT_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="HubSpot Revenue Operations Certified"
+                  className="transition-opacity hover:opacity-70"
+                >
+                  <img
+                    src="/hubspot-revops-badge.png"
+                    alt="HubSpot Revenue Operations Certified"
+                    width={666}
+                    height={355}
+                    loading="lazy"
+                    className="h-20 w-auto md:h-24"
+                  />
+                </a>
+              </div>
+
+              <p className="eyebrow-muted mt-10">Also certified</p>
+              <ul className="mt-4 space-y-2">
+                <li>
+                  <a
+                    href={AIRTABLE_CERT_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group flex flex-wrap items-center gap-x-4 gap-y-2 text-foreground transition-colors hover:text-accent"
+                  >
+                    <img
+                      src="/airtable-academy-logo.png"
+                      alt="Airtable Academy"
+                      width={1523}
+                      height={163}
+                      loading="lazy"
+                      className="h-[22px] w-auto md:h-6"
+                    />
+                    <span className="font-serif text-lg md:text-xl">Builder Certification</span>
+                    <span className="text-xs text-muted transition-colors group-hover:text-accent">
+                      Verify
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </FadeUp>
         </div>
       </div>
