@@ -212,12 +212,14 @@ export const LINKEDIN_URL =
  * through Skilljar, the platform running their academy, which is why the
  * domain isn't airtable.com.
  *
- * Both certifications expire: Airtable 2026-09-26, HubSpot 2028-09-27. A
- * lapsed certification on the site is worse than none, so both come off if
- * they aren't renewed.
+ * All three expire: Airtable 2028-09-26, HubSpot RevOps 2028-09-27, HubSpot
+ * Sales Hub on its own date. A lapsed certification on the site is worse than
+ * none, so any of them comes off if it isn't renewed.
  */
 export const HUBSPOT_CERT_URL =
   "https://app-na2.hubspot.com/academy/achievements/v48n2h9z/en/1/ruthnie-benoit/hubspot-revenue-operations-certified";
+export const HUBSPOT_SALESHUB_CERT_URL =
+  "https://app-na2.hubspot.com/academy/achievements/xm15d551/en/1/ruthnie-benoit/hubspot-sales-hub-software-certified";
 export const AIRTABLE_CERT_URL = "https://verify.skilljar.com/c/6r6mi3w523wn";
 
 /**

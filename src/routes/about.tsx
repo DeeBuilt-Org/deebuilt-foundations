@@ -5,6 +5,7 @@ import {
   AIRTABLE_CERT_URL,
   BOOKING_URL,
   HUBSPOT_CERT_URL,
+  HUBSPOT_SALESHUB_CERT_URL,
   positioning,
 } from "@/content/projects";
 
@@ -188,6 +189,18 @@ function About() {
               which also keeps it from implying a partnership she doesn't
               have, and it matches "HubSpot Academy" on the badge above.
 
+              hubspot-academy-logo.png is CROPPED from the Sales Hub badge
+              (2026-08-31). HubSpot publishes no standalone Academy lockup,
+              so the wordmark band was cut out of the badge they issued and
+              its white background cleared. The full badge is kept at
+              hubspot-saleshub-badge.png if Sales Hub is ever promoted to the
+              top tier.
+
+              Cropping a logo out of a badge is fine. Cropping a BADGE down
+              (dropping the credential name or her name and still presenting
+              it as a badge) is not: it would leave a HubSpot-issued mark
+              that no longer says what it certifies or who holds it.
+
               The badge PNG is served from /public, NOT hotlinked from
               HubSpot's S3 bucket the way their embed snippet does it. Their
               markup points at
@@ -199,8 +212,10 @@ function About() {
               "HubSpot Revenue Operations Certified" to "RevOps": the full term
               is what a buyer searches and what the credential says.
 
-              Both credentials link to their verification pages, target
-              _blank so the visitor keeps this tab. HubSpot's is the URL from
+              Every credential links to its verification page, target _blank
+              so the visitor keeps this tab. No "Verify" label: it repeated on
+              every row and the rows are clearly clickable without it. The link
+              is a quiet bonus for anyone who checks, not a thing to announce. HubSpot's is the URL from
               their own embed snippet; Airtable verifies through Skilljar,
               who runs their academy.
 
@@ -239,13 +254,33 @@ function About() {
               </div>
 
               <p className="eyebrow-muted mt-10">Also certified</p>
-              <ul className="mt-4 space-y-2">
+              <ul className="mt-4 space-y-3">
+                <li>
+                  <a
+                    href={HUBSPOT_SALESHUB_CERT_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex flex-wrap items-center gap-x-4 gap-y-2 text-foreground transition-colors hover:text-accent"
+                  >
+                    <img
+                      src="/hubspot-academy-logo.png"
+                      alt="HubSpot Academy"
+                      width={287}
+                      height={52}
+                      loading="lazy"
+                      className="h-[22px] w-auto md:h-6"
+                    />
+                    <span className="font-serif text-lg md:text-xl">
+                      Sales Hub Software Certified
+                    </span>
+                  </a>
+                </li>
                 <li>
                   <a
                     href={AIRTABLE_CERT_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex flex-wrap items-center gap-x-4 gap-y-2 text-foreground transition-colors hover:text-accent"
+                    className="flex flex-wrap items-center gap-x-4 gap-y-2 text-foreground transition-colors hover:text-accent"
                   >
                     <img
                       src="/airtable-academy-logo.png"
@@ -256,9 +291,6 @@ function About() {
                       className="h-[22px] w-auto md:h-6"
                     />
                     <span className="font-serif text-lg md:text-xl">Builder Certification</span>
-                    <span className="text-xs text-muted transition-colors group-hover:text-accent">
-                      Verify
-                    </span>
                   </a>
                 </li>
               </ul>
