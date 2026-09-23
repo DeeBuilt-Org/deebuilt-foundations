@@ -65,6 +65,14 @@ function About() {
             <ProfilePhoto />
             <p className="mt-5 font-serif text-2xl">Ruthnie (Dee) Benoit</p>
             <p className="mt-1 text-sm text-muted">{positioning.role}</p>
+            {/* Booking button moved here 2026-09-22, hers. It used to close
+                the right column under the certifications, which pushed it
+                further down the page every time a credential was added. On
+                the portrait it sits with her name at the top of the page and
+                stays put no matter how long that list gets. */}
+            <a href={BOOKING_URL} target="_blank" rel="noreferrer" className="btn-primary mt-6">
+              Book a discovery call
+            </a>
           </FadeUp>
         </div>
 
@@ -133,12 +141,6 @@ function About() {
             </FadeUp>
           </div>
 
-          <FadeUp delay={360}>
-            <a href={BOOKING_URL} target="_blank" rel="noreferrer" className="btn-primary mt-10">
-              Book a discovery call
-            </a>
-          </FadeUp>
-
           {/* CERTIFICATIONS — added 2026-08-28.
               Deliberately NOT a logo wall. Vendor badges in a row are a
               three-up grid by another name (banned, global VOICE.md §6).
@@ -149,8 +151,23 @@ function About() {
               subject in it, so it read as a caption written about her by
               someone else.
 
-              Sits below the booking button on purpose. It qualifies her for a
-              reader already reaching for the CTA and shouldn't compete with it.
+              Sits ABOVE the booking button (moved 2026-09-22). Below it the
+              section was past the point where anyone still scrolls, so the
+              reader most likely to want reassurance never saw it. Now it
+              lands while they're still reading and the ask follows it.
+
+              ORDER within the tier is hers and it's strategic, not
+              alphabetical: Airtable first because that's the work she wants
+              more of. Sales Hub last because it's the one she cares least
+              about.
+
+              SmartSuite's row is NOT a link. Its "verify" URL
+              (mycourse.app/...) 302s to academy.smartsuite.com and serves the
+              certificate PDF straight down, so clicking it downloads a file
+              instead of opening a page. A link that silently downloads
+              something is bad behavior, and with no hosted page there's
+              nothing for it to prove. HubSpot and Airtable both resolve to
+              real pages, so theirs stay.
 
               TWO TIERS, hers 2026-08-29. Badges on top under "Certified",
               everything else as text under "Also certified".
@@ -219,9 +236,26 @@ function About() {
               their own embed snippet; Airtable verifies through Skilljar,
               who runs their academy.
 
+              SmartSuite publishes no certification badge. Their certificate
+              is vector art in a PDF with nothing extractable, so the row uses
+              the official logo SVG off their own brand kit CDN
+              (smartsuite.com/brand-kit), saved locally. Their brand rules say
+              never use the icon without the wordmark, so this is the full
+              lockup and must stay that way.
+
+              Worth knowing: SmartSuite is the one vendor here with a
+              published trademark policy, and it has no carve-out for
+              certification holders. This is still nominative fair use (she
+              holds the credential, the mark names the issuer, it sits in a
+              certification list and not under "Partners"), and they put the
+              same logo on the certificate they issued her. Flagged to her
+              2026-09-22; marketing@smartsuite.com is the address on their
+              brand kit if she ever wants it in writing.
+
               EXPIRES. Airtable runs to 2028-09-26, HubSpot to 2028-09-27.
-              A lapsed certification on a site is worse than no certification,
-              so both come off if they aren't renewed by then.
+              SmartSuite's certificate states no expiry. A lapsed
+              certification on a site is worse than no certification, so any
+              of them comes off if it isn't renewed.
 
               PENDING:
               • Monday.com — taking Champion Essentials now (the role she
@@ -231,7 +265,7 @@ function About() {
                 is a signal for strangers, and it does nothing for a client who
                 already hired her. Course ≠ certification, so nothing goes
                 here until she passes and says so. */}
-          <FadeUp delay={420}>
+          <FadeUp delay={360}>
             <div className="mt-14 border-t border-hairline pt-8">
               <p className="eyebrow-muted">Specializations</p>
               <div className="mt-5 flex flex-wrap items-center gap-x-8 gap-y-6">
@@ -257,6 +291,35 @@ function About() {
               <ul className="mt-4 space-y-3">
                 <li>
                   <a
+                    href={AIRTABLE_CERT_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex flex-wrap items-center gap-x-4 gap-y-2 text-foreground transition-colors hover:text-accent"
+                  >
+                    <img
+                      src="/airtable-academy-logo.png"
+                      alt="Airtable Academy"
+                      width={1523}
+                      height={163}
+                      loading="lazy"
+                      className="h-[22px] w-auto md:h-6"
+                    />
+                    <span className="font-serif text-lg md:text-xl">Builder Certification</span>
+                  </a>
+                </li>
+                <li className="flex flex-wrap items-center gap-x-4 gap-y-2 text-foreground">
+                  <img
+                    src="/smartsuite-logo.svg"
+                    alt="SmartSuite"
+                    width={158}
+                    height={25}
+                    loading="lazy"
+                    className="h-[22px] w-auto md:h-6"
+                  />
+                  <span className="font-serif text-lg md:text-xl">Pro Certification</span>
+                </li>
+                <li>
+                  <a
                     href={HUBSPOT_SALESHUB_CERT_URL}
                     target="_blank"
                     rel="noreferrer"
@@ -273,24 +336,6 @@ function About() {
                     <span className="font-serif text-lg md:text-xl">
                       Sales Hub Software Certified
                     </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={AIRTABLE_CERT_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex flex-wrap items-center gap-x-4 gap-y-2 text-foreground transition-colors hover:text-accent"
-                  >
-                    <img
-                      src="/airtable-academy-logo.png"
-                      alt="Airtable Academy"
-                      width={1523}
-                      height={163}
-                      loading="lazy"
-                      className="h-[22px] w-auto md:h-6"
-                    />
-                    <span className="font-serif text-lg md:text-xl">Builder Certification</span>
                   </a>
                 </li>
               </ul>

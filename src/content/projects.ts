@@ -67,8 +67,7 @@ export const projects: Project[] = [
   },
   {
     title: "Read Amour",
-    description:
-      "A mobile-first poster maker to share your reading journey online.",
+    description: "A mobile-first poster maker to share your reading journey online.",
     href: "https://readamour.com/",
     index: "05",
     status: "Live",
@@ -202,8 +201,7 @@ export const positioning = {
 export const BOOKING_URL = "https://opsette.io/booking/deebuilt/discovery-call";
 export const SPEC_URL = "https://spec.deebuilt.co/";
 export const YOUTUBE_URL = "https://www.youtube.com/@DeeBuiltSystems";
-export const LINKEDIN_URL =
-  "https://www.linkedin.com/in/ruthnie-benoit-7a567265/";
+export const LINKEDIN_URL = "https://www.linkedin.com/in/ruthnie-benoit-7a567265/";
 
 /**
  * Certification verification pages. Both are public and carry her name.
@@ -212,15 +210,26 @@ export const LINKEDIN_URL =
  * through Skilljar, the platform running their academy, which is why the
  * domain isn't airtable.com.
  *
- * All three expire: Airtable 2028-09-26, HubSpot RevOps 2028-09-27, HubSpot
- * Sales Hub on its own date. A lapsed certification on the site is worse than
- * none, so any of them comes off if it isn't renewed.
+ * Expiries: Airtable 2028-09-26, HubSpot RevOps 2028-09-27, HubSpot Sales Hub
+ * on its own date. SmartSuite's certificate states none. A lapsed
+ * certification on the site is worse than none, so any of them comes off if
+ * it isn't renewed.
  */
 export const HUBSPOT_CERT_URL =
   "https://app-na2.hubspot.com/academy/achievements/v48n2h9z/en/1/ruthnie-benoit/hubspot-revenue-operations-certified";
 export const HUBSPOT_SALESHUB_CERT_URL =
   "https://app-na2.hubspot.com/academy/achievements/xm15d551/en/1/ruthnie-benoit/hubspot-sales-hub-software-certified";
 export const AIRTABLE_CERT_URL = "https://verify.skilljar.com/c/6r6mi3w523wn";
+/**
+ * SmartSuite Pro, 2026-09-22. Certificate ID 6ab33711ffd34fd611055788.
+ *
+ * NOT linked from the site. This URL 302s to academy.smartsuite.com and
+ * serves the certificate PDF directly, so it downloads a file rather than
+ * opening a verification page. Kept here as the record of the credential.
+ * If SmartSuite ever exposes a hosted share page, swap it in and the row in
+ * about.tsx can become a link like the other two.
+ */
+export const SMARTSUITE_CERT_URL = "https://mycourse.app/sGMqW8q2ezZPRUQxM";
 
 /**
  * Opsette-hosted forms. Scored lead-magnet quiz + generic contact capture.
