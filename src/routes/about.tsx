@@ -2,10 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { FadeUp } from "@/components/FadeUp";
 import {
+  AIRTABLE_AGENTIC_CERT_URL,
   AIRTABLE_CERT_URL,
   BOOKING_URL,
   HUBSPOT_CERT_URL,
-  HUBSPOT_SALESHUB_CERT_URL,
   positioning,
 } from "@/content/projects";
 
@@ -161,6 +161,54 @@ function About() {
               more of. Sales Hub last because it's the one she cares least
               about.
 
+              HubSpot Sales Hub Software Certified was REMOVED 2026-09-27,
+              hers. The rule is ONE VISUAL INSTANCE PER PLATFORM: a platform's
+              mark appears in one place on the page, however many credentials
+              sit behind it. Airtable holds two certifications and is still
+              one instance, because both names sit under a single Airtable
+              Academy logo. HubSpot was appearing twice, RevOps up top and
+              Sales Hub below, and the second instance took space without
+              saying anything new. RevOps carries HubSpot on its own; someone
+              who wants to know about Sales Hub will ask.
+
+              She still holds it. hubspot-academy-logo.png and
+              hubspot-saleshub-badge.png stay in /public, and
+              HUBSPOT_SALESHUB_CERT_URL stays exported, so putting it back is
+              a paste rather than a rebuild.
+
+              monday Work Management Core, added 2026-09-26, sits in the TOP
+              tier because it is a vendor-issued BADGE, which is what that
+              tier is for. It also gives Specializations a second item, so
+              the row finally reads as a set rather than one badge alone.
+
+              The badge was cropped out of the LinkedIn share card monday
+              hands you (a square "I'm officially..." graphic that does not
+              belong on the page), then upscaled 3x and masked to a circle so
+              the JPEG's white corners don't sit as a box on the paper
+              background. monday's own certificate PDF is encrypted, so its
+              copy of the seal could not be extracted.
+
+              Worth noting for the $95: monday gave no verification page, no
+              confirmation email, and no standalone badge file. Every other
+              vendor here did at least one of those.
+
+              GROUPED BY PLATFORM (2026-09-24, hers). One logo per row, every
+              credential from that issuer stacked beside it, so a second
+              Airtable certification didn't mean the Airtable mark appearing
+              twice. Each name keeps its own verification link.
+
+              Two different things happen when a certification is added to a
+              platform that's already listed, and they are NOT the same edit:
+              a higher LEVEL of the same credential (SmartSuite Pro becoming
+              Expert) is a rename in place, because the new level supersedes
+              the old one. A PARALLEL certification in a different subject
+              (Agentic Systems Design next to Builder Certification) is a new
+              name stacked under the same logo, because both stay true.
+
+              Names stacked rather than inline: they're long enough to wrap
+              badly on a phone side by side, and stacked reads as a list of
+              credentials instead of one hyphenated title.
+
               SmartSuite's row is NOT a link. Its "verify" URL
               (mycourse.app/...) 302s to academy.smartsuite.com and serves the
               certificate PDF straight down, so clicking it downloads a file
@@ -252,7 +300,8 @@ function About() {
               2026-09-22; marketing@smartsuite.com is the address on their
               brand kit if she ever wants it in writing.
 
-              EXPIRES. Airtable runs to 2028-09-26, HubSpot to 2028-09-27.
+              EXPIRES. Airtable Builder runs to 2028-09-26, Airtable Agentic
+              Systems Design to 2028-10-24, HubSpot to 2028-09-27.
               SmartSuite's certificate states no expiry. A lapsed
               certification on a site is worse than no certification, so any
               of them comes off if it isn't renewed.
@@ -285,58 +334,61 @@ function About() {
                     className="h-20 w-auto md:h-24"
                   />
                 </a>
+                {/* Not a link: monday issues no verification page, no
+                    credential email, and nothing shareable beyond the
+                    certificate PDF itself. */}
+                <img
+                  src="/monday-core-badge.png"
+                  alt="monday.com certified, Work Management Core, monday academy"
+                  width={507}
+                  height={507}
+                  loading="lazy"
+                  className="h-20 w-auto md:h-24"
+                />
               </div>
 
               <p className="eyebrow-muted mt-10">Also certified</p>
-              <ul className="mt-4 space-y-3">
-                <li>
-                  <a
-                    href={AIRTABLE_CERT_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex flex-wrap items-center gap-x-4 gap-y-2 text-foreground transition-colors hover:text-accent"
-                  >
-                    <img
-                      src="/airtable-academy-logo.png"
-                      alt="Airtable Academy"
-                      width={1523}
-                      height={163}
-                      loading="lazy"
-                      className="h-[22px] w-auto md:h-6"
-                    />
-                    <span className="font-serif text-lg md:text-xl">Builder Certification</span>
-                  </a>
+              <ul className="mt-4 space-y-6">
+                <li className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-5">
+                  <img
+                    src="/airtable-academy-logo.png"
+                    alt="Airtable Academy"
+                    width={1523}
+                    height={163}
+                    loading="lazy"
+                    className="h-[22px] w-auto shrink-0 self-start sm:mt-1 md:h-6"
+                  />
+                  <div className="flex flex-col gap-1">
+                    <a
+                      href={AIRTABLE_AGENTIC_CERT_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-serif text-lg text-foreground transition-colors hover:text-accent md:text-xl"
+                    >
+                      Agentic Systems Design
+                    </a>
+                    <a
+                      href={AIRTABLE_CERT_URL}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-serif text-lg text-foreground transition-colors hover:text-accent md:text-xl"
+                    >
+                      Builder Certification
+                    </a>
+                  </div>
                 </li>
-                <li className="flex flex-wrap items-center gap-x-4 gap-y-2 text-foreground">
+                <li className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-5">
                   <img
                     src="/smartsuite-logo.svg"
                     alt="SmartSuite"
                     width={158}
                     height={25}
                     loading="lazy"
-                    className="h-[22px] w-auto md:h-6"
+                    className="h-[22px] w-auto shrink-0 self-start sm:mt-1 md:h-6"
                   />
-                  <span className="font-serif text-lg md:text-xl">Pro Certification</span>
-                </li>
-                <li>
-                  <a
-                    href={HUBSPOT_SALESHUB_CERT_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex flex-wrap items-center gap-x-4 gap-y-2 text-foreground transition-colors hover:text-accent"
-                  >
-                    <img
-                      src="/hubspot-academy-logo.png"
-                      alt="HubSpot Academy"
-                      width={287}
-                      height={52}
-                      loading="lazy"
-                      className="h-[22px] w-auto md:h-6"
-                    />
-                    <span className="font-serif text-lg md:text-xl">
-                      Sales Hub Software Certified
-                    </span>
-                  </a>
+                  <span className="font-serif text-lg text-foreground md:text-xl">
+                    Pro Certification
+                  </span>
                 </li>
               </ul>
             </div>

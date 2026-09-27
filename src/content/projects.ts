@@ -210,16 +210,23 @@ export const LINKEDIN_URL = "https://www.linkedin.com/in/ruthnie-benoit-7a567265
  * through Skilljar, the platform running their academy, which is why the
  * domain isn't airtable.com.
  *
- * Expiries: Airtable 2028-09-26, HubSpot RevOps 2028-09-27, HubSpot Sales Hub
- * on its own date. SmartSuite's certificate states none. A lapsed
+ * Expiries: Airtable Builder 2028-09-26, Airtable Agentic Systems Design
+ * 2028-10-24, HubSpot RevOps 2028-09-27, HubSpot Sales Hub on its own date. SmartSuite's certificate states none. A lapsed
  * certification on the site is worse than none, so any of them comes off if
  * it isn't renewed.
  */
 export const HUBSPOT_CERT_URL =
   "https://app-na2.hubspot.com/academy/achievements/v48n2h9z/en/1/ruthnie-benoit/hubspot-revenue-operations-certified";
+/**
+ * Held, but not shown on the site as of 2026-09-27: RevOps already carries
+ * HubSpot on the About page, so this was a second HubSpot line without a new
+ * subject. Kept here so restoring the row is a paste.
+ */
 export const HUBSPOT_SALESHUB_CERT_URL =
   "https://app-na2.hubspot.com/academy/achievements/xm15d551/en/1/ruthnie-benoit/hubspot-sales-hub-software-certified";
 export const AIRTABLE_CERT_URL = "https://verify.skilljar.com/c/6r6mi3w523wn";
+/** Airtable Academy, earned 2026-09-24, expires 2028-10-24. */
+export const AIRTABLE_AGENTIC_CERT_URL = "https://verify.skilljar.com/c/do872o8zxr98";
 /**
  * SmartSuite Pro, 2026-09-22. Certificate ID 6ab33711ffd34fd611055788.
  *
