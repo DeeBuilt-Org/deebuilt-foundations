@@ -84,14 +84,18 @@ All settled 2026-08-14 unless marked otherwise. Every line below is hers.
 - Hero rotator: "Launch. Scale. Reorganize." (see below)
 - Lede: "Operations and systems design for businesses at any stage."
 - Hook: "Your business is capped by your weakest process."
-- "Which sounds familiar?" over the four flip cards
+- "Which sounds familiar?" over the six flip cards
 - "See how your operations stack up." / "Take the full assessment"
 - "You get your score before we ask for anything."
 - "Selected work." (replaced "Things I've built." — passive, and about her)
 
-**Four service-card symptoms** (`src/content/projects.ts`) — in a customer's voice, each
-one a complaint someone would actually make. Also: "You keep the map whether or not you
-hire me."
+**Six service-card symptoms** (`src/content/projects.ts`) — in a customer's voice, each
+one a complaint someone would actually make. Cards 05 (process mapping) and 06
+(documentation) added 2026-09-28.
+
+**Card backs are diagnoses, not solutions** (2026-09-28). The back says what's going on
+underneath the symptom and makes no promises. The service label is the only pointer to the
+fix. "You keep the map whether or not you hire me" was removed as a promise.
 
 **About:**
 - "Honestly, I love integrations." — replaced "I help teams improve the way their work
@@ -252,5 +256,6 @@ The visual bans (three-up card grids, generic centered hero, card-stacked layout
 apply here** — this is a marketing site. That's the scope where they're meant to fire.
 See global `VOICE.md` §6.
 
-The existing 2x2 flip-card grid is deliberate and approved: four items, not three, and it
-functions as a qualification device rather than a feature row.
+The two-column flip-card grid is deliberate and approved: six items (three rows), never
+three, and it functions as a qualification device rather than a feature row. Keep the count
+even so no row has an empty cell.

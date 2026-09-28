@@ -89,7 +89,7 @@ function Home() {
           one short reassurance under it.
 
           Sits BELOW the flip cards on purpose (moved 2026-08-14). The cards
-          are the qualifier — four symptoms in a customer's voice, with the
+          are the qualifier — six symptoms in a customer's voice, with the
           flip as a micro-commitment. The assessment is the heavier ask
           (20+ statements, scored, ends in a capture), so it only makes sense
           once someone has already recognized themselves in a card. Above the

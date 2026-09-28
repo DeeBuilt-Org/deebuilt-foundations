@@ -100,9 +100,10 @@ export type Service = {
   /** Service name. The verdict on the back of the card. */
   title: string;
   /**
-   * What Ruthnie does about it. Every one of these starts with "I" and names
-   * an action — no end-state descriptions, and no naming specific tools a
-   * visitor may not use.
+   * The diagnosis: what's going on underneath the symptom on the front.
+   * Changed 2026-09-28 from "what Ruthnie does about it." The backs describe
+   * the problem and make no promises. The service name in `title` is the only
+   * pointer to the fix.
    */
   description: string;
   /**
@@ -124,26 +125,42 @@ export const services: Service[] = [
     symptom: "“It's hard to keep track of project status.”",
     title: "Operations discovery",
     description:
-      "I follow each project end to end and map every place it stalls. You keep the map whether or not you hire me.",
+      "The business is operating, but figuring out where things stand between work streams takes a little guesswork and a lot of chasing.",
   },
   {
     index: "02",
     symptom: "“We enter the same information in more than one place.”",
     title: "Integrations & APIs",
     description:
-      "I connect your systems so information entered once shows up everywhere it belongs.",
+      "Your systems aren't connected, so your team copies information between them by hand. It takes time, and the copies stop matching.",
   },
   {
     index: "03",
     symptom: "“The repeated manual steps are driving us crazy.”",
     title: "Automation",
-    description: "I take the repeat steps off your team's plate and hand them to software.",
+    description:
+      "Your team does tasks by hand that follow the same steps every time. Nothing happens automatically, even when it should.",
   },
   {
     index: "04",
     symptom: "“We pay for software that isn't worth what it costs.”",
     title: "Internal tools & web",
-    description: "I find software that fits, or build what's missing when nothing does.",
+    description:
+      "You know your software is powerful, but you don't know how to get the most out of it or your money's worth.",
+  },
+  {
+    index: "05",
+    symptom: "“The same process takes a different amount of time every time.”",
+    title: "Process mapping",
+    description:
+      "No one tracks how long each step takes, so there's no way to see where the time goes. Usually it's lost waiting between steps.",
+  },
+  {
+    index: "06",
+    symptom: "“Our processes aren't written down anywhere.”",
+    title: "Documentation",
+    description:
+      "New hires get trained on tribal knowledge. Each person ends up doing it a little differently.",
   },
 ];
 

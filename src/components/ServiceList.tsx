@@ -3,7 +3,7 @@ import { FadeUp } from "@/components/FadeUp";
 import type { Service } from "@/content/projects";
 
 /**
- * One flip card: symptom on the front, service + solution on the back.
+ * One flip card: symptom on the front, service name + diagnosis on the back.
  *
  * Click to flip, not hover — hover has no touch equivalent, so a tap would
  * fire it once and leave the card stuck. Rendered as a real <button> so it
@@ -21,7 +21,7 @@ function ServiceCard({ service }: { service: Service }) {
       aria-label={
         flipped
           ? `${service.title}. Show the symptom again.`
-          : `${service.symptom} See how I fix it.`
+          : `${service.symptom} See what's behind it.`
       }
       className="flip-scene group relative h-full w-full cursor-pointer bg-background text-left transition-[transform,box-shadow] duration-300 hover:z-10 hover:-translate-y-1 hover:shadow-[0_16px_36px_-18px_rgba(var(--shadow-ink),0.35)]"
       data-flipped={flipped}
@@ -56,7 +56,7 @@ function ServiceCard({ service }: { service: Service }) {
           </span>
         </div>
 
-        {/* Back — the service and what she does */}
+        {/* Back — the service and the diagnosis */}
         <div
           className="flip-back flip-face flex h-full flex-col justify-between bg-accent-tint p-7 md:p-9"
           aria-hidden={!flipped}
@@ -93,11 +93,12 @@ function ServiceCard({ service }: { service: Service }) {
 }
 
 /**
- * Qualification grid, not a service list. A visitor scans four complaints,
- * recognizes one, and flips it to find out what happens next.
+ * Qualification grid, not a service list. A visitor scans six complaints,
+ * recognizes one, and flips it to see what's behind it.
  *
- * 2x2 so it reads as a set to compare rather than a list to read top to
- * bottom. Deliberately four, not three.
+ * Two columns so it reads as a set to compare rather than a list to read top
+ * to bottom. Keep the count even (six since 2026-09-28) so no row is left
+ * with an empty cell, and never three.
  *
  * No CTA under the grid. "More than one of these sound familiar? Score your
  * operations in two minutes" was cut 2026-08-19 — it re-asked the section
