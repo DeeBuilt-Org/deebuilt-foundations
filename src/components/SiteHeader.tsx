@@ -146,7 +146,11 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="fixed inset-x-0 bottom-0 top-full z-30 flex flex-col bg-background md:hidden">
+        /* absolute, not fixed: the header's backdrop-blur makes it the
+           containing block for fixed children, which collapsed this panel to
+           zero height and left the links floating over the page. The explicit
+           height is the viewport minus the header (100% = header height). */
+        <div className="absolute inset-x-0 top-full z-30 flex h-[calc(100dvh-100%)] flex-col bg-background md:hidden">
           <nav className="flex flex-col gap-2 px-6 py-10">
             {nav.map((item) => (
               <Link
