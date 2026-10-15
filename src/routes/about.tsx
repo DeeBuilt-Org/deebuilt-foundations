@@ -176,6 +176,21 @@ function About() {
               HUBSPOT_SALESHUB_CERT_URL stays exported, so putting it back is
               a paste rather than a rebuild.
 
+              Softr Fundamentals, added 2026-10-15. Lower tier, because Softr
+              issues no badge: the certificate is a PDF, there was no email,
+              and their "share your network" button drops you on the LinkedIn
+              feed with nothing pre-filled. Not a link either, since the
+              certificate carries an ID (JLRRLFJDSPK-WZWNQTZZV-YTGSQBQBRR) but
+              no verification page.
+
+              The logo is the official colored lockup with the wordmark, from
+              softr.io/brand, saved locally. Their guidance says prefer the
+              colored version and don't modify the layout, so use the wordmark
+              lockup rather than the bare logomark. Do NOT build a Softr badge
+              to match monday's and HubSpot's: a home-made badge beside real
+              vendor-issued ones looks home-made, which is the whole reason
+              Airtable and SmartSuite are rows instead.
+
               monday Work Management Core, added 2026-09-26, sits in the TOP
               tier because it is a vendor-issued BADGE, which is what that
               tier is for. It also gives Specializations a second item, so
@@ -388,6 +403,19 @@ function About() {
                   />
                   <span className="font-serif text-lg text-foreground md:text-xl">
                     Pro Certification
+                  </span>
+                </li>
+                <li className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-5">
+                  <img
+                    src="/softr-logo.svg"
+                    alt="Softr"
+                    width={845}
+                    height={256}
+                    loading="lazy"
+                    className="h-[22px] w-auto shrink-0 self-start sm:mt-1 md:h-6"
+                  />
+                  <span className="font-serif text-lg text-foreground md:text-xl">
+                    Fundamentals Certification
                   </span>
                 </li>
               </ul>
