@@ -215,7 +215,7 @@ export const positioning = {
   lede: "Operations and systems design for businesses at any stage.",
 } as const;
 
-export const BOOKING_URL = "https://opsette.io/booking/deebuilt/discovery-call";
+export const BOOKING_URL = "https://opsette.io/booking/deebuilt/discovery-call-r2efk6qd";
 export const SPEC_URL = "https://spec.deebuilt.co/";
 export const YOUTUBE_URL = "https://www.youtube.com/@DeeBuiltSystems";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/ruthnie-benoit-7a567265/";
