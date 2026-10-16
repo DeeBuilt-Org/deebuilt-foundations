@@ -176,12 +176,19 @@ function About() {
               HUBSPOT_SALESHUB_CERT_URL stays exported, so putting it back is
               a paste rather than a rebuild.
 
-              Softr Fundamentals, added 2026-10-15. Lower tier, because Softr
-              issues no badge: the certificate is a PDF, there was no email,
-              and their "share your network" button drops you on the LinkedIn
-              feed with nothing pre-filled. Not a link either, since the
-              certificate carries an ID (JLRRLFJDSPK-WZWNQTZZV-YTGSQBQBRR) but
-              no verification page.
+              Softr Professional, 2026-10-15. Went up as Fundamentals that
+              morning and was renamed in place the same day once she passed
+              Professional, which is the levels convention: a higher level of
+              the same credential supersedes the lower one, so the row's name
+              changes and no row is added. (Fundamentals ID was
+              JLRRLFJDSPK-WZWNQTZZV-YTGSQBQBRR; Professional is
+              CLPPBDDBFPP-ZTZHJZJHL-XCPYCWTWMY.)
+
+              Lower tier, because Softr issues no badge: the certificate is a
+              PDF, there was no email, and their "share your network" button
+              drops you on the LinkedIn feed with nothing pre-filled. Not a
+              link either, since the certificate carries an ID but no
+              verification page.
 
               The logo is the official colored lockup with the wordmark, from
               softr.io/brand, saved locally. Their guidance says prefer the
@@ -415,7 +422,7 @@ function About() {
                     className="h-[22px] w-auto shrink-0 self-start sm:mt-1 md:h-6"
                   />
                   <span className="font-serif text-lg text-foreground md:text-xl">
-                    Fundamentals Certification
+                    Professional Certification
                   </span>
                 </li>
               </ul>
