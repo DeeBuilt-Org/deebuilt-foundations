@@ -35,6 +35,12 @@ export function SiteFooter() {
                 Home
               </Link>
               <Link
+                to="/solutions"
+                className="text-muted transition-colors hover:text-accent"
+              >
+                Solutions
+              </Link>
+              <Link
                 to="/about"
                 className="text-muted transition-colors hover:text-accent"
               >

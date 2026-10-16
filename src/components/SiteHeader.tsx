@@ -4,26 +4,30 @@ import { BOOKING_URL } from "@/content/projects";
 
 const nav = [
   { to: "/", label: "Home" },
+  { to: "/solutions", label: "Solutions" },
   { to: "/about", label: "About" },
   { to: "/portfolio", label: "Portfolio" },
 ] as const;
+
+/** Pages whose first section is a slate band marked with data-hero. */
+const DARK_HERO_PATHS = new Set(["/", "/solutions"]);
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  const isHome = pathname === "/";
+  const hasDarkHero = DARK_HERO_PATHS.has(pathname);
 
   /**
-   * On the home page the header carries its OWN slate background matching the
-   * hero, so the top of the page reads as one block of color.
+   * Over a slate hero (home, solutions) the header carries its OWN slate
+   * background matching it, so the top of the page reads as one block of color.
    *
    * It is not transparent: the hero's right half is a bright photo, so white
    * nav links laid over it disappeared into the window behind her. A solid
    * bar keeps every link legible regardless of what sits underneath.
    */
-  const onDark = isHome && !scrolled && !open;
+  const onDark = hasDarkHero && !scrolled && !open;
 
   /**
    * Stay dark for as long as the hero is behind the header, then swap. Keyed
@@ -31,7 +35,7 @@ export function SiteHeader() {
    * bar doesn't flip to light while the slate is still on screen.
    */
   useEffect(() => {
-    if (!isHome) return;
+    if (!hasDarkHero) return;
     const onScroll = () => {
       const hero = document.querySelector("[data-hero]");
       const limit = hero
@@ -46,7 +50,7 @@ export function SiteHeader() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [isHome]);
+  }, [hasDarkHero]);
 
   useEffect(() => {
     setOpen(false);
