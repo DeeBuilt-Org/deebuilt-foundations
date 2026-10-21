@@ -8,6 +8,9 @@
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./dist/client",
+    // Serve /about straight from about/index.html, matching the app's own
+    // links. /about/ redirects to /about instead of the other way round.
+    "html_handling": "drop-trailing-slash",
     // Unknown URLs get index.html, and the app's own NotFoundComponent
     // (src/routes/__root.tsx) renders the 404. This replaces the GitHub
     // Pages redirect shim that used to live in public/404.html.
