@@ -7,6 +7,7 @@ const nav = [
   { to: "/solutions", label: "Solutions" },
   { to: "/about", label: "About" },
   { to: "/portfolio", label: "Portfolio" },
+  { to: "/resources", label: "Resources" },
 ] as const;
 
 /** Pages whose first section is a slate band marked with data-hero. */

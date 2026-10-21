@@ -254,3 +254,162 @@ Open decisions for the layout conversation:
 - Left: the Opsette auto-height change (Part 2, her session in opsette-v2;
   nothing to change here afterward, the component already listens), then the
   Resources page.
+
+**2026-10-21 — Resources page scaffold built, NOT committed (sitting locally on purpose).**
+
+- First version was full-width rows with eyebrow labels and chips. She
+  rejected it as the default AI layout ("everything looks completely
+  identical"). Rebuilt as cards; she approved the direction.
+- `src/routes/resources.tsx`: page intro, then tools as an uneven 6-column
+  grid (first tool is the featured dark card, 4 cols x 2 rows; the rest vary
+  in width and tone via `toolSlots`), then downloads as staggered portrait
+  "paper" sheets on an `accent-tint` band.
+- `src/components/resources/ToolCard.tsx` (tones: featured / tint / surface /
+  outline) and `src/components/resources/DownloadSheet.tsx`.
+- `src/content/resources.ts`: all entries are placeholders. Tools have a
+  `cta` label (placeholder, to be workshopped); downloads have `fileType` and
+  `length`. No hrefs yet, so everything reads "Coming soon".
+- "Resources" added to `SiteHeader.tsx` nav and `SiteFooter.tsx` pages list
+  (local only, ships with the page).
+- Superseded: the "draft entry shape" and "layout options" in Part 3 above.
+  The layout is decided (cards as built). Part 3's launch threshold and
+  tool hosting questions are still open.
+- Wording: she may revisit "Templates to keep." heading; otherwise copy is
+  hers to write.
+- Before committing: needs real entries (her converted tools' links, any
+  files in `public/resources/`), and a full build, because this adds a new
+  route (`/resources`). It's Vite, so the build can run with the dev server
+  up; no port check needed.
+- She's away on other projects and will come back with tool links.
+
+**2026-10-21 (later) — Resources reorganized by stage, first live tool wired. Still NOT committed.**
+
+- Her call: organize by Launching / Scaling / Reorganizing (the home page's
+  words) so a visitor lands where they qualify. The assessment fills
+  Reorganizing as its featured card. Opener has a "Where's your business
+  right now?" prompt with the three stages as large jump links.
+- Each stage is its own band: Launching on the page background (featured
+  dark card), Scaling on `accent-tint`, Reorganizing on `ink-wash` (featured
+  white card). Downloads now sit inside their stage, after the tools, as
+  paper sheets with a "Templates to download." lead-in.
+- First live tool: StartUp Planner → https://tools.deebuilt.co/startup-planner/
+  (spelled "StartUp" to match the app). Featured card shows her Budget Summary
+  screenshot, `public/resources/startup-planner-budget.png`, cropped off the
+  card's bottom edge.
+- Whole cards and sheets are now the link (button inside is a visual span).
+- Tools subdomain: tools.deebuilt.co (apex repo she set up). Platform Picker
+  added to Scaling as a coming-soon placeholder.
+- Content model: one `resources` array in `src/content/resources.ts`, each
+  entry tagged with `stage`; `featured` and `image` optional.
+
+**2026-10-21 (later still) — tool links in.**
+
+Listed on the page:
+
+| Tool | Stage | Link |
+| --- | --- | --- |
+| StartUp Planner (featured, budget screenshot) | Launching | https://tools.deebuilt.co/startup-planner/ |
+| Signature Studio (no image, her call) | Launching | https://tools.deebuilt.co/signature-studio/ |
+| Brand Board (palette strip image) | Launching | https://tools.deebuilt.co/brand-board/ |
+| File Builder | Reorganizing | https://tools.deebuilt.co/file-builder/ |
+| Assessment (featured) | Reorganizing | Opsette form, `ASSESSMENT_URL` |
+
+Live on tools.deebuilt.co but deliberately NOT listed (her call): Palette
+Studio, Icon Kit, and Banner Designer overlap Brand Board; QR Creator
+doesn't say anything about her work. They're recorded in a comment in
+`resources.ts`.
+
+| Tool | Link |
+| --- | --- |
+| Palette Studio | https://tools.deebuilt.co/palette-studio/ |
+| Icon Kit | https://tools.deebuilt.co/icon-kit/ |
+| Banner Designer | https://tools.deebuilt.co/banner-designer/ |
+| QR Creator | https://tools.deebuilt.co/qr-creator/ |
+
+Images: two only (planner, brand board). More would start to look busy.
+
+Still placeholders: Decision Lab, Icebreaker, all four downloads.
+
+Copy and card updates, same day:
+- Small cards drop the separate link line; the underlined title with ↗ is
+  the cue and the whole card is the link. Only large (featured) cards keep a
+  button. Open question: the assessment card kept its button; she may want
+  it title-only too.
+- No card spans two rows anymore (a tall neighbor stretched the planner card
+  and left a dead gap). StartUp Planner is full width, split text/screenshot;
+  Signature Studio narrow + Brand Board wide (split) below it.
+- Brand Board description: "Build and share your brand kit." (hers)
+- Signature Studio description: "Sign off your emails in style." (hers)
+- Platform Picker → **Decision Lab** (her app, in progress; the platform
+  picker quiz lives inside it). Scaling's featured-to-be. Coming soon until
+  she has the link.
+- First real template: **New Business Systems Workbook**,
+  `public/resources/new-business-systems-workbook.pdf`, 3 pages, fillable,
+  branded header and footer. Replaces the "New Business Systems Checklist"
+  placeholder in Launching. Reviewed: Google Voice example now says "(with
+  Google Workspace)"; business bank account deliberately left out (it's a
+  systems list); no AI or advice disclaimer (her call). "Templates to
+  download." label is now just "Templates."
+- Second real template: **Platform Migration Checklist**,
+  `public/resources/platform-migration-checklist.pdf`, 3 pages, fillable
+  field map. Reorganizing. Suggested to her: add a "set a cutover date /
+  pause edits before the final move" item in Test.
+- Scaling reworked (hers): no templates (process documentation and new
+  hire onboarding cut), Icebreaker cut. Now **Decision Lab** (featured,
+  coming soon; gets a screenshot of its dark platform-picker card, tight
+  crop, from her) + **SmartFlow** (coming soon, her flowchart app being
+  brought up to standard). Screenshot, not a rebuild of the animated card:
+  a rebuilt copy would drift from the app.
+- Decision Lab screenshot in: `public/resources/decision-lab-platform-picker.png`
+  (the "How comfortable is your team with new software?" question). Static
+  screenshot, not a rebuild of the animated card: she decided its own brand
+  colors would clash as live site UI, while a screenshot reads as a preview.
+  Scaling's featured card is white (`featuredLight`) so the dark screenshot
+  stands out. Wide screenshots show whole and centered; tall ones (planner)
+  peek up from the bottom edge. ToolCard decides by the image's proportions.
+- File Builder hidden (not listed; she doesn't think it fits Reorganizing).
+  Reorganizing is now the assessment (full width when alone) + the
+  migration checklist. Checklist's site line shortened to "Clean up, map,
+  and test before moving from one system to another." Download sheets now
+  grow to fit their text (3:4 is a minimum), so "Download" can't be pushed
+  off the sheet.
+- SmartFlow hidden until it's up to standard. Decision Lab linked to
+  https://tools.deebuilt.co/decision-lab/platform-picker, the URL it will
+  have after her repo move. Platform Migration Checklist stays in
+  Reorganizing (Scaling = choose a platform, Reorganizing = move to it).
+- Page status (hers): looks solid. Nothing reads "Coming soon" anymore.
+
+**Before shipping /resources:**
+1. Confirm https://tools.deebuilt.co/decision-lab/platform-picker loads
+   (404 until her repo move).
+2. Workshop the button labels still in use: "Open the planner" (StartUp
+   Planner), "Take the full assessment" (reused from the home page),
+   "Open Decision Lab".
+3. Full build (new route). Vite, so the dev server can stay up.
+4. Commit and push: resources route, `src/components/resources/`,
+   `src/content/resources.ts`, `public/resources/` (2 PDFs + 3
+   screenshots), header and footer nav links, `routeTree.gen.ts`, this doc.
+
+**2026-10-21 — shipped.** Her call to ship with the Decision Lab link not
+yet live (low traffic; it works once she moves the repo). Button labels
+settled: "Start planning" (StartUp Planner), "Take the full assessment"
+(kept), "Find your platform" (Decision Lab).
+
+Caught at build: the prerender crawler followed the PDF links and wrote the
+PDFs back out as text, corrupting them in dist (~18% larger, different
+checksums). Fixed with a prerender `filter` in `vite.config.ts` that skips
+paths ending in a file extension and on-page `#` jumps. Second build (her
+approval) prerendered only the 5 real pages, and both PDFs in dist match
+`public/resources/` byte for byte. Then committed and pushed.
+
+Left after this ship:
+- Move Decision Lab to tools.deebuilt.co so
+  https://tools.deebuilt.co/decision-lab/platform-picker loads (her
+  Decision Lab session; also fix the results-page points display there).
+- Opsette auto-height for embedded forms (Part 2, her opsette-v2 session).
+- SmartFlow, when it's up to standard.
+- Optional: the cutover-date item in the migration checklist PDF.
+- Flagged for her Decision Lab session: results rank by percentage but show
+  raw points with different totals (Airtable 8 of 30 ranks below Asana 6 of
+  17), which reads as a miscount. Show a match % instead, or drop "of X".
+- Not shipping until she has a few real templates.

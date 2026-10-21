@@ -51,6 +51,12 @@ export function SiteFooter() {
               >
                 Portfolio
               </Link>
+              <Link
+                to="/resources"
+                className="text-muted transition-colors hover:text-accent"
+              >
+                Resources
+              </Link>
             </nav>
           </div>
 

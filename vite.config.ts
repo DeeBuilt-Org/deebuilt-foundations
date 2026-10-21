@@ -23,6 +23,13 @@ export default defineConfig({
     prerender: {
       enabled: true,
       crawlLinks: true,
+      // Only prerender real pages. The crawler follows every link, and when
+      // the Resources page started linking PDFs it fetched them and wrote
+      // them back out as text, corrupting the files in dist (2026-10-21).
+      // Skip anything ending in a file extension (public/ copies those as-is)
+      // and on-page jumps like /#get-in-touch.
+      filter: (page: { path: string }) =>
+        !/\.[a-z0-9]+$/i.test(page.path) && !page.path.includes("#"),
     },
     pages: [
       { path: "/" },
