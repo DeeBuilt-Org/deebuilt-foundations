@@ -1,0 +1,5 @@
+# Let other sites (the free tools at tools.deebuilt.co) fetch the public images
+# here, e.g. the headshot in an email signature that Brand Board snapshots into
+# its pages. GitHub Pages sent this header by default; Cloudflare doesn't.
+/*
+  Access-Control-Allow-Origin: *
