@@ -1,11 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeUp } from "@/components/FadeUp";
 import { Hero } from "@/components/Hero";
+import { OpsetteFormEmbed } from "@/components/OpsetteFormEmbed";
 import { ProjectRow } from "@/components/ProjectRow";
 import { ServiceList } from "@/components/ServiceList";
 import {
   ASSESSMENT_URL,
   BOOKING_URL,
+  CONTACT_EMBED_SOURCE,
+  CONTACT_FORM_SLUG,
   SPEC_URL,
   projects,
   services,
@@ -139,26 +142,50 @@ function Home() {
       </section>
 
       {/* Closing CTA — dark band. Proof sits above the ask, backing it, and the
-          inverted color gives the page a hard stop instead of fading out. */}
-      <section className="bg-ink-wash text-white">
+          inverted color gives the page a hard stop instead of fading out.
+
+          2026-10-21: the get-in-touch form is embedded beside the booking ask,
+          for the visitor who would rather write first than get on a call.
+          Every on-site "send a message" link jumps here (#get-in-touch). The
+          form sits in a light panel, NOT transparent: a transparent form puts
+          its dark text on this dark band. Inside the panel, transparent is
+          fine and drops the form's own gray background. Header hidden in both
+          placements: the band's heading already does that job. Stacked on a
+          phone, form under the button. */}
+      <section id="get-in-touch" className="scroll-mt-28 bg-ink-wash text-white">
         <div className="mx-auto max-w-6xl px-5 py-20 md:px-10 md:py-32">
+          <div className="grid gap-12 md:grid-cols-12 md:gap-16">
+            <div className="md:col-span-5">
+              <FadeUp>
+                <p className="display-lg max-w-3xl text-white">
+                  Start with a look at how work moves through your business.
+                </p>
+              </FadeUp>
+              <FadeUp delay={100}>
+                <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
+                  Thirty minutes, no pitch. You&rsquo;ll leave knowing where the time is going even
+                  if we never work together.
+                </p>
+              </FadeUp>
+              <FadeUp delay={160}>
+                <a href={BOOKING_URL} target="_blank" rel="noreferrer" className="btn-invert mt-10">
+                  Book a discovery call
+                </a>
+              </FadeUp>
+            </div>
+            <FadeUp delay={200} className="md:col-span-7">
+              <div className="overflow-hidden rounded-md bg-surface">
+                <OpsetteFormEmbed
+                  form={CONTACT_FORM_SLUG}
+                  source={CONTACT_EMBED_SOURCE}
+                  title="Get in touch form"
+                  hideHeader
+                  transparent
+                />
+              </div>
+            </FadeUp>
+          </div>
           <div>
-            <FadeUp>
-              <p className="display-lg max-w-3xl text-white">
-                Start with a look at how work moves through your business.
-              </p>
-            </FadeUp>
-            <FadeUp delay={100}>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
-                Thirty minutes, no pitch. You&rsquo;ll leave knowing where the time is going even if
-                we never work together.
-              </p>
-            </FadeUp>
-            <FadeUp delay={160}>
-              <a href={BOOKING_URL} target="_blank" rel="noreferrer" className="btn-invert mt-10">
-                Book a discovery call
-              </a>
-            </FadeUp>
             <FadeUp delay={240}>
               <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/15 pt-6 text-sm">
                 <span className="text-white/60">More from DeeBuilt</span>

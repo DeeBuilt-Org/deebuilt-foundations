@@ -269,3 +269,18 @@ export const SMARTSUITE_CERT_URL = "https://mycourse.app/sGMqW8q2ezZPRUQxM";
 export const ASSESSMENT_URL =
   "https://opsette.io/f/deebuilt/see-how-your-operations-actually-stack-up?s=anOQuuXEW_tM";
 export const CONTACT_FORM_URL = "https://opsette.io/f/deebuilt/get-in-touch?s=G6MEhvk02qEo";
+
+/**
+ * Embedded Opsette forms (src/components/OpsetteFormEmbed.tsx), added
+ * 2026-10-21. On the site, the get-in-touch form is embedded; every on-site
+ * "send a message" link jumps to it instead of opening CONTACT_FORM_URL.
+ *
+ * CONTACT_EMBED_SOURCE is the site's existing link source token, the same one
+ * on CONTACT_FORM_URL. No separate token (her call, 2026-10-21): with no plain
+ * link left on the site, every on-site submission comes through the embed, so
+ * there is nothing to split.
+ */
+export const OPSETTE_ORIGIN = "https://opsette.io";
+export const OPSETTE_EMBED_BASE = `${OPSETTE_ORIGIN}/embed/form/deebuilt`;
+export const CONTACT_FORM_SLUG = "get-in-touch";
+export const CONTACT_EMBED_SOURCE = "G6MEhvk02qEo";

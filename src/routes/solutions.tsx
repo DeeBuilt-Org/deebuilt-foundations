@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { FadeUp } from "@/components/FadeUp";
+import { OpsetteFormEmbed } from "@/components/OpsetteFormEmbed";
 import { SolutionEntry } from "@/components/SolutionEntry";
 import { SolutionsHero } from "@/components/SolutionsHero";
-import { CONTACT_FORM_URL } from "@/content/projects";
+import { CONTACT_EMBED_SOURCE, CONTACT_FORM_SLUG } from "@/content/projects";
 import { solutions, solutionsPage } from "@/content/solutions";
 
 export const Route = createFileRoute("/solutions")({
@@ -46,19 +47,27 @@ function Solutions() {
           same row shape as "My apps / View all" on the home page, rather than
           a centered band.
 
-          ONE button to the get-in-touch form, hers 2026-10-16. The heading
-          answers the eight starting points above it: a visitor who saw their
-          own business in one sends what they're working with. Booking is the
-          hero's job. */}
+          ONE ask, the get-in-touch form, hers 2026-10-16. The heading answers
+          the eight starting points above it: a visitor who saw their own
+          business in one sends what they're working with. Booking is the
+          hero's job.
+
+          2026-10-21: the form is embedded here instead of a button out to
+          opsette.io. Heading left, form right from md up; stacked on a phone.
+          The band is light, so the form runs transparent. */}
       <section className="border-t border-hairline bg-surface-raised">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-16 md:flex-row md:items-end md:justify-between md:px-10 md:py-24">
-          <FadeUp>
+        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-16 md:grid-cols-12 md:gap-16 md:px-10 md:py-24">
+          <FadeUp className="md:col-span-5">
             <p className="display-lg max-w-xl text-foreground">{solutionsPage.closing}</p>
           </FadeUp>
-          <FadeUp delay={120}>
-            <a href={CONTACT_FORM_URL} target="_blank" rel="noreferrer" className="btn-primary">
-              Get in touch ↗
-            </a>
+          <FadeUp delay={120} className="md:col-span-7">
+            <OpsetteFormEmbed
+              form={CONTACT_FORM_SLUG}
+              source={CONTACT_EMBED_SOURCE}
+              title="Get in touch form"
+              hideHeader
+              transparent
+            />
           </FadeUp>
         </div>
       </section>

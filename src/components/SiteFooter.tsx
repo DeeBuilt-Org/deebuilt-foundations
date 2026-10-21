@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import {
   BOOKING_URL,
-  CONTACT_FORM_URL,
   LINKEDIN_URL,
   YOUTUBE_URL,
   positioning,
@@ -59,14 +58,15 @@ export function SiteFooter() {
           <div className="md:col-span-4">
             <span className="eyebrow-muted">Get in touch</span>
             <div className="mt-4 flex flex-col gap-2 text-sm">
-              <a
-                href={CONTACT_FORM_URL}
-                target="_blank"
-                rel="noreferrer"
+              {/* Jumps to the form embedded on the home page (2026-10-21),
+                  so it stays on this site and loses the ↗. */}
+              <Link
+                to="/"
+                hash="get-in-touch"
                 className="text-muted transition-colors hover:text-accent"
               >
-                Send a message ↗
-              </a>
+                Send a message
+              </Link>
               <a
                 href={BOOKING_URL}
                 target="_blank"

@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeUp } from "@/components/FadeUp";
 import { ProjectRow } from "@/components/ProjectRow";
-import { CONTACT_FORM_URL, projects } from "@/content/projects";
+import { projects } from "@/content/projects";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -58,14 +58,10 @@ function Portfolio() {
           apps or tools using AI for your business or projects, send me a
           message.
         </p>
-        <a
-          href={CONTACT_FORM_URL}
-          target="_blank"
-          rel="noreferrer"
-          className="btn-primary mt-7"
-        >
-          Send a message ↗
-        </a>
+        {/* Jumps to the form embedded on the home page (2026-10-21). */}
+        <Link to="/" hash="get-in-touch" className="btn-primary mt-7">
+          Send a message
+        </Link>
       </FadeUp>
 
       <div className="mt-14 border-t border-hairline md:mt-16">
