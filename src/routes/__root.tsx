@@ -98,13 +98,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap",
       },
     ],
-    scripts: [
-      {
-        // GitHub Pages SPA redirect restore. Reads ?p= written by 404.html and
-        // replaces the URL so the router sees the original deep-link path.
-        children: `(function(){var p=new URLSearchParams(window.location.search).get('p');if(p){window.history.replaceState(null,'',p);}})();`,
-      },
-    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,

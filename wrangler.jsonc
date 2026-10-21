@@ -1,0 +1,16 @@
+// Cloudflare Workers config. The site is fully prerendered by TanStack Start
+// (see vite.config.ts), so the Worker serves static files only — no server
+// code. Cloudflare's Git integration runs `npm run build`, then
+// `npx wrangler deploy`, which uploads dist/client.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "deebuilt-foundations",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist/client",
+    // Unknown URLs get index.html, and the app's own NotFoundComponent
+    // (src/routes/__root.tsx) renders the 404. This replaces the GitHub
+    // Pages redirect shim that used to live in public/404.html.
+    "not_found_handling": "single-page-application"
+  }
+}
