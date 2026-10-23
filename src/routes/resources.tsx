@@ -121,14 +121,16 @@ function Resources() {
         <FadeUp delay={160}>
           <div className="mt-14 border-t border-hairline pt-8 md:mt-20">
             <p className="text-base text-muted">{resourcesPage.jumpPrompt}</p>
-            <nav className="mt-4 flex flex-wrap gap-x-10 gap-y-3">
+            {/* Phone: a stacked list, one full-width row per stage, since the
+                three words never fit one line at this size. md+: one row. */}
+            <nav className="mt-4 flex flex-col divide-y divide-hairline md:flex-row md:flex-wrap md:gap-x-10 md:gap-y-3 md:divide-y-0">
               {stages.map((s) => (
                 <a
                   key={s.id}
                   href={`#${s.id}`}
-                  className="group font-serif text-4xl leading-tight text-foreground transition-colors hover:text-accent md:text-5xl"
+                  className="group flex items-baseline justify-between py-3 font-serif text-4xl leading-tight text-foreground transition-colors hover:text-accent md:block md:py-0 md:text-5xl"
                 >
-                  {s.name.replace(".", "")}
+                  {s.label}
                   <span className="ml-2 inline-block text-2xl text-accent/50 transition-transform group-hover:translate-y-1 md:text-3xl">
                     ↓
                   </span>

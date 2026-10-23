@@ -55,18 +55,32 @@ export type Resource = ToolResource | DownloadResource;
 
 export const resourcesPage = {
   title: "Free resources.",
-  subtitle:
-    "Tools and templates for the systems side of a business, whether you're launching, scaling, or reorganizing. Free to use, no sign-up.",
-  jumpPrompt: "Where's your business right now?",
+  subtitle: "Free to use, no sign-up.",
+  jumpPrompt: "Where are you now?",
 } as const;
 
-/** Section order and the words each section opens with. */
-export const stages: { id: Stage; name: string; description: string }[] = [
-  { id: "launching", name: "Launching.", description: "For getting a new business set up." },
-  { id: "scaling", name: "Scaling.", description: "For a business adding people, clients, and work." },
+/**
+ * Section order and the words each section opens with. `label` is the short
+ * word in the opener's jump nav (hers, 2026-10-23: the -ing forms ran too
+ * long on a phone).
+ */
+export const stages: { id: Stage; name: string; label: string; description: string }[] = [
+  {
+    id: "launching",
+    name: "Launching.",
+    label: "Launch",
+    description: "For getting a new business set up.",
+  },
+  {
+    id: "scaling",
+    name: "Scaling.",
+    label: "Scale",
+    description: "For a business adding people, clients, and work.",
+  },
   {
     id: "reorganizing",
     name: "Reorganizing.",
+    label: "Reorganize",
     description: "For a business whose systems need sorting out.",
   },
 ];
