@@ -267,7 +267,7 @@ export const SMARTSUITE_CERT_URL = "https://mycourse.app/sGMqW8q2ezZPRUQxM";
  * and is not the one behind "Take the full assessment" on this site.
  */
 export const ASSESSMENT_URL =
-  "https://opsette.io/f/deebuilt/see-how-your-operations-actually-stack-up?s=anOQuuXEW_tM";
+  "https://opsette.io/f/deebuilt/see-how-your-operations-stack-up?s=anOQuuXEW_tM";
 export const CONTACT_FORM_URL = "https://opsette.io/f/deebuilt/get-in-touch?s=G6MEhvk02qEo";
 
 /**
