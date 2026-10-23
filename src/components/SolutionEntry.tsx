@@ -8,7 +8,7 @@ import type { Solution } from "@/content/solutions";
  * label column, no box. Entries sit two-up on the page like columns of type,
  * separated by a hairline rule above each one.
  *
- * Results carries a slate rule on its left edge so the "after" reads as the
+ * Solution carries a slate rule on its left edge so the "after" reads as the
  * payoff of the "before" without a contrast heading or an arrow.
  */
 export function SolutionEntry({ solution }: { solution: Solution }) {
@@ -18,15 +18,15 @@ export function SolutionEntry({ solution }: { solution: Solution }) {
         {solution.title}
       </h2>
 
-      <p className="eyebrow-muted mt-7">Starting point</p>
+      <p className="eyebrow-muted mt-7">Problem</p>
       <p className="mt-2.5 text-base leading-relaxed text-muted">
-        {solution.startingPoint}
+        {solution.problem}
       </p>
 
       <div className="mt-7 border-l-2 border-accent pl-5">
-        <p className="eyebrow">Results</p>
+        <p className="eyebrow">Solution</p>
         <p className="mt-2.5 text-base leading-relaxed text-foreground">
-          {solution.results}
+          {solution.solution}
         </p>
       </div>
 

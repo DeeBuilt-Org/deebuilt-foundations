@@ -48,7 +48,7 @@ function Solutions() {
           a centered band.
 
           ONE ask, the get-in-touch form, hers 2026-10-16. The heading answers
-          the eight starting points above it: a visitor who saw their own
+          the eight problems above it: a visitor who saw their own
           business in one sends what they're working with. Booking is the
           hero's job.
 
