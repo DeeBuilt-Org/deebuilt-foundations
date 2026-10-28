@@ -3,13 +3,16 @@
  * Demo = viewable front end, sign-up no longer active. No entry carries this
  * today. Ezii Quote Builder and Pet Karma were both pulled 2026-08-19 (her
  * call: Ezii wasn't worth naming, and Pet Karma's front end showed early
- * work). Pet Karma came back 2026-08-22 as entry 06, redesigned, with sign-up
- * open. Ezii stays off. The status stays defined because Ezii could return.
+ * work). Pet Karma came back 2026-08-22, redesigned, with sign-up open. Ezii
+ * stays off. The status stays defined because Ezii could return.
  *
- * "Personal project" was removed as a status 2026-08-22 (hers). It was on G-Up
- * and Read Amour, and both are live: anyone can open them and use them. The
- * label was splitting the list into real work and lesser work when the only
- * fact a visitor needs is whether the link works.
+ * "Personal project" was removed as a status 2026-08-22 (hers). It was on Read
+ * Amour, which is live: anyone can open it and use it. The label was splitting
+ * the list into real work and lesser work when the only fact a visitor needs
+ * is whether the link works.
+ *
+ * Opsette Tools and G-Up were pulled 2026-10-28 (hers). G-Up is her own
+ * learning project, not portfolio work.
  */
 export type ProjectStatus = "Live" | "Live · redesign in progress" | "Demo";
 
@@ -38,38 +41,20 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    title: "Opsette Tools",
-    description: "A suite of 20+ standalone tools that plug into the Opsette consulting platform.",
-    href: "https://tools.opsette.io/",
-    index: "02",
-    status: "Live",
-    stack: ["Vite", "Tools suite"],
-    featured: true,
-  },
-  {
     title: "The Midterm Project",
     description:
       "A voter resource hub for finding elections, checking registration, and reading the ballot.",
     href: "https://themidtermproject.org/",
-    index: "03",
+    index: "02",
     status: "Live",
     stack: ["Astro", "Civic Data"],
     featured: true,
   },
   {
-    title: "G-Up",
-    description:
-      "A coding guide with a live SQL playground for working through queries against real data.",
-    href: "https://g-up-coding.vercel.app/anatomy",
-    index: "04",
-    status: "Live",
-    stack: ["Astro"],
-  },
-  {
     title: "Read Amour",
     description: "A mobile-first poster maker to share your reading journey online.",
     href: "https://readamour.com/",
-    index: "05",
+    index: "03",
     status: "Live",
     stack: ["Vite", "PWA"],
   },
@@ -89,7 +74,7 @@ export const projects: Project[] = [
     description:
       "A pet care share app where users can plan their trips, and their friend group can take on shifts to care for their pets while they're out.",
     href: "https://petkarma.app/",
-    index: "06",
+    index: "04",
     status: "Live",
     stack: ["Next.js", "SQL"],
   },

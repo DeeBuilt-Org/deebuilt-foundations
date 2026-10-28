@@ -10,7 +10,7 @@ export const Route = createFileRoute("/portfolio")({
       {
         name: "description",
         content:
-          "Apps and tools I've built: Opsette, Opsette Tools, The Midterm Project, G-Up, Read Amour, and Pet Karma.",
+          "Apps and tools I've built: Opsette, The Midterm Project, Read Amour, and Pet Karma.",
       },
       { property: "og:title", content: "Portfolio — DeeBuilt" },
       {
