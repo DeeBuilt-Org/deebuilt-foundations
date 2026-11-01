@@ -42,6 +42,7 @@ export function OpsetteFormEmbed({
   hideHeader = false,
   transparent = false,
   className = "",
+  onLoad,
 }: {
   /** Opsette form slug, e.g. "get-in-touch" */
   form: string;
@@ -53,6 +54,7 @@ export function OpsetteFormEmbed({
   hideHeader?: boolean;
   transparent?: boolean;
   className?: string;
+  onLoad?: () => void;
 }) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState(minHeight);
@@ -91,6 +93,7 @@ export function OpsetteFormEmbed({
       title={title}
       loading="lazy"
       height={height}
+      onLoad={onLoad}
       className={`block w-full scroll-mt-28 border-0 ${className}`}
     />
   );

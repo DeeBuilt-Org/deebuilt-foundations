@@ -14,6 +14,7 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
   --color-accent-tint: var(--accent-tint);
+  --color-saffron: var(--saffron);
   --color-hairline: var(--hairline);
   --color-muted: var(--muted);
   --font-serif: var(--font-serif);
@@ -31,6 +32,7 @@
   --accent-hover: #173c51;   /* slate 800 — button/link hover (darker) */
   --accent-soft: #8dbfdf;    /* slate 300 — card hover borders, hairline accents */
   --accent-tint: #dce5ea;    /* dusty-blue wash — tile/section tints */
+  --saffron: #e9b44c;        /* highlights. Too pale for text on white; use on dark only */
   --hairline: #e0dfdb;
   --muted: #86858a;
   --shadow-ink: 14, 18, 21;  /* neutral 900 (#0E1215) as R,G,B for cool shadows */
@@ -256,5 +258,13 @@
   }
   .state-word::after {
     transition: none;
+  }
+}
+
+/* Pop-ups only fade for visitors who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .dialog-surface {
+    --tw-enter-translate-y: 0 !important;
+    --tw-exit-translate-y: 0 !important;
   }
 }

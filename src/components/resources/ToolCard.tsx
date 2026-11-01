@@ -1,3 +1,4 @@
+import type { MouseEventHandler } from "react";
 import type { ToolResource } from "@/content/resources";
 
 /**
@@ -84,10 +85,12 @@ export function ToolCard({
   tool,
   tone,
   split = false,
+  onClick,
 }: {
   tool: ToolResource;
   tone: ToolCardTone;
   split?: boolean;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }) {
   const t = tones[tone];
   const image = tool.image;
@@ -191,6 +194,7 @@ export function ToolCard({
       href={tool.href}
       target="_blank"
       rel="noreferrer"
+      onClick={onClick}
       className={`group ${base} transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_44px_-22px_rgba(var(--shadow-ink),0.45)]`}
     >
       {inner}

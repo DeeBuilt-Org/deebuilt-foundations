@@ -201,6 +201,10 @@ export const positioning = {
 } as const;
 
 export const BOOKING_URL = "https://opsette.io/booking/deebuilt/discovery-call-r2efk6qd";
+/** The discovery call itself, which skips Opsette's one-service list. */
+export const BOOKING_EMBED_URL = "https://opsette.io/embed/booking/deebuilt/discovery-call-r2efk6qd";
+/** The quiz only, not the whole Decision Lab site. */
+export const PLATFORM_PICKER_URL = "https://tools.deebuilt.co/decision-lab/platform-picker";
 export const SPEC_URL = "https://spec.deebuilt.co/";
 export const YOUTUBE_URL = "https://www.youtube.com/@DeeBuiltSystems";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/ruthnie-benoit-7a567265/";

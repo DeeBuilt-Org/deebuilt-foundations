@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type MouseEventHandler } from "react";
 import { StateCycle } from "@/components/StateCycle";
 import { ASSESSMENT_URL, BOOKING_URL, positioning } from "@/content/projects";
 
@@ -40,14 +40,18 @@ function Portrait() {
   );
 }
 
-export function Hero() {
+export function Hero({
+  onBook,
+  onAssessment,
+}: {
+  onBook?: MouseEventHandler<HTMLAnchorElement>;
+  onAssessment?: MouseEventHandler<HTMLAnchorElement>;
+}) {
   return (
     <section data-hero className="bg-ink-wash text-white">
-      {/* Height tracks the viewport minus the sticky header, so the hero ends
-          right at the fold — tall enough to give the portrait room for head
-          through mid-chest, but never spilling a sliver below the screen the
-          way the old fixed min-h-[44rem] did. */}
-      <div className="grid md:h-[calc(100svh-4.5rem)] md:max-h-[52rem] md:min-h-[38rem] md:grid-cols-2">
+      {/* A fixed, shorter height, so the sections below show above the fold
+          instead of the hero taking the whole screen. */}
+      <div className="grid md:h-[30rem] md:grid-cols-2">
         {/* Copy side */}
         <div className="flex flex-col justify-center px-5 py-12 md:px-12 md:py-16 lg:px-16">
           {/* The three states lead and carry the positioning on their own. Her
@@ -64,13 +68,20 @@ export function Hero() {
           <p className="lede mt-7 max-w-lg text-white/80">{positioning.lede}</p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
-            <a href={BOOKING_URL} target="_blank" rel="noreferrer" className="btn-invert">
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noreferrer"
+              onClick={onBook}
+              className="btn-invert"
+            >
               Book a discovery call
             </a>
             <a
               href={ASSESSMENT_URL}
               target="_blank"
               rel="noreferrer"
+              onClick={onAssessment}
               className="text-sm font-medium text-white/85 underline underline-offset-4 decoration-white/30 transition-colors hover:text-white hover:decoration-white"
             >
               Take the free assessment ↗
