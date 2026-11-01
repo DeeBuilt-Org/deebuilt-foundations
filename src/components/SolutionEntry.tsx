@@ -5,8 +5,7 @@ import type { Solution } from "@/content/solutions";
  *
  * Replaced a ProjectRow-style row on 2026-10-16, hers: the left column with an
  * index number beside the title read as AI template. No numbers, no side
- * label column, no box. Entries sit two-up on the page like columns of type,
- * separated by a hairline rule above each one.
+ * label column, no box. Opens in a pop-up from ProblemLinks since 2026-11-01.
  *
  * Solution carries a slate rule on its left edge so the "after" reads as the
  * payoff of the "before" without a contrast heading or an arrow.

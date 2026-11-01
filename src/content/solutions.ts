@@ -1,5 +1,6 @@
 /**
- * Solutions page copy. Hers, from "DeeBuilt Capability Cards" (2026-10-16),
+ * Problem and solution entries on the Services page, each opened in a pop-up
+ * from its stage (ProblemLinks). Hers, from "DeeBuilt Capability Cards" (2026-10-16),
  * copied in verbatim. Do not tighten or rephrase: every line follows the
  * writing pattern below, and earlier agent passes on this site drifted her
  * copy away from her by "improving" it.
@@ -19,7 +20,7 @@
  */
 
 export type Solution = {
-  /** Anchor on the Solutions page; the hero index links to it. */
+  /** How a stage or service points to this entry (src/content/services.ts). */
   id: string;
   title: string;
   problem: string;
@@ -31,15 +32,31 @@ export type Solution = {
 export const solutionsPage = {
   header: "Better is buildable.",
   subtitle: "Solutions tailored to your business.",
-  /**
-   * Closing band under the eight entries, hers 2026-10-16. Speaks to a visitor
-   * who recognized their business in a problem. Button labels on this
-   * page are deliberately NOT the ones used on other pages.
-   */
-  closing: "Show me what you're working with.",
 } as const;
 
 export const solutions: Solution[] = [
+  // The two Launch entries, added 2026-11-01. The other eight describe a
+  // business already running.
+  {
+    id: "system-selection",
+    title: "System Selection",
+    problem:
+      "A new business needs several systems at once. The options are difficult to compare. It is hard to determine which systems to set up first or how to connect them.",
+    scope: "Needs review, system selection, account setup, system connections",
+    systems: "Email, file storage, forms, invoicing",
+    solution:
+      "Each system has a clear job. The systems connect from the start. The owner knows which system handles each task.",
+  },
+  {
+    id: "business-basics",
+    title: "Business Basics",
+    problem:
+      "Email comes from a free personal account. The intake form collects too little, so details get gathered later and written down wherever is handy. There is no set way to take a payment.",
+    scope: "Domain setup, business email, intake form, payment setup",
+    systems: "Email, domain, forms, payments",
+    solution:
+      "Email comes from the business's own domain. Intake collects the right details in one place. Clients have a clear way to pay.",
+  },
   {
     id: "platform-migration",
     title: "Platform Migration",

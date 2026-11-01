@@ -34,10 +34,10 @@ export function SiteFooter() {
                 Home
               </Link>
               <Link
-                to="/solutions"
+                to="/services"
                 className="text-muted transition-colors hover:text-accent"
               >
-                Solutions
+                Services
               </Link>
               <Link
                 to="/about"

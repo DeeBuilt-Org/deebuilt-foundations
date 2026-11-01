@@ -4,14 +4,14 @@ import { BOOKING_URL } from "@/content/projects";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/solutions", label: "Solutions" },
+  { to: "/services", label: "Services" },
   { to: "/about", label: "About" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/resources", label: "Resources" },
 ] as const;
 
 /** Pages whose first section is a slate band marked with data-hero. */
-const DARK_HERO_PATHS = new Set(["/", "/solutions"]);
+const DARK_HERO_PATHS = new Set(["/", "/services"]);
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -21,7 +21,7 @@ export function SiteHeader() {
   const hasDarkHero = DARK_HERO_PATHS.has(pathname);
 
   /**
-   * Over a slate hero (home, solutions) the header carries its OWN slate
+   * Over a slate hero (home, services) the header carries its OWN slate
    * background matching it, so the top of the page reads as one block of color.
    *
    * It is not transparent: the hero's right half is a bright photo, so white

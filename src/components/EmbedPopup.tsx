@@ -5,14 +5,18 @@ import {
   ASSESSMENT_URL,
   BOOKING_EMBED_URL,
   BOOKING_URL,
+  CONTACT_EMBED_SOURCE,
+  CONTACT_FORM_SLUG,
+  CONTACT_FORM_URL,
   PLATFORM_PICKER_URL,
 } from "@/content/projects";
 
-export type PopupKey = "assessment" | "booking" | "picker";
+export type PopupKey = "assessment" | "booking" | "contact" | "picker";
 
 const POPUPS: Record<PopupKey, { title: string; newTabUrl: string }> = {
   assessment: { title: "See how your operations stack up", newTabUrl: ASSESSMENT_URL },
   booking: { title: "Book a discovery call", newTabUrl: BOOKING_URL },
+  contact: { title: "Get in touch", newTabUrl: CONTACT_FORM_URL },
   picker: { title: "Platform Picker", newTabUrl: PLATFORM_PICKER_URL },
 };
 
@@ -39,6 +43,14 @@ function EmbedPopupBody({ popup }: { popup: PopupKey }) {
           title={POPUPS.booking.title}
           onLoad={showPage}
           className="block h-full w-full border-0"
+        />
+      )}
+      {popup === "contact" && (
+        <OpsetteFormEmbed
+          form={CONTACT_FORM_SLUG}
+          source={CONTACT_EMBED_SOURCE}
+          title={POPUPS.contact.title}
+          onLoad={showPage}
         />
       )}
       {popup === "picker" && (
