@@ -1,22 +1,25 @@
 /**
  * Problem and solution entries on the Services page, each opened in a pop-up
- * from its stage (ProblemLinks). Hers, from "DeeBuilt Capability Cards" (2026-10-16),
- * copied in verbatim. Do not tighten or rephrase: every line follows the
- * writing pattern below, and earlier agent passes on this site drifted her
- * copy away from her by "improving" it.
+ * from its stage (ProblemLinks). Problem, scope, and systems are hers, from
+ * "DeeBuilt Capability Cards" (2026-10-16), copied in verbatim. She rewrote each
+ * solution line by line on 2026-11-01. Do not tighten or rephrase any of it:
+ * earlier agent passes on this site drifted her copy away from her by
+ * "improving" it.
  *
  * Writing pattern (from the same doc), for any card added later:
  * - Problem: full sentences, present tense, the business today. Two to
  *   three short sentences. Vary the first word across cards.
  * - Scope: noun phrases, comma-separated. One line.
  * - Systems: kinds of systems, no brand names. One line.
- * - Solution: full sentences, present tense, the business after. Two to three
- *   short sentences.
+ * - Solution: what she will do, in full sentences. "I" is her own work, and "we"
+ *   is her and the client together. Vary the sentence shapes within an entry and
+ *   across entries.
  *
  * Labels renamed 2026-10-23, hers: Starting point / Results became
  * Problem / Solution, a pair that matches the page name.
- * - No pronouns. One idea per sentence. Lists of two or four. No contrast
- *   pairs, no questions, no scenario setups, no em dashes.
+ * - Problem, scope, and systems: no pronouns. One idea per sentence. Lists of
+ *   two or four. No contrast pairs, no questions, no scenario setups, no em
+ *   dashes.
  */
 
 export type Solution = {
@@ -45,7 +48,7 @@ export const solutions: Solution[] = [
     scope: "Needs review, system selection, account setup, system connections",
     systems: "Email, file storage, forms, invoicing",
     solution:
-      "Each system has a clear job. The systems connect from the start. The owner knows which system handles each task.",
+      "Based on business needs, we'll choose the systems that fit, considering price, scalability, and the features you need to keep growing. We'll then set up your email, file storage, forms, and invoicing, and connect them so they work together.",
   },
   {
     id: "business-basics",
@@ -55,7 +58,7 @@ export const solutions: Solution[] = [
     scope: "Domain setup, business email, intake form, payment setup",
     systems: "Email, domain, forms, payments",
     solution:
-      "Email comes from the business's own domain. Intake collects the right details in one place. Clients have a clear way to pay.",
+      "We'll improve your professional presence by setting up your business email on your own domain. The intake form we design collects the right details up front and sends the results exactly where you need them, whether that's email or a CRM. We'll also give clients a clear way to pay.",
   },
   {
     id: "platform-migration",
@@ -65,7 +68,7 @@ export const solutions: Solution[] = [
     scope: "System selection, data cleanup, data transfer, testing, team training",
     systems: "Databases, spreadsheets, project management tools, client records",
     solution:
-      "Existing records move over intact, with a clear structure in place. The team knows where to save things and where to find them. Training happens before the old system is turned off.",
+      "A new platform should support your business data for years to come, so you aren't moving into a system you'll quickly outgrow. I'll run the migration as a project, reviewing your data, then cleaning and organizing it where needed so it fits the new platform. Once the data is moved and tested, I'll train your team before you turn off the old system.",
   },
   {
     id: "client-communication",
@@ -75,7 +78,7 @@ export const solutions: Solution[] = [
     scope: "Portal design, request notifications and status tracking, client onboarding",
     systems: "CRM, forms, invoicing",
     solution:
-      "Clients place requests and check status in one place. Each change sends a notification to the team. Order history and invoices are visible to both the business and its clients.",
+      "Ideally, you would see all client communication in one place, even if it originates across multiple channels. We would assess the need to design a client portal where clients can place requests and check status without having to contact you. Request notifications will keep you and your team on top of follow-ups.",
   },
   {
     id: "work-assignment-and-pay",
@@ -85,17 +88,17 @@ export const solutions: Solution[] = [
     scope: "Workload mapping, assignment process, pay rules setup, team rollout",
     systems: "Staff and contractor records, scheduling, time tracking, payroll",
     solution:
-      "Each person can see what is assigned and when it is due. Managers can see who has capacity before handing out more. Pay adds up from the work logged.",
+      "Assigning work in a centralized system allows everyone to see what's going on and when. I'll map your team's workload and connect your pay rules to time tracking, so resource and pay management become easier to reconcile.",
   },
   {
     id: "automation",
     title: "Automation",
     problem:
-      "Staff frequently repeat the same steps by hand. Reminders and follow-ups depend on someone remembering. Tasks that could happen on their own wait on a person.",
+      "The same steps get repeated by hand. Reminders and follow-ups depend on someone remembering. Tasks that could happen on their own wait on a person.",
     scope: "Workflow review, automation setup, testing, documentation",
     systems: "Forms, email, calendars, CRM",
     solution:
-      "Reminders and follow-ups go out on schedule. Each automation is written down, so the team knows what runs and when. Staff time goes toward work that needs a person, and repeated tasks are handled by the system.",
+      "I'll automate repeated steps wherever it makes sense, either through native system settings or with tools like Zapier or Make.",
   },
   {
     id: "system-integration",
@@ -105,7 +108,7 @@ export const solutions: Solution[] = [
     scope: "Data flow mapping, system connections, field matching, testing",
     systems: "CRM, scheduling, invoicing, email",
     solution:
-      "Information entered once shows up where it is needed. Records match across systems. A handoff takes one click.",
+      "Your business data should have a single source of truth. I'll map how data flows (or doesn't flow) between your systems, then connect them so information entered once appears everywhere it's needed.",
   },
   {
     id: "report-building",
@@ -115,7 +118,7 @@ export const solutions: Solution[] = [
     scope: "Metrics review, data normalization, data source connections, dashboard setup",
     systems: "Analytics dashboards, sales and booking records",
     solution:
-      "Reports are generated on a predefined schedule. Numbers break down by service and by time period. Leadership can see where things stand at any time.",
+      "We'll identify the metrics that matter most to your business. I'll normalize your data and connect it to a dashboard that shows which parts of the business perform best.",
   },
   {
     id: "time-off-and-reviews",
@@ -125,7 +128,7 @@ export const solutions: Solution[] = [
     scope: "Time off policy setup, accrual rules, review process design, staff training",
     systems: "Staff records, time off tracking, review forms, payroll",
     solution:
-      "Staff request time off and check balances in one place. A written policy lays out what to expect, so fewer questions come up. Reviews follow a consistent process built around each role.",
+      "Time off requests and PTO balances belong in one system your team can check without having to ask. I'll configure your policy and accrual rules and design a consistent review process.",
   },
   {
     id: "process-documentation",
@@ -135,6 +138,6 @@ export const solutions: Solution[] = [
     scope: "Process interviews, written procedures, content organization, team training",
     systems: "Shared docs, wikis, training materials, onboarding checklists",
     solution:
-      "Procedures are written down and easy to search. New hires find answers without waiting on someone. Updates happen in one place, so the team works from the same version.",
+      "I'll build a knowledge base, organizing the processes you already have documented and creating documentation where none exists. Written procedures and onboarding checklists are searchable in one place, so new hires can find answers on their own.",
   },
 ];

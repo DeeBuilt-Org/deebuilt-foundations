@@ -28,8 +28,8 @@ export const Route = createFileRoute("/services")({
 
 /**
  * Added 2026-11-01. Took over from the Solutions page: a visitor could see the
- * problems she solves but not what to buy or what it costs. The eight solutions
- * keep their words and open from the stage they belong to (ProblemLinks).
+ * problems she solves but not what to buy or what it costs. The solutions open
+ * from the stage they belong to (ProblemLinks).
  * /solutions redirects here (public/_redirects).
  */
 function Services() {
