@@ -79,7 +79,7 @@ function OfferButton({
 }) {
   if (offer.buyNow) {
     return offer.buyUrl ? (
-      <a href={offer.buyUrl} className="btn-primary">
+      <a href={offer.buyUrl} target="_blank" rel="noreferrer" className="btn-primary">
         {offer.cta}
       </a>
     ) : (

@@ -139,7 +139,7 @@ export const smallerOffers: SmallerOffer[] = [
     id: "guided-tech-session",
     name: "Guided Tech Session",
     startingAt: false,
-    price: "$200",
+    price: "$300",
     description:
       "A 90-minute screen share to get one piece of your business tech working. You log in to your own accounts, and I guide the setup live.",
     includes: [
