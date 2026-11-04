@@ -12,6 +12,11 @@ export default defineConfig({
   // whatever else is running.
   vite: {
     server: { port: 8300, strictPort: true },
+    // Cloudflare's build machine caps open files. lucide-react's index pulls in
+    // ~1,600 icon files, and Rollup's default of 1,000 parallel reads failed
+    // there with EMFILE: too many open files (2026-11-04). Smaller batches stay
+    // under the cap.
+    build: { rollupOptions: { maxParallelFileOps: 100 } },
   },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
