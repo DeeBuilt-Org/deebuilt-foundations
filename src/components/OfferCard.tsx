@@ -1,7 +1,6 @@
 import type { MouseEventHandler, ReactNode } from "react";
 import { Star } from "lucide-react";
 import { IncludesList } from "@/components/IncludesList";
-import { NotIncluded } from "@/components/NotIncluded";
 import { BOOKING_URL } from "@/content/projects";
 import type { SmallerOffer } from "@/content/services";
 
@@ -25,12 +24,15 @@ export function OfferCard({
   tone,
   wide = false,
   onBook,
+  secondaryAction,
   children,
 }: {
   offer: SmallerOffer;
   tone: OfferCardTone;
   wide?: boolean;
   onBook: MouseEventHandler<HTMLAnchorElement>;
+  /** A second button beside the main one, such as the Sprint's demo. */
+  secondaryAction?: ReactNode;
   children?: ReactNode;
 }) {
   return (
@@ -54,7 +56,11 @@ export function OfferCard({
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-foreground/75">
         {offer.description}
       </p>
-      <IncludesList items={offer.includes} columns={wide} />
+      <IncludesList
+        items={offer.includes}
+        notIncluded={{ name: offer.name, items: offer.notIncluded, intro: offer.scope }}
+        columns={wide}
+      />
       {offer.terms && <p className="mt-5 text-sm text-foreground/70">{offer.terms}</p>}
       {/* Links to related problems and tools, set apart so the list stays the focus. */}
       {children && (
@@ -63,14 +69,9 @@ export function OfferCard({
         </div>
       )}
       {/* mt-auto pins the button to the bottom when a neighbor sets the height. */}
-      <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
+      <div className="mt-auto flex flex-wrap items-center gap-3 pt-8">
         <OfferButton offer={offer} onBook={onBook} />
-        <NotIncluded
-          name={offer.name}
-          items={offer.notIncluded}
-          intro={offer.scope}
-          className="text-foreground/75 hover:text-foreground"
-        />
+        {secondaryAction}
       </div>
     </article>
   );

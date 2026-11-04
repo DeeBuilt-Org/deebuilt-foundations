@@ -162,6 +162,24 @@
   }
 }
 
+/* Second button beside btn-primary: same shape, outlined. */
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  padding: calc(0.875rem - 1.5px) calc(1.625rem - 1.5px);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  transition: background 200ms ease, transform 200ms ease;
+  &:hover {
+    background: var(--accent-tint);
+    transform: translateY(-1px);
+  }
+}
+
 @utility btn-secondary {
   display: inline-flex;
   align-items: center;

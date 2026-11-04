@@ -19,6 +19,7 @@ import {
   SPEC_URL,
   services,
 } from "@/content/projects";
+import { demoPages, sprintDemo } from "@/content/sprintDemo";
 
 /**
  * The quiz only, not the whole Decision Lab site. The description is adapted
@@ -167,6 +168,18 @@ function Home() {
               split
               onClick={openPopup("picker")}
             />
+          </FadeUp>
+          {/* Opens the Airtable demo of a Sprint build (hers, 2026-11-04). */}
+          <FadeUp delay={80} className="mt-5">
+            <a
+              href={demoPages[0].shareUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={openPopup("demo")}
+              className="text-base font-medium text-accent underline underline-offset-4"
+            >
+              {sprintDemo.link}
+            </a>
           </FadeUp>
         </div>
       </section>

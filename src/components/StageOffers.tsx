@@ -1,6 +1,5 @@
 import type { MouseEventHandler } from "react";
 import { IncludesList } from "@/components/IncludesList";
-import { NotIncluded } from "@/components/NotIncluded";
 import { ProblemLinks } from "@/components/ProblemLinks";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BOOKING_URL } from "@/content/projects";
@@ -47,7 +46,12 @@ export function StageOffers({ onBook }: { onBook: MouseEventHandler<HTMLAnchorEl
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
             {stage.forWho}
           </p>
-          <IncludesList items={stage.includes} columns dark />
+          <IncludesList
+            items={stage.includes}
+            notIncluded={{ name: stage.name, items: stage.notIncluded, note: stage.notIncludedNote }}
+            columns
+            dark
+          />
           {stage.problems.length > 0 && (
             <div className="mt-8 rounded-md bg-white/[0.06] p-5">
               <ProblemLinks
@@ -57,7 +61,7 @@ export function StageOffers({ onBook }: { onBook: MouseEventHandler<HTMLAnchorEl
               />
             </div>
           )}
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="mt-10">
             <a
               href={BOOKING_URL}
               target="_blank"
@@ -67,12 +71,6 @@ export function StageOffers({ onBook }: { onBook: MouseEventHandler<HTMLAnchorEl
             >
               {stage.cta}
             </a>
-            <NotIncluded
-              name={stage.name}
-              items={stage.notIncluded}
-              note={stage.notIncludedNote}
-              className="text-white/80 hover:text-white"
-            />
           </div>
         </TabsContent>
       ))}

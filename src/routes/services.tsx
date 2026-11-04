@@ -8,6 +8,7 @@ import { ServicesHero } from "@/components/ServicesHero";
 import { StageOffers } from "@/components/StageOffers";
 import { CONTACT_FORM_URL, PLATFORM_PICKER_URL } from "@/content/projects";
 import { servicesPage, smallerOffers } from "@/content/services";
+import { demoPages, sprintDemo } from "@/content/sprintDemo";
 
 const DESCRIPTION =
   "Operations and systems services for businesses launching, scaling, or reorganizing, with starting prices.";
@@ -56,7 +57,23 @@ function Services() {
       <section>
         <div className="mx-auto max-w-6xl px-5 pt-14 md:px-10 md:pt-20">
           <FadeUp>
-            <OfferCard offer={sprint} tone="outline" wide onBook={openPopup("booking")}>
+            <OfferCard
+              offer={sprint}
+              tone="outline"
+              wide
+              onBook={openPopup("booking")}
+              secondaryAction={
+                <a
+                  href={demoPages[0].shareUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={openPopup("demo")}
+                  className="btn-outline"
+                >
+                  {sprintDemo.button}
+                </a>
+              }
+            >
               <ProblemLinks heading="Common problem" ids={["platform-migration"]} className="" />
               <p>
                 Review the{" "}

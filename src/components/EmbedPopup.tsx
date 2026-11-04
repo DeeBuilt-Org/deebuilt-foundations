@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { OpsetteFormEmbed } from "@/components/OpsetteFormEmbed";
+import { SprintDemo } from "@/components/SprintDemo";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import {
   ASSESSMENT_URL,
@@ -10,14 +11,16 @@ import {
   CONTACT_FORM_URL,
   PLATFORM_PICKER_URL,
 } from "@/content/projects";
+import { demoPages, sprintDemo } from "@/content/sprintDemo";
 
-export type PopupKey = "assessment" | "booking" | "contact" | "picker";
+export type PopupKey = "assessment" | "booking" | "contact" | "picker" | "demo";
 
 const POPUPS: Record<PopupKey, { title: string; newTabUrl: string }> = {
   assessment: { title: "See how your operations stack up", newTabUrl: ASSESSMENT_URL },
   booking: { title: "Book a discovery call", newTabUrl: BOOKING_URL },
   contact: { title: "Get in touch", newTabUrl: CONTACT_FORM_URL },
   picker: { title: "Platform Picker", newTabUrl: PLATFORM_PICKER_URL },
+  demo: { title: sprintDemo.link, newTabUrl: demoPages[0].shareUrl },
 };
 
 /** Stays invisible until the embedded page has loaded, then fades in. */
@@ -61,6 +64,7 @@ function EmbedPopupBody({ popup }: { popup: PopupKey }) {
           className="block h-full w-full border-0"
         />
       )}
+      {popup === "demo" && <SprintDemo onLoad={showPage} />}
     </div>
   );
 }

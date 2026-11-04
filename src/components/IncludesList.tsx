@@ -1,16 +1,22 @@
+import { NotIncluded } from "@/components/NotIncluded";
+
 /**
- * What a service includes, as a labeled bullet list. Shared by the stage panel
- * and the offer cards so every service reads the same way (hers, 2026-11-04):
- * without the label and bullets, the list ran into the description.
+ * What a service includes, as a labeled bullet list, with the "What's not
+ * included" link right under it. Shared by the stage panel and the offer cards
+ * so every service reads the same way (hers, 2026-11-04): without the label and
+ * bullets, the list ran into the description, and the exclusions belong next
+ * to the inclusions rather than in the button row.
  *
  * `dark` is for the stage panel's dark background.
  */
 export function IncludesList({
   items,
+  notIncluded,
   columns = false,
   dark = false,
 }: {
   items: string[];
+  notIncluded: { name: string; items: string[]; intro?: string; note?: string };
   columns?: boolean;
   dark?: boolean;
 }) {
@@ -28,6 +34,12 @@ export function IncludesList({
           <li key={item}>{item}</li>
         ))}
       </ul>
+      <div className="mt-4">
+        <NotIncluded
+          {...notIncluded}
+          className={dark ? "text-white/80 hover:text-white" : "text-foreground/75 hover:text-foreground"}
+        />
+      </div>
     </div>
   );
 }
