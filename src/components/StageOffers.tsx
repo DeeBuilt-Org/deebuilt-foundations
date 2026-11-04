@@ -1,4 +1,5 @@
 import type { MouseEventHandler } from "react";
+import { IncludesList } from "@/components/IncludesList";
 import { NotIncluded } from "@/components/NotIncluded";
 import { ProblemLinks } from "@/components/ProblemLinks";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -46,13 +47,9 @@ export function StageOffers({ onBook }: { onBook: MouseEventHandler<HTMLAnchorEl
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg">
             {stage.forWho}
           </p>
-          <ul className="mt-9 grid gap-x-12 gap-y-3 text-[0.9375rem] leading-relaxed text-white/90 md:grid-cols-2">
-            {stage.includes.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <IncludesList items={stage.includes} columns dark />
           {stage.problems.length > 0 && (
-            <div className="mt-9 border-t border-white/15 pt-6">
+            <div className="mt-8 rounded-md bg-white/[0.06] p-5">
               <ProblemLinks
                 heading={servicesPage.problemsHeading}
                 ids={stage.problems}

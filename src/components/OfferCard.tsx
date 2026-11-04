@@ -1,4 +1,6 @@
 import type { MouseEventHandler, ReactNode } from "react";
+import { Star } from "lucide-react";
+import { IncludesList } from "@/components/IncludesList";
 import { NotIncluded } from "@/components/NotIncluded";
 import { BOOKING_URL } from "@/content/projects";
 import type { SmallerOffer } from "@/content/services";
@@ -34,8 +36,15 @@ export function OfferCard({
   return (
     <article
       id={offer.id}
-      className={`flex h-full scroll-mt-28 flex-col rounded-lg p-7 text-foreground md:p-9 ${tones[tone]}`}
+      className={`relative flex h-full scroll-mt-28 flex-col rounded-lg p-7 text-foreground md:p-9 ${tones[tone]}`}
     >
+      {/* Centered on the card's top edge, sitting mostly above it. */}
+      {offer.badge && (
+        <span className="badge-chip absolute left-1/2 top-0 -translate-x-1/2 -translate-y-[70%]">
+          <Star aria-hidden="true" className="size-3.5 fill-current" />
+          {offer.badge}
+        </span>
+      )}
       <h3 className="font-serif text-3xl leading-tight md:text-4xl">{offer.name}</h3>
       <p className="mt-3 text-lg text-accent">
         {offer.startingAt ? "Starting at " : ""}
@@ -45,17 +54,14 @@ export function OfferCard({
       <p className="mt-4 max-w-2xl text-base leading-relaxed text-foreground/75">
         {offer.description}
       </p>
-      <ul
-        className={`mt-6 grid gap-x-10 gap-y-2.5 text-[0.9375rem] leading-relaxed ${
-          wide ? "md:grid-cols-2" : ""
-        }`}
-      >
-        {offer.includes.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
+      <IncludesList items={offer.includes} columns={wide} />
       {offer.terms && <p className="mt-5 text-sm text-foreground/70">{offer.terms}</p>}
-      {children}
+      {/* Links to related problems and tools, set apart so the list stays the focus. */}
+      {children && (
+        <div className="mt-7 space-y-3 rounded-md bg-accent-tint/60 p-5 text-sm text-foreground/75">
+          {children}
+        </div>
+      )}
       {/* mt-auto pins the button to the bottom when a neighbor sets the height. */}
       <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 pt-8">
         <OfferButton offer={offer} onBook={onBook} />

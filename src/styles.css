@@ -106,6 +106,25 @@
   color: var(--foreground);
 }
 
+/* Small rounded label, such as "Popular" on an offer card. */
+@utility badge-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: var(--saffron);
+  color: var(--foreground);
+  padding: 0.4375rem 1.125rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  /* A white ring cuts the chip out of the card border; the glow lifts it. */
+  box-shadow:
+    0 0 0 3px var(--background),
+    0 6px 18px -4px color-mix(in oklab, var(--saffron) 70%, transparent);
+}
+
 @utility btn-primary {
   display: inline-flex;
   align-items: center;

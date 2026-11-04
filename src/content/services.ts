@@ -44,14 +44,17 @@ export const stageOffers: StageOffer[] = [
     label: "Launch",
     name: "Launch Infrastructure",
     price: "$3,500",
-    forWho: "For a business that needs the basics in place before taking on clients.",
+    forWho:
+      "For a business, new or already serving clients, that needs one system to keep track of everything.",
     includes: [
       "Domain purchase and DNS setup",
-      "Google Workspace with business email",
-      "Shared Drive folders for clients, finances, and operations",
-      "Google Business Profile setup",
-      "Workflow documentation and storage",
-      "Starter templates for intake, welcome emails, and invoices",
+      "Google Workspace with business email and shared Drive folders",
+      "A base for your business information",
+      "User-friendly interfaces for your daily work",
+      "Starter automations for follow-up reminders",
+      "Forms that add new records to your base in minutes",
+      "Written instructions for using your system",
+      "Training on your new system",
     ],
     notIncluded: ["Website design", "Software subscription fees", "Ongoing support"],
     problems: ["system-selection", "business-basics"],
@@ -115,6 +118,8 @@ export const stageOffers: StageOffer[] = [
 export type SmallerOffer = {
   id: string;
   name: string;
+  /** A short label shown above the name, such as "Popular". */
+  badge?: string;
   /** Set for a fixed price. Everything else reads "Starting at". */
   startingAt: boolean;
   price: string;
@@ -186,16 +191,16 @@ export const smallerOffers: SmallerOffer[] = [
   {
     id: "system-setup-sprint",
     name: "System Setup Sprint",
+    badge: "Popular",
     startingAt: true,
-    price: "$3,000",
-    description: "One core system set up, cleaned up, or moved to a new platform.",
+    price: "$2,250",
+    description:
+      "A short project to set up or clean up one core system in your business. This package is ideal if you know what you want to fix or build, but need help actually getting it done, cleanly and intentionally.",
     includes: [
-      "Setup or restructuring of one primary system",
-      "One supporting tool connected, if needed",
-      "Your existing information moved into the new system",
-      "Available native integrations connected",
-      "A live walkthrough",
-      "Documentation for using and maintaining the system",
+      "Setup or restructuring of one primary system, such as new client requests or service follow-ups",
+      "Migration of your existing information into the new system",
+      "Integration with one supporting tool, plus available native integrations",
+      "A live walkthrough and written documentation for using and maintaining the system",
     ],
     notIncluded: [
       "More than one primary system",

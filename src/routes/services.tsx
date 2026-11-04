@@ -50,6 +50,43 @@ function Services() {
 
       <ServicesHero onBook={openPopup("booking")} />
 
+      {/* The Sprint sits above the stage packages (hers, 2026-11-04). It is the
+          service she expects to sell most, and a visitor who sees the higher
+          prices first may stop scrolling before reaching it. */}
+      <section>
+        <div className="mx-auto max-w-6xl px-5 pt-14 md:px-10 md:pt-20">
+          <FadeUp>
+            <OfferCard offer={sprint} tone="outline" wide onBook={openPopup("booking")}>
+              <ProblemLinks heading="Common problem" ids={["platform-migration"]} className="" />
+              <p>
+                Review the{" "}
+                <a
+                  href="/resources/platform-migration-checklist.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent underline underline-offset-4"
+                >
+                  Platform Migration Checklist
+                </a>{" "}
+                to prepare for moving your information to a new platform.
+              </p>
+              <p>
+                Not sure which platform fits?{" "}
+                <a
+                  href={PLATFORM_PICKER_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={openPopup("picker")}
+                  className="text-accent underline underline-offset-4"
+                >
+                  Try the Platform Picker.
+                </a>
+              </p>
+            </OfferCard>
+          </FadeUp>
+        </div>
+      </section>
+
       <section id="stages" className="scroll-mt-20">
         <div className="mx-auto max-w-6xl px-5 pb-10 pt-14 md:px-10 md:pb-14 md:pt-20">
           <FadeUp>
@@ -75,41 +112,6 @@ function Services() {
             </FadeUp>
             <FadeUp delay={80} className="md:col-span-7">
               <OfferCard offer={debut} tone="surface" onBook={openPopup("booking")} />
-            </FadeUp>
-            <FadeUp delay={120} className="md:col-span-12">
-              <OfferCard offer={sprint} tone="outline" wide onBook={openPopup("booking")}>
-                <div className="mt-4">
-                  <ProblemLinks
-                    heading="Common problem"
-                    ids={["platform-migration"]}
-                    className="text-foreground/70"
-                  />
-                </div>
-                <p className="mt-4 text-sm text-foreground/70">
-                  Review the{" "}
-                  <a
-                    href="/resources/platform-migration-checklist.pdf"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-accent underline underline-offset-4"
-                  >
-                    Platform Migration Checklist
-                  </a>{" "}
-                  to prepare for moving your information to a new platform.
-                </p>
-                <p className="mt-2 text-sm text-foreground/70">
-                  Not sure which platform fits?{" "}
-                  <a
-                    href={PLATFORM_PICKER_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={openPopup("picker")}
-                    className="text-accent underline underline-offset-4"
-                  >
-                    Try the Platform Picker.
-                  </a>
-                </p>
-              </OfferCard>
             </FadeUp>
           </div>
         </div>
