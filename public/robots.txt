@@ -1,0 +1,29 @@
+# Search engines and AI search tools are welcome to read every page.
+# Pages that shouldn't appear in search have a noindex tag on the page
+# instead of a rule here, because a page blocked here can't be read, so its
+# noindex tag is never seen.
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: *
+Allow: /
+
+# The build writes the sitemap (vite.config.ts). This address follows
+# SITE_URL in src/lib/site.ts.
+Sitemap: https://deebuilt.co/sitemap.xml

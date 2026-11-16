@@ -8,6 +8,8 @@ import {
   HUBSPOT_CERT_URL,
   positioning,
 } from "@/content/projects";
+import { breadcrumbSchema, schemaScript } from "@/lib/schema";
+import { canonicalLink, pageUrl } from "@/lib/site";
 
 /** Headshot lives in /public. */
 const PROFILE_PHOTO = "/Prof Headshot.png";
@@ -27,9 +29,10 @@ export const Route = createFileRoute("/about")({
         content:
           "Ruthnie (Dee) Benoit, operations, automation, and systems consultant. What I work on, and how I got here.",
       },
-      { property: "og:url", content: "/about" },
+      { property: "og:url", content: pageUrl("/about") },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [canonicalLink("/about")],
+    scripts: [schemaScript(breadcrumbSchema([{ name: "About", path: "/about" }]))],
   }),
   component: About,
 });

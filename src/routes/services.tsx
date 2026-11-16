@@ -7,8 +7,10 @@ import { ProblemLinks } from "@/components/ProblemLinks";
 import { ServicesHero } from "@/components/ServicesHero";
 import { StageOffers } from "@/components/StageOffers";
 import { CONTACT_FORM_URL, PLATFORM_PICKER_URL } from "@/content/projects";
-import { servicesPage, smallerOffers } from "@/content/services";
+import { servicesPage, smallerOffers, stageOffers } from "@/content/services";
 import { demoPages, sprintDemo } from "@/content/sprintDemo";
+import { breadcrumbSchema, schemaScript, serviceSchema } from "@/lib/schema";
+import { canonicalLink, pageUrl } from "@/lib/site";
 
 const DESCRIPTION =
   "Operations and systems services for businesses launching, scaling, or reorganizing, with starting prices.";
@@ -20,9 +22,17 @@ export const Route = createFileRoute("/services")({
       { name: "description", content: DESCRIPTION },
       { property: "og:title", content: "Services — DeeBuilt" },
       { property: "og:description", content: DESCRIPTION },
-      { property: "og:url", content: "/services" },
+      { property: "og:url", content: pageUrl("/services") },
     ],
-    links: [{ rel: "canonical", href: "/services" }],
+    links: [canonicalLink("/services")],
+    scripts: [
+      schemaScript(breadcrumbSchema([{ name: "Services", path: "/services" }])),
+      // One entry per offer on the page: the stage packages, then the smaller ones.
+      ...stageOffers.map((offer) =>
+        schemaScript(serviceSchema({ name: offer.name, description: offer.forWho })),
+      ),
+      ...smallerOffers.map((offer) => schemaScript(serviceSchema(offer))),
+    ],
   }),
   component: Services,
 });

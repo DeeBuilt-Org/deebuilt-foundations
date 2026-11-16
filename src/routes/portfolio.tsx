@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeUp } from "@/components/FadeUp";
 import { ProjectRow } from "@/components/ProjectRow";
 import { projects } from "@/content/projects";
+import { breadcrumbSchema, schemaScript } from "@/lib/schema";
+import { canonicalLink, pageUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -17,9 +19,10 @@ export const Route = createFileRoute("/portfolio")({
         property: "og:description",
         content: "Operations, internal tools, and product work.",
       },
-      { property: "og:url", content: "/portfolio" },
+      { property: "og:url", content: pageUrl("/portfolio") },
     ],
-    links: [{ rel: "canonical", href: "/portfolio" }],
+    links: [canonicalLink("/portfolio")],
+    scripts: [schemaScript(breadcrumbSchema([{ name: "Portfolio", path: "/portfolio" }]))],
   }),
   component: Portfolio,
 });

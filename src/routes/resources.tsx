@@ -10,6 +10,8 @@ import {
   type Stage,
   type ToolResource,
 } from "@/content/resources";
+import { breadcrumbSchema, schemaScript } from "@/lib/schema";
+import { canonicalLink, pageUrl } from "@/lib/site";
 
 export const Route = createFileRoute("/resources")({
   head: () => ({
@@ -18,9 +20,10 @@ export const Route = createFileRoute("/resources")({
       { name: "description", content: resourcesPage.subtitle },
       { property: "og:title", content: "Free Resources — DeeBuilt" },
       { property: "og:description", content: resourcesPage.subtitle },
-      { property: "og:url", content: "/resources" },
+      { property: "og:url", content: pageUrl("/resources") },
     ],
-    links: [{ rel: "canonical", href: "/resources" }],
+    links: [canonicalLink("/resources")],
+    scripts: [schemaScript(breadcrumbSchema([{ name: "Resources", path: "/resources" }]))],
   }),
   component: Resources,
 });

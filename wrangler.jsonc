@@ -10,10 +10,14 @@
     "directory": "./dist/client",
     // Serve /about straight from about/index.html, matching the app's own
     // links. /about/ redirects to /about instead of the other way round.
+    // Cloudflare's own redirect for that is a temporary 307, so the build adds
+    // a permanent 301 for each page to _redirects (vite.config.ts), which
+    // Cloudflare applies first.
     "html_handling": "drop-trailing-slash",
-    // Unknown URLs get index.html, and the app's own NotFoundComponent
-    // (src/routes/__root.tsx) renders the 404. This replaces the GitHub
-    // Pages redirect shim that used to live in public/404.html.
-    "not_found_handling": "single-page-application"
+    // Unknown URLs get 404.html with a 404 status. The build prerenders it
+    // from the /404 route (src/routes/404.tsx). Until 2026-11-15 this was
+    // "single-page-application", which answered every made-up address with
+    // the homepage and a 200, and search engines read that as soft 404s.
+    "not_found_handling": "404-page"
   }
 }

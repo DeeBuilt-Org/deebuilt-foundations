@@ -20,6 +20,11 @@ import {
   services,
 } from "@/content/projects";
 import { demoPages, sprintDemo } from "@/content/sprintDemo";
+import { businessSchema, personSchema, schemaScript } from "@/lib/schema";
+import { canonicalLink, pageUrl } from "@/lib/site";
+
+const DESCRIPTION =
+  "Operations and systems design for businesses launching, scaling, or reorganizing.";
 
 /**
  * The quiz only, not the whole Decision Lab site. The description is adapted
@@ -45,11 +50,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Ruthnie Benoit — Operations, Automation, and Systems Consultant" },
-      {
-        name: "description",
-        content:
-          "Operations and systems design for businesses launching, scaling, or reorganizing.",
-      },
+      { name: "description", content: DESCRIPTION },
       {
         property: "og:title",
         content: "Ruthnie Benoit — Operations, Automation, and Systems Consultant",
@@ -58,9 +59,10 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Operations and systems design for businesses at any stage.",
       },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: pageUrl("/") },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [canonicalLink("/")],
+    scripts: [schemaScript(personSchema()), schemaScript(businessSchema(DESCRIPTION))],
   }),
   component: Home,
 });
