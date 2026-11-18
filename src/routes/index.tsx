@@ -16,7 +16,6 @@ import {
   CONTACT_FORM_SLUG,
   HUBSPOT_CERT_URL,
   PLATFORM_PICKER_URL,
-  SPEC_URL,
   services,
 } from "@/content/projects";
 import { demoPages, sprintDemo } from "@/content/sprintDemo";
@@ -325,19 +324,9 @@ function Home() {
               </div>
             </FadeUp>
           </div>
-          <FadeUp delay={240}>
-            <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/15 pt-6 text-sm">
-              <span className="text-white/60">More from DeeBuilt</span>
-              <a
-                href={SPEC_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="font-medium text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
-              >
-                Specs ↗
-              </a>
-            </div>
-          </FadeUp>
+          {/* "More from DeeBuilt" row with a Specs link removed 2026-11-18
+              (hers): spec.deebuilt.co is private now, so the link led only to a
+              password gate. */}
         </div>
       </section>
     </>
