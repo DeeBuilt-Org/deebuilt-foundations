@@ -13,8 +13,11 @@
  *
  * Opsette Tools and G-Up were pulled 2026-10-28 (hers). G-Up is her own
  * learning project, not portfolio work.
+ *
+ * "Live · redesign in progress" was removed 2026-11-18 (hers): Opsette's
+ * redesign is finished.
  */
-export type ProjectStatus = "Live" | "Live · redesign in progress" | "Demo";
+export type ProjectStatus = "Live" | "Demo";
 
 export type Project = {
   title: string;
@@ -36,7 +39,7 @@ export const projects: Project[] = [
       "A platform for consultants to run clients, projects, and operations in one place.",
     href: "https://opsette.io/",
     index: "01",
-    status: "Live · redesign in progress",
+    status: "Live",
     stack: ["Next.js", "SQL"],
     featured: true,
   },

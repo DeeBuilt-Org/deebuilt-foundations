@@ -12,7 +12,7 @@ export const Route = createFileRoute("/portfolio")({
       {
         name: "description",
         content:
-          "Apps and tools I've built: Opsette, The Midterm Project, Read Amour, and Pet Karma.",
+          "Development projects by Ruthnie Benoit: Opsette, The Midterm Project, Read Amour, and Pet Karma.",
       },
       { property: "og:title", content: "Portfolio — DeeBuilt" },
       {
@@ -31,7 +31,8 @@ function Portfolio() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-28">
       <FadeUp>
-        <h1 className="display-lg max-w-3xl">Apps I&rsquo;ve built.</h1>
+        {/* Was "Apps I've built." until 2026-11-18 (hers). */}
+        <h1 className="display-lg max-w-3xl">Development projects.</h1>
       </FadeUp>
 
       {/* Subheading removed 2026-08-19 (hers): "Internal tools, client
