@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { usePopup } from "@/components/EmbedPopup";
 import {
   BOOKING_URL,
   LINKEDIN_URL,
@@ -7,6 +8,8 @@ import {
 } from "@/content/projects";
 
 export function SiteFooter() {
+  const openPopup = usePopup();
+
   return (
     <footer className="mt-24 border-t border-hairline">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-20">
@@ -73,13 +76,16 @@ export function SiteFooter() {
               >
                 Send a message
               </Link>
+              {/* Opens the booking pop-up (2026-11-23), so it stays on this
+                  site and loses the ↗ like "Send a message" above. */}
               <a
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noreferrer"
+                onClick={openPopup("booking")}
                 className="text-muted transition-colors hover:text-accent"
               >
-                Book a discovery call ↗
+                Book a discovery call
               </a>
               <a
                 href={YOUTUBE_URL}

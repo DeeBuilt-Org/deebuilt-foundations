@@ -1,0 +1,72 @@
+<!doctype html>
+<!--
+  The 1200×630 link-preview image for a PDF page (/resources/<slug>).
+  Added 2026-11-23. Not part of the site; it is rendered once per PDF into
+  public/resources/<slug>-share.png with headless Chrome, from the repo root:
+
+  "/c/Program Files/Google/Chrome/Application/chrome.exe" --headless=new \
+    --disable-gpu --hide-scrollbars --allow-file-access-from-files \
+    --window-size=1200,630 --virtual-time-budget=5000 \
+    --screenshot="public/resources/<slug>-share.png" \
+    "file:///C:/DeeBuilt-Org/deebuilt-foundations/docs/share-card/share-card.html?title=<Title>&meta=<Description.%20Free%20PDF%2C%203%20pages.>&foot=<Free%20workbook>"
+
+  URL-encode the three values. Then set `shareImage` on the PDF's entry in
+  src/content/resources.ts.
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500&display=block" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    background: #f4f4f1;
+    color: #18181a;
+    font-family: Inter, sans-serif;
+    display: flex;
+    padding: 72px 80px;
+    gap: 64px;
+  }
+  .text { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  h1 { font-family: "Instrument Serif", serif; font-weight: 400; font-size: 84px; line-height: 0.98; letter-spacing: -0.01em; }
+  .meta { margin-top: 28px; font-size: 26px; color: #5b6168; }
+  .brand { display: flex; align-items: center; gap: 14px; font-family: "Instrument Serif", serif; font-size: 34px; }
+  .brand img { width: 40px; height: 40px; object-fit: contain; }
+  .brand span.url { font-family: Inter, sans-serif; font-size: 22px; color: #5b6168; margin-left: 10px; }
+  .sheet {
+    width: 330px; align-self: center; aspect-ratio: 3 / 4;
+    background: #fff; border-radius: 3px; padding: 34px;
+    box-shadow: 0 30px 60px -28px rgba(34, 48, 58, 0.45);
+    transform: rotate(2.5deg);
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .sheet .type { font-family: "Instrument Serif", serif; font-size: 76px; line-height: 1; color: rgba(47, 72, 88, 0.3); }
+  .sheet .lines div { height: 9px; background: #e6e6e1; border-radius: 2px; margin-top: 14px; }
+  .sheet .foot { border-top: 1px solid #e3e3de; padding-top: 14px; font-size: 16px; color: #2f4858; font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="text">
+    <div>
+      <h1 id="title"></h1>
+      <p class="meta" id="meta"></p>
+    </div>
+    <div class="brand">
+      <img src="../../public/DeeBuilt%20logo_A14%20(1).png" alt="" />
+      DeeBuilt <span class="url">deebuilt.co/resources</span>
+    </div>
+  </div>
+  <div class="sheet">
+    <p class="type">PDF</p>
+    <div class="lines"><div style="width:90%"></div><div style="width:75%"></div><div style="width:82%"></div><div style="width:60%"></div></div>
+    <p class="foot" id="foot"></p>
+  </div>
+  <script>
+    const q = new URLSearchParams(location.search);
+    document.getElementById("title").textContent = q.get("title");
+    document.getElementById("meta").textContent = q.get("meta");
+    document.getElementById("foot").textContent = q.get("foot");
+  </script>
+</body>
+</html>

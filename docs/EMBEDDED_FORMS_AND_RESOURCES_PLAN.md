@@ -413,3 +413,54 @@ Left after this ship:
   raw points with different totals (Airtable 8 of 30 ranks below Asana 6 of
   17), which reads as a miscount. Show a match % instead, or drop "of X".
 - Not shipping until she has a few real templates.
+
+**2026-11-23 — PDF pages and pop-ups everywhere.** From the Opsette task
+"Facebook Page (DeeBuilt)", checklist item "Build a Workbook page … so the
+PDF opens in the browser". Built here, not on tools.deebuilt.co: the PDFs
+already live on deebuilt.co, and the pages help this site's search ranking.
+The other two items on that list (Decision Lab per-quiz preview tags, the
+Opsette form preview card) are hers in other workspaces.
+
+What was wrong:
+- The PDF sheets linked the file with a `download` attribute, so browsers
+  saved it instead of showing it.
+- A bare PDF link has no preview tags, so Facebook showed a blank card.
+- Every card on the Resources page opened a new tab, the assessment
+  included. So did the Book buttons in the header menu, the footer, and on
+  About, and the checklist link on Services.
+
+What shipped (her check in the running app, then committed and pushed the
+same day):
+- **One pop-up for the whole site.** `EmbedPopup.tsx` now exports
+  `PopupProvider` (wraps the site in `__root.tsx`) and `usePopup()`. It
+  shows a built-in pop-up by name, any page by address, or a PDF. Home and
+  Services dropped their own copies.
+- **A page per PDF**, `src/routes/resources_.$slug.tsx` →
+  `/resources/<slug>`: title, description, Open Graph and
+  `summary_large_image` tags with a 1200×630 image, canonical, breadcrumb
+  schema, a download button, and the PDF shown in the browser.
+- **`PdfViewer`** (`src/components/resources/PdfViewer.tsx`): inline on a
+  computer; on a phone (or a browser with no PDF viewer) an open button and
+  a save button, since Android shows nothing and an iPhone shows one page.
+- **Resources page:** every tool card and PDF sheet opens the pop-up
+  (assessment → its Opsette embed, Decision Lab → the picker pop-up, the
+  rest → the tool's page in a frame with clipboard access). Cards keep real
+  hrefs for ctrl-click. Tool cards show → instead of ↗, since ↗ on this site
+  means leaving it. PDF sheets say "Open the PDF" (was "Download ↓").
+- **Content model:** `DownloadResource` now has `slug`, `file`, and
+  `shareImage` in place of `href`. Adding a PDF is the file, a share image,
+  and one entry.
+- **Share images:** `public/resources/<slug>-share.png`, rendered from
+  `docs/share-card/share-card.html` (the render command is in that file).
+- Build: 8 pages prerendered (both PDF pages found by the crawler), both in
+  the sitemap with slash redirects, both PDFs byte-identical in dist.
+  `tsc` clean.
+
+Left:
+- After deploy: run both page addresses through Facebook's Sharing Debugger,
+  then update the Buffer post for the Workbook to the page address.
+- Button labels "Open the PDF", "Download the PDF", and "Save to your phone"
+  stay as they are (hers).
+- Capturing emails from the free tools (StartUp Planner, Decision Lab, the
+  PDFs) is hers, in the tools' own workspace: one shared form for every tool.
+  The optional email line on the PDF pages waits until that form exists.

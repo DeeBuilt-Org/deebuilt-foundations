@@ -1,6 +1,5 @@
-import { useState, type MouseEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { EmbedPopup, type PopupKey } from "@/components/EmbedPopup";
+import { usePopup } from "@/components/EmbedPopup";
 import { FadeUp } from "@/components/FadeUp";
 import { Hero } from "@/components/Hero";
 import { OpsetteFormEmbed } from "@/components/OpsetteFormEmbed";
@@ -67,19 +66,10 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const [popup, setPopup] = useState<PopupKey | null>(null);
-
-  // Every trigger stays a real link, so ctrl-click still opens a new tab.
-  const openPopup = (key: PopupKey) => (event: MouseEvent<HTMLAnchorElement>) => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey) return;
-    event.preventDefault();
-    setPopup(key);
-  };
+  const openPopup = usePopup();
 
   return (
     <>
-      <EmbedPopup popup={popup} onClose={() => setPopup(null)} />
-
       <Hero onBook={openPopup("booking")} onAssessment={openPopup("assessment")} />
 
       {/* The hook. One sentence, standing alone — no paragraph under it (removed

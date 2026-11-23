@@ -1,4 +1,5 @@
-import type { DownloadResource } from "@/content/resources";
+import type { MouseEventHandler } from "react";
+import { downloadPath, type DownloadResource } from "@/content/resources";
 
 /**
  * A downloadable file drawn as a sheet of paper: portrait from sm up, white,
@@ -13,9 +14,11 @@ import type { DownloadResource } from "@/content/resources";
 export function DownloadSheet({
   file,
   className = "",
+  onClick,
 }: {
   file: DownloadResource;
   className?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }) {
   const inner = (
     <>
@@ -26,8 +29,8 @@ export function DownloadSheet({
         <p className="mt-3 text-sm leading-relaxed text-muted">{file.description}</p>
         <div className="mt-5 flex items-center justify-between gap-4 border-t border-hairline pt-4 text-sm">
           <span className="text-muted">{file.length}</span>
-          {file.href ? (
-            <span className="font-medium text-accent group-hover:underline">Download ↓</span>
+          {file.file ? (
+            <span className="font-medium text-accent group-hover:underline">Open the PDF</span>
           ) : (
             <span className="text-muted">Coming soon</span>
           )}
@@ -42,10 +45,18 @@ export function DownloadSheet({
   // the white sheet onto the dark band, 2026-10-21.)
   const base = `flex flex-col justify-between gap-10 rounded-sm bg-surface p-6 text-foreground shadow-[0_18px_40px_-24px_rgba(var(--shadow-ink),0.35)] sm:aspect-[3/4] md:p-7 ${className}`;
 
-  if (!file.href) return <article className={base}>{inner}</article>;
+  if (!file.file) return <article className={base}>{inner}</article>;
 
+  // Links to the PDF's own page, the address worth sharing; a plain click
+  // opens the same viewer in the pop-up instead (2026-11-23). It used to link
+  // the file with `download`, which made the browser save it instead of
+  // showing it.
   return (
-    <a href={file.href} download className={`group ${base} transition-transform duration-300 hover:-translate-y-1`}>
+    <a
+      href={downloadPath(file)}
+      onClick={onClick}
+      className={`group ${base} transition-transform duration-300 hover:-translate-y-1`}
+    >
       {inner}
     </a>
   );

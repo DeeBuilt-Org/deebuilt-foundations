@@ -1,4 +1,5 @@
-import { ASSESSMENT_URL } from "@/content/projects";
+import type { PopupKey } from "@/components/EmbedPopup";
+import { ASSESSMENT_URL, PLATFORM_PICKER_URL } from "@/content/projects";
 
 /**
  * Resources page entries (src/routes/resources.tsx). Added 2026-10-21.
@@ -17,8 +18,11 @@ import { ASSESSMENT_URL } from "@/content/projects";
  * per card, none reused).
  *
  * Adding a resource is one entry in `resources` below. No href = "Coming
- * soon" and not clickable. Tools open in a new tab; downloads use files in
- * public/resources/.
+ * soon" and not clickable. Every card opens in the site's pop-up so visitors
+ * stay on deebuilt.co (2026-11-23; tools used to open a new tab). A tool's
+ * `popup` names one of EmbedPopup's built-in pop-ups; without it, the tool's
+ * own page loads in the pop-up. PDFs use files in public/resources/ and get
+ * a page each (see DownloadResource).
  *
  * "StartUp Planner" is spelled the way the app spells it.
  */
@@ -33,12 +37,28 @@ export type ToolResource = {
   /** Button label. Placeholder until workshopped */
   cta: string;
   href?: string;
+  /**
+   * A built-in pop-up to open instead of loading `href` in one, for a tool
+   * that has a better embed (the assessment's Opsette form embed)
+   */
+  popup?: PopupKey;
   /** The stage's focal card. One per stage at most */
   featured?: boolean;
   /** A real screenshot of the tool, shown on a featured card */
   image?: { src: string; alt: string; width: number; height: number };
 };
 
+/**
+ * A PDF. Each one gets its own page at /resources/<slug>
+ * (src/routes/resources_.$slug.tsx), added 2026-11-23 so a shared link shows
+ * a real preview card on Facebook and LinkedIn. A bare PDF link has no title,
+ * description, or image for them to read. The page shows the PDF in the
+ * browser, and the Resources page opens the same viewer in a pop-up.
+ *
+ * Adding a PDF: put the file in public/resources/, a 1200×630 share image
+ * beside it, and one entry below. The page, the pop-up, and the sitemap
+ * entry follow from that.
+ */
 export type DownloadResource = {
   kind: "download";
   stage: Stage;
@@ -48,8 +68,25 @@ export type DownloadResource = {
   fileType: string;
   /** "2 pages" */
   length: string;
-  href?: string;
+  /** The page's address: /resources/<slug> */
+  slug: string;
+  /** The file in public/resources/. No file = "Coming soon", no page */
+  file?: string;
+  /** 1200×630 image for the link preview card, in public/resources/ */
+  shareImage?: string;
 };
+
+/** The page address for a PDF. */
+export function downloadPath(file: DownloadResource): string {
+  return `/resources/${file.slug}`;
+}
+
+/** The PDF with this page address, if it has a file to show. */
+export function downloadBySlug(slug: string): DownloadResource | undefined {
+  return resources.find(
+    (r): r is DownloadResource => r.kind === "download" && r.slug === slug && Boolean(r.file),
+  );
+}
 
 export type Resource = ToolResource | DownloadResource;
 
@@ -147,7 +184,9 @@ export const resources: Resource[] = [
     description: "The systems most new businesses need in their first month.",
     fileType: "PDF",
     length: "3 pages",
-    href: "/resources/new-business-systems-workbook.pdf",
+    slug: "new-business-systems-workbook",
+    file: "/resources/new-business-systems-workbook.pdf",
+    shareImage: "/resources/new-business-systems-workbook-share.png",
   },
 
   // Scaling
@@ -155,14 +194,14 @@ export const resources: Resource[] = [
     kind: "tool",
     stage: "scaling",
     // Her app. The link goes straight to the platform picker, which is what
-    // the screenshot shows. ⚠️ The URL is the one it WILL have once she moves
-    // the repo to tools.deebuilt.co (2026-10-21); it 404s until then. Check
-    // it before shipping.
+    // the screenshot shows, and opens in the same pop-up the Services page
+    // uses for it.
     title: "Decision Lab",
     description:
       "Work through the decisions that come with growth, like which platform fits your team now and what you'll need next.",
     cta: "Find your platform",
-    href: "https://tools.deebuilt.co/decision-lab/platform-picker",
+    href: PLATFORM_PICKER_URL,
+    popup: "picker",
     featured: true,
     image: {
       src: "/resources/decision-lab-platform-picker.png",
@@ -186,6 +225,7 @@ export const resources: Resource[] = [
     description: "About two minutes to get your score.",
     cta: "Take the full assessment",
     href: ASSESSMENT_URL,
+    popup: "assessment",
     featured: true,
   },
   // File Builder (https://tools.deebuilt.co/file-builder/) is live but not
@@ -199,6 +239,8 @@ export const resources: Resource[] = [
     description: "Clean up, map, and test before moving from one system to another.",
     fileType: "PDF",
     length: "3 pages",
-    href: "/resources/platform-migration-checklist.pdf",
+    slug: "platform-migration-checklist",
+    file: "/resources/platform-migration-checklist.pdf",
+    shareImage: "/resources/platform-migration-checklist-share.png",
   },
 ];

@@ -1,12 +1,12 @@
-import { useState, type MouseEvent } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { EmbedPopup, type PopupKey } from "@/components/EmbedPopup";
+import { usePopup } from "@/components/EmbedPopup";
 import { FadeUp } from "@/components/FadeUp";
 import { OfferCard } from "@/components/OfferCard";
 import { ProblemLinks } from "@/components/ProblemLinks";
 import { ServicesHero } from "@/components/ServicesHero";
 import { StageOffers } from "@/components/StageOffers";
 import { CONTACT_FORM_URL, PLATFORM_PICKER_URL } from "@/content/projects";
+import { downloadBySlug, downloadPath } from "@/content/resources";
 import { servicesPage, smallerOffers, stageOffers } from "@/content/services";
 import { demoPages, sprintDemo } from "@/content/sprintDemo";
 import { breadcrumbSchema, schemaScript, serviceSchema } from "@/lib/schema";
@@ -44,21 +44,13 @@ export const Route = createFileRoute("/services")({
  * /solutions redirects here (public/_redirects).
  */
 function Services() {
-  const [popup, setPopup] = useState<PopupKey | null>(null);
-
-  // Every trigger stays a real link, so ctrl-click still opens a new tab.
-  const openPopup = (key: PopupKey) => (event: MouseEvent<HTMLAnchorElement>) => {
-    if (event.metaKey || event.ctrlKey || event.shiftKey) return;
-    event.preventDefault();
-    setPopup(key);
-  };
+  const openPopup = usePopup();
+  const migrationChecklist = downloadBySlug("platform-migration-checklist");
 
   const [session, debut, sprint] = smallerOffers;
 
   return (
     <>
-      <EmbedPopup popup={popup} onClose={() => setPopup(null)} />
-
       <ServicesHero onBook={openPopup("booking")} />
 
       {/* The Sprint sits above the stage packages (hers, 2026-11-04). It is the
@@ -85,18 +77,19 @@ function Services() {
               }
             >
               <ProblemLinks heading="Common problem" ids={["platform-migration"]} className="" />
-              <p>
-                Review the{" "}
-                <a
-                  href="/resources/platform-migration-checklist.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-accent underline underline-offset-4"
-                >
-                  Platform Migration Checklist
-                </a>{" "}
-                to prepare for moving your information to a new platform.
-              </p>
+              {migrationChecklist && (
+                <p>
+                  Review the{" "}
+                  <a
+                    href={downloadPath(migrationChecklist)}
+                    onClick={openPopup({ kind: "pdf", file: migrationChecklist })}
+                    className="text-accent underline underline-offset-4"
+                  >
+                    Platform Migration Checklist
+                  </a>{" "}
+                  to prepare for moving your information to a new platform.
+                </p>
+              )}
               <p>
                 Not sure which platform fits?{" "}
                 <a

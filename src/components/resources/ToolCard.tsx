@@ -13,7 +13,10 @@ import type { ToolResource } from "@/content/resources";
  *
  * The WHOLE card is the link (bigger target on a phone; it lifts on hover).
  * The button inside is a visual cue only, a span, so there's no link inside a
- * link. Tools open in a new tab. No href = "Coming soon", not clickable.
+ * link. The page passes `onClick` to open the tool in the site's pop-up
+ * (every use does, as of 2026-11-23), so the cue is →, not ↗: ↗ on this site
+ * means the link leaves it. The href stays for ctrl-click. No href = "Coming
+ * soon", not clickable.
  *
  * A featured card with an image shows a real screenshot of the tool, anchored
  * to the bottom edge and cropped by it, so the card reads as a peek at the
@@ -112,8 +115,8 @@ export function ToolCard({
           {!t.large && tool.href ? (
             <span className="underline decoration-1 underline-offset-[6px] transition-colors group-hover:decoration-2">
               {tool.title}
-              <span className="ml-1.5 inline-block text-[0.7em] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                ↗
+              <span className="ml-1.5 inline-block text-[0.7em] transition-transform group-hover:translate-x-0.5">
+                →
               </span>
             </span>
           ) : (
@@ -129,7 +132,7 @@ export function ToolCard({
         </p>
         {t.large && tool.href && (
           <div className="mt-8">
-            <span className={t.button}>{tool.cta} ↗</span>
+            <span className={t.button}>{tool.cta} →</span>
           </div>
         )}
         {!tool.href && <p className={`mt-6 text-sm ${t.quiet}`}>Coming soon</p>}

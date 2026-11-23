@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { usePopup } from "@/components/EmbedPopup";
 import { FadeUp } from "@/components/FadeUp";
 import { DownloadSheet } from "@/components/resources/DownloadSheet";
 import { ToolCard, type ToolCardTone } from "@/components/resources/ToolCard";
@@ -174,6 +175,12 @@ function StageSection({
   downloads: DownloadResource[];
 }) {
   const band = bands[id];
+  // Every card opens in the pop-up, so visitors stay on the site.
+  const openPopup = usePopup();
+  const toolPopup = (tool: ToolResource) =>
+    tool.href
+      ? openPopup(tool.popup ?? { kind: "page", url: tool.href, title: tool.title })
+      : undefined;
   // Featured tool always leads its stage's grid.
   const ordered = [...tools].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)));
   const featured = ordered[0]?.featured ? ordered[0] : undefined;
@@ -197,7 +204,7 @@ function StageSection({
               const place = placement(i, ordered.length, featured);
               return (
                 <FadeUp key={tool.title} delay={i * 60} className={place.className}>
-                  <ToolCard tool={tool} tone={tone} split={place.split} />
+                  <ToolCard tool={tool} tone={tone} split={place.split} onClick={toolPopup(tool)} />
                 </FadeUp>
               );
             })}
@@ -215,7 +222,10 @@ function StageSection({
                 delay={i * 80}
                 className={i % 2 === 0 ? "lg:translate-y-12" : ""}
               >
-                <DownloadSheet file={file} />
+                <DownloadSheet
+                  file={file}
+                  onClick={file.file ? openPopup({ kind: "pdf", file }) : undefined}
+                />
               </FadeUp>
             ))}
           </div>

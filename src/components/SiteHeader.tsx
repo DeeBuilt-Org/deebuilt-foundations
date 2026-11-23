@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { usePopup } from "@/components/EmbedPopup";
 import { BOOKING_URL } from "@/content/projects";
 
 const nav = [
@@ -17,6 +18,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const openPopup = usePopup();
 
   const hasDarkHero = DARK_HERO_PATHS.has(pathname);
 
@@ -168,10 +170,15 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="mt-auto border-t border-hairline px-6 py-8">
+            {/* Opens the booking pop-up and closes the menu behind it. */}
             <a
               href={BOOKING_URL}
               target="_blank"
               rel="noreferrer"
+              onClick={(event) => {
+                openPopup("booking")(event);
+                if (event.defaultPrevented) setOpen(false);
+              }}
               className="btn-primary w-full justify-center"
             >
               Book a discovery call

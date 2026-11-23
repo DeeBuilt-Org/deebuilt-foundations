@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { usePopup } from "@/components/EmbedPopup";
 import { FadeUp } from "@/components/FadeUp";
 import {
   AIRTABLE_AGENTIC_CERT_URL,
@@ -60,6 +61,8 @@ function ProfilePhoto() {
 }
 
 function About() {
+  const openPopup = usePopup();
+
   return (
     <section className="mx-auto max-w-6xl px-5 py-16 md:px-10 md:py-28">
       <div className="grid gap-12 md:grid-cols-12 md:gap-16">
@@ -73,7 +76,13 @@ function About() {
                 further down the page every time a credential was added. On
                 the portrait it sits with her name at the top of the page and
                 stays put no matter how long that list gets. */}
-            <a href={BOOKING_URL} target="_blank" rel="noreferrer" className="btn-primary mt-6">
+            <a
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noreferrer"
+              onClick={openPopup("booking")}
+              className="btn-primary mt-6"
+            >
               Book a discovery call
             </a>
           </FadeUp>
